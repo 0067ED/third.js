@@ -10,10 +10,16 @@ module.exports = {
         cgi: '/cgi'
     },
     path: {
-        src: './src',
+        src: './',
         test: './test',
         dest: './dist',
-        cgi: './dev/cgi'
+        entrys: {
+            test: './test/test.js'
+        },
+        cgi: './dev/cgi',
+        alias: {
+            S3: './src'
+        }
     },
     port: {
         // connect 端口

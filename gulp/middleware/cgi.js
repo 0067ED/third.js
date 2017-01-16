@@ -1,7 +1,7 @@
 const url = require('url');
 const path = require('path');
 const fs = require('fs');
-const config = require('../config/getConfig')();
+const config = require('../config/config');
 
 module.exports = function (req, res, next) {
     let pathname = url.parse(req.url).pathname.replace(config.url.cgi, '');
