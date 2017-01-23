@@ -17,8 +17,9 @@ var toArray = function (object, start, end) {
         end = end || len;
         start = start || 0;
         var arr = new Array(end - start);
-        for (var i = start; i < end; i++) {
-            arr[i] = object[i];
+        var j = 0;
+        for (var i = start; i < end; i++, j++) {
+            arr[j] = object[i];
         }
         return arr;
     }
