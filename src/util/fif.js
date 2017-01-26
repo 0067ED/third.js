@@ -9,14 +9,13 @@ import createByHTML from '../iframe/createByHTML';
  * @param {function (Window, Document)} callback executed after scripts loaded
  * @param {Object=} opts options
  * @param {string=} opts.fifMark global variable in iframe to help script locate there position
- * @param {document=} opts.context option document
+ * @param {Window=} opts.context option document
  * @return {Element} iframe DOM element
  */
 var fif = function (url, callback, opts) {
-    opts['visible'] = false;
     // This global variable is called inDapIF and is defined by IAB (Interactive Advertising Bureau).
     // http://www.iab.net/media/file/rich_media_ajax_best_practices.pdf
-    var fifMark = opts['fifMark'] || 'inDapIF';
+    var fifMark = (opts && opts['fifMark']) || 'inDapIF';
     var html = '<script>window.' + fifMark + '=true;</script>';
 
     if (typeof url === 'string') {
@@ -28,7 +27,7 @@ var fif = function (url, callback, opts) {
         }
     }
 
-    return createByHTML(html, callback, opts);
+    return createByHTML(html, callback, (opts && opts.context));
 };
 
 
