@@ -1,5 +1,5 @@
 import ready from './ready';
-import CONST from './const';
+import {HTML_START, IE_HTML_SUFFIX, HTML_END} from './const';
 import ie from '../browser/ie';
 
 /**
@@ -29,12 +29,12 @@ var write = function (iframe, html, onload) {
         };
 
         var useSuffix = ie && ie < 10;
-        doc.write(CONST.HTML_START
+        doc.write(HTML_START
             + '<body onload="document._M_();">'
             + html
-            + (useSuffix ? CONST.IE_HTML_SUFFIX : '')
+            + (useSuffix ? IE_HTML_SUFFIX : '')
             + '</body>'
-            + CONST.HTML_END);
+            + HTML_END);
 
         if (!useSuffix) {
             doc.close();

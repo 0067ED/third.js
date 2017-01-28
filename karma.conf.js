@@ -12,6 +12,8 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
+            {pattern: 'src/**/*.js', included: false, served: false},
+            {pattern: 'src/*.js', included: false, served: false},
             'test/**/*.js',
             'test/*.js'
         ],
@@ -77,7 +79,6 @@ module.exports = function(config) {
             'karma-chrome-launcher',
             'karma-firefox-launcher',
             'karma-opera-launcher',
-            'karma-phantomjs-launcher',
             'karma-jasmine',
             'karma-rollup-preprocessor',
             'karma-sourcemap-loader',

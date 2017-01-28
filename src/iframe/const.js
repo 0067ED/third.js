@@ -1,7 +1,6 @@
-export default {
-    HTML_START: '<!DOCTYPE html><html><head><meta charset="UTF-8"></head>',
-    HTML_END: '</html>',
-    IE_HTML_SUFFIX: ''
+export var HTML_START = '<!DOCTYPE html><html><head><meta charset="UTF-8"></head>';
+export var HTML_END = '</html>';
+export var IE_HTML_SUFFIX = ''
     + '<script>'
     + 'var timer = setInterval('
     +     'function () {'
@@ -25,5 +24,4 @@ export default {
     +     '},'
     +     '200'
     + ');'
-    + '</script>'
-};
+    + '</script>';
