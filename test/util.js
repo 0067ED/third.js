@@ -6,7 +6,6 @@ export var createIframe = function (id) {
     }
 
     var contextIframe = document.createElement('iframe');
-    createdIframes[id] = contextIframe;
     contextIframe.id = id;
     document.body.appendChild(contextIframe);
     return contextIframe;
