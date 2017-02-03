@@ -20,7 +20,8 @@ module.exports = function(config) {
 
         // list of files to exclude
         exclude: [
-            '**/*.swp'
+            '**/*.swp',
+            'test/util.js'
         ],
 
         // preprocess matching files before serving them to the browser

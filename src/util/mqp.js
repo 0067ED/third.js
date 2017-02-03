@@ -43,8 +43,14 @@ var mqp = function (targetName, proxy, context, methodCaller, readyFuncName) {
     var target = context[targetName];
     var call = function (params) {
         if (!params.shift) {
-            // is arguments
-            params = toArray(params);
+            if (typeof params === 'function') {
+                // is function
+                params = [params];
+            }
+            else {
+                // is arguments
+                params = toArray(params);
+            }
         }
         // remove the method from the first item
         var method = params.shift();

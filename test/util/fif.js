@@ -1,4 +1,5 @@
 import fif from 'S3/util/fif';
+import {getWindow, createIframe} from '../util';
 
 describe('S3/util/fif', function() {
     it('fif(url, callback)', function (done) {
@@ -47,9 +48,8 @@ describe('S3/util/fif', function() {
     });
 
     it('fif(url, callback, {context})', function (done) {
-        var contextIframe = document.createElement('iframe');
-        document.body.appendChild(contextIframe);
-        contextIframe.contentWindow.isContext = true;
+        var contextIframe = createIframe()
+        getWindow(contextIframe).isContext = true;
 
         var iframe = fif('/cgi/jsonp/fif_test', function () {
             var win = iframe.contentWindow;
