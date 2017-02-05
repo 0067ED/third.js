@@ -1,5 +1,6 @@
 import on from '../event/on';
 import off from '../event/off';
+import globalSandbox from '../sandbox/global';
 
 /**
  * 当匿名iframe准备完全后，执行回调函数。
@@ -37,7 +38,9 @@ var ready = function (iframe, callback) {
     }
 
     if (!updateDomain) {
-        callback(win, doc, '');
+        globalSandbox().setTimeout(function () {
+            callback(win, doc, '');
+        }, 100);
     }
 };
 
