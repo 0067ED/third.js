@@ -63,13 +63,15 @@ var parseUrl = function (url, relativedUrl) {
 
     link.href = url;
     var r = parseLink(link);
+    var protocol = (link.protocol || '').toLowerCase();
+    var query = link.search || '';
     return {
-        protocol: (link.protocol || '').toLowerCase(),
+        protocol: protocol,
         host: r[0],
         port: r[1],
         path: r[2],
-        query: link.search || '',
-        url: url || ''
+        query: query,
+        url: protocol + '//' + r[0] + ':' + r[1] + r[2] + query
     };
 };
 
