@@ -40,7 +40,7 @@ var ready = function (iframe, callback) {
     if (!updateDomain) {
         globalSandbox().setTimeout(function () {
             callback(win, doc, '');
-        }, 100);
+        }, 0);
     }
 };
 
