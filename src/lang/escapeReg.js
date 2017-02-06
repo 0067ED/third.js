@@ -7,7 +7,7 @@
  * @return {string} escaped string.
  */
 var escapeReg = function (input) {
-    return String(input).replace(new RegExp('([.*+?^=!:${}()|[\\]\/\\\\-])', 'g'), '\\$1');
+    return String(input).replace(/([.*+?^=!:${}()|[\]\/\\-])/g, '\\$1');
 };
 
 export default escapeReg;
