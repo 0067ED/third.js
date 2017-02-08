@@ -14,7 +14,7 @@ describe('S3/url/toQuery', function() {
         expect(getQuery(query, 'a')).toBe('1');
         expect(getQuery(query, 'b')).toBe('2');
         expect(getQuery(query, '_c')).toBe('3');
-        expect(getQuery(query, '%3Fd%26')).toBe('4');
+        expect(getQuery(query, '?d&')).toBe('4');
         expect(query.indexOf('arr%5B%5D=5&arr%5B%5D=6&arr%5B%5D=7') > 0).toBeTruthy();
     });
 

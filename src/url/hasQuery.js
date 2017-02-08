@@ -1,4 +1,5 @@
 import escapeReg from '../lang/escapeReg';
+import globalSandbox from '../sandbox/global';
 
 /**
  * Has query or not.
@@ -8,7 +9,8 @@ import escapeReg from '../lang/escapeReg';
  * @return {boolean} has this query or not.
  */
 var hasQuery = function (url, key) {
-    var reg = new RegExp('(^|&|\\?|#)' + escapeReg(key) + '=([^&#]*)(&|$|#)', '');
+    var win = globalSandbox();
+    var reg = new win.RegExp('(?:&|\\?)?' + escapeReg(win.encodeURIComponent(key)) + '=([^&]*)(?:&|$)', '');
     return reg.test(url);
 };
 
