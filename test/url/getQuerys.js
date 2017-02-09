@@ -4,6 +4,8 @@ describe('S3/url/getQuerys', function() {
     it('getQuerys(url)', function () {
         expect(getQuerys('')).toEqual({});
         expect(getQuerys('#a=2')).toEqual({});
+        expect(getQuerys('http://example.com')).toEqual({});
+        expect(getQuerys('http://example.com?')).toEqual({});
 
         expect(getQuerys('http://example.com?a=1')).toEqual({a: '1'});
         expect(getQuerys('http://example.com?a=1&b=1')).toEqual({a: '1', b: '1'});
