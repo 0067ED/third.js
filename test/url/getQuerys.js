@@ -2,6 +2,9 @@ import getQuerys from 'S3/url/getQuerys';
 
 describe('S3/url/getQuerys', function() {
     it('getQuerys(url)', function () {
+        expect(getQuerys('')).toEqual({});
+        expect(getQuerys('#a=2')).toEqual({});
+
         expect(getQuerys('http://example.com?a=1')).toEqual({a: '1'});
         expect(getQuerys('http://example.com?a=1&b=1')).toEqual({a: '1', b: '1'});
         expect(getQuerys('http://example.com?b=b&a=1&b=1&a=c&a=3')).toEqual({a: ['1', 'c', '3'], b: ['b', '1']});

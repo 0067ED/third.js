@@ -1,5 +1,4 @@
 import escapeReg from '../lang/escapeReg';
-import globalSandbox from '../sandbox/global';
 import parseHash from './_parseHash';
 import decodeQuery from './decodeQuery';
 
@@ -16,14 +15,13 @@ var getQuerys = function (url) {
         url = match[1];
     }
 
+    var result = {};
     if (!url) {
         // url = '#hash'
-        return '';
+        return result;
     }
 
-    var win = globalSandbox();
     var reg = /(?:&|\?)?([^\?&]+)=([^&]*)(?:&|$)/g;
-    var result = {};
     while (match = reg.exec(url)) {
         var key = decodeQuery(match[1]);
         var value = decodeQuery(match[2]);
