@@ -14,6 +14,8 @@ describe('S3/url/parse', function() {
         var url = parse('http://example.com/books/123/?a=1&b=3#hashid');
         expect(url.port).toBe('80');
         expect(url.url).toBe('http://example.com:80/books/123/?a=1&b=3');
+        var url = parse('https://example.com:8000/books/123/?a=1&b=3#hashid');
+        expect(url.host).toBe('example.com');
     });
 
     it('parse(relativeUrl)', function () {

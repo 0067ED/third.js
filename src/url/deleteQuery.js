@@ -9,7 +9,7 @@ import parseHash from './_parseHash';
  * @param {string} key key name
  * @return {string} replaced url
  */
-var removeQuery = function (url, key) {
+var deleteQuery = function (url, key) {
     var oldUrl = url;
     var match = parseHash(url);
     var hash = '';
@@ -36,4 +36,4 @@ var removeQuery = function (url, key) {
     return url + hash;
 };
 
-export default removeQuery;
+export default deleteQuery;

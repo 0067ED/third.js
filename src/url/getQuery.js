@@ -4,7 +4,7 @@ import parseHash from './_parseHash';
 import decodeQuery from './decodeQuery';
 
 /**
- * Get first query value of url
+ * Get query value of url
  *
  * @param {string} url URL location
  * @param {string} key key name
