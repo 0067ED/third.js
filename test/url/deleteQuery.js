@@ -10,5 +10,6 @@ describe('S3/url/deleteQuery', function() {
         expect(deleteQuery('http://example.com?b=2&a=2#a=1', 'a')).toBe('http://example.com?b=2#a=1');
         expect(deleteQuery('http://example.com?b=2&b=2#a=1', 'a')).toBe('http://example.com?b=2&b=2#a=1');
         expect(deleteQuery('http://example.com?a=1&b=2#a=1', 'a')).toBe('http://example.com?b=2#a=1');
+        expect(deleteQuery('http://example.com?a=1&%40b=2#a=1', '@b')).toBe('http://example.com?a=1#a=1');
     });
 });

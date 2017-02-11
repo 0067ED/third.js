@@ -11,5 +11,9 @@ describe('S3/url/getFirstQuery', function() {
         expect(getFirstQuery('http://test.com?b=1#?a=2', 'a')).toBe('');
         expect(getFirstQuery('http://test.com', 'a')).toBe('');
         expect(getFirstQuery('?a=1', 'a')).toBe('1');
+
+        expect(getFirstQuery('http://test.com?a=2+2', 'a')).toBe('2 2');
+        expect(getFirstQuery('http://test.com?%40a=2+2', '@a')).toBe('2 2');
+        expect(getFirstQuery('http://test.com?%40a=%402', '@a')).toBe('@2');
     });
 });

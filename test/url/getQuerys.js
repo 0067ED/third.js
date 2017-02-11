@@ -41,5 +41,7 @@ describe('S3/url/getQuerys', function() {
         expect(getQuerys('http://example.com:8000?c=2&a=1&b=1')).toEqual({a: '1', b: '1', c: '2'});
         expect(getQuerys('http://example.com:8000?c=2&a=1&a&a=&b=1')).toEqual({a: ['1', ''], b: '1', c: '2'});
         expect(getQuerys('http://example.com:8000?c=2&a=1&d&b=1')).toEqual({a: '1', b: '1', c: '2'});
+
+        expect(getQuerys('http://test.com?%40a=%40 2', '@a')).toEqual({'@a': '@ 2'});
     });
 });

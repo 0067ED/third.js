@@ -10,6 +10,10 @@ describe('S3/url/getQuery', function() {
         expect(getQuery('http://test.com?b=1#?a=2', 'a')).toBe('');
         expect(getQuery('http://test.com', 'a')).toBe('');
         expect(getQuery('?a=1', 'a')).toBe('1');
+
+        expect(getQuery('http://test.com?a=2+2', 'a')).toBe('2 2');
+        expect(getQuery('http://test.com?%40a=2+2', '@a')).toBe('2 2');
+        expect(getQuery('http://test.com?%40a=%402', '@a')).toBe('@2');
     });
 
 
