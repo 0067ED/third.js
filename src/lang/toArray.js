@@ -16,6 +16,13 @@ var toArray = function (object, start, end) {
     if (len > 0) {
         end = end || len;
         start = start || 0;
+        if (end < 0) {
+            end = end % len + len;
+        }
+        if (start < 0) {
+            start = start % len + len;
+        }
+
         var arr = new Array(end - start);
         var j = 0;
         for (var i = start; i < end; i++, j++) {
