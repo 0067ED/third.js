@@ -21,7 +21,9 @@ module.exports = function () {
                 // 'Content-Length': Buffer.byteLength(body),
                 'Content-Type': parts[0] === 'ping'
                     ? (req.method === 'GET' ? 'image/gif' : 'plain/text')
-                    : 'application/javascript'
+                    : (parts[0] === 'html'
+                        ? 'text/html'
+                        : 'application/javascript')
             });
             res.end(body, isImg ? 'binary' : null);
         }
@@ -31,7 +33,14 @@ module.exports = function () {
                 var jsFilePath = path.normalize(path.join(config.path.cgi, pathname + '.js'));
                 fs.readFile(jsFilePath, function (err, file) {
                     if (err) {
-                        next(err);
+                        const htmlFilePath = path.normalize(path.join(config.path.cgi, pathname + '.html'));
+                        fs.readFile(htmlFilePath, function (err, file) {
+                            if (err) {
+                                next(err);
+                                return;
+                            }
+                            response(file);
+                        });
                         return;
                     }
                     response(file);
