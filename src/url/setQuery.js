@@ -9,7 +9,7 @@ import decodeQuery from './decodeQuery';
  *
  * @param {string} url URL location
  * @param {string} key key name
- * @param {string|Arra.<string>} value value string
+ * @param {string|Array.<string>} value value string
  * @return {string} new url string
  */
 var setQuery = function (url, key, value) {
