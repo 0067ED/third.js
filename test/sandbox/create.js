@@ -17,6 +17,7 @@ describe('S3/sandbox/create', function() {
             expect(iframe.nodeName.toLowerCase()).toBe('iframe');
             expect(getWindow(iframe)).toBe(win);
             expect(getOwnerWindow(iframe)).toBe(contextWindow);
+            expect(win.parent).toBe(contextWindow);
             done();
         }, contextWindow);
     });

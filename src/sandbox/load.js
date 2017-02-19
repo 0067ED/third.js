@@ -10,8 +10,13 @@ import createIframeByHTML from '../iframe/createByHTML';
 export default function (jsfiles, callback, charset) {
     charset = charset ? ('charset="' + charset + '"') : '';
     var html = '';
-    for (var i = 0, l = jsfiles.length; i < l; i++) {
-        html += '<script' + charset + ' src="' + jsfiles[i] + '"></script>';
+    if (typeof jsfiles === 'string') {
+        html = '<script' + charset + ' src="' + jsfiles + '"></script>';
+    }
+    else {
+        for (var i = 0, l = jsfiles.length; i < l; i++) {
+            html += '<script' + charset + ' src="' + jsfiles[i] + '"></script>';
+        }
     }
     return createIframeByHTML(html, callback);
 };
