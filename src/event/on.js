@@ -28,7 +28,7 @@ var on = function (element, type, listener) {
     }
 
     // 将监听器存储到数组中
-    var listeners = element[LISTENER_EXPANDO] = element[LISTENER_EXPANDO] = [];
+    var listeners = element[LISTENER_EXPANDO] = element[LISTENER_EXPANDO] || [];
     listeners[listeners.length] = [type, listener, realListener, realType];
     return element;
 };
