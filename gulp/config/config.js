@@ -1,24 +1,22 @@
 /**
  * @file configs
  */
-const version = require('../../package.json').version;
+var path = require('path');
+var version = require('../../package.json').version;
 
 module.exports = {
     version: version,
     url: {
-        app: '/S3',
+        app: '/',
         cgi: '/cgi'
     },
     path: {
-        src: './',
-        test: './test',
+        src: './src',
         dest: './dist',
-        entrys: {
-            test: './test/test.js'
-        },
-        cgi: './dev/cgi',
+        entrys: './test',
+        cgi: path.resolve(__dirname, '../../dev/cgi'),
         alias: {
-            S3: './src'
+            S3: path.resolve(__dirname, '../../src')
         }
     },
     port: {

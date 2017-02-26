@@ -4,6 +4,29 @@ const rollup = require('rollup').rollup;
 const alias = require('rollup-plugin-alias');
 const minify = require('uglify-js').minify;
 const config = require('../config/config');
+var fs = require('fs');
+
+function getFiles(dir) {
+    if (!fs.statSync(dir).isDirectory()) {
+        return [];
+    }
+
+    var filenames = fs.readdirSync(dir);
+    filenames = filenames.map(function (filename) {
+        return path.join(dir, filename);
+    });
+
+    return filenames.reduce(function (result, filepath, index) {
+        if (!fs.statSync(filepath).isDirectory()) {
+            if (path.extname(filepath) === '.js') {
+                result.push(filepath);
+            }
+            return result;
+        }
+
+        return result.concat(getFiles(filepath));
+    }, []);
+}
 
 function uglify(options = {}, minifier = minify) {
     return {
@@ -45,23 +68,28 @@ gulp.task('rollup', function () {
         plugins.push(uglify());
     }
 
-    for (var entry in varConfig.path.entrys) {
-        if (!varConfig.path.entrys.hasOwnProperty(entry)) {
+    var entrys = getFiles(varConfig.path.entrys).reduce(function (result, filepath) {
+        result[path.basename(filepath, '.js')] = filepath;
+        return result;
+    }, {});
+    for (var entry in entrys) {
+        if (!entrys.hasOwnProperty(entry)) {
             continue;
         }
 
-        var fileName = entry + '.js';
-        var destFile = path.resolve(varConfig.path.dest, fileName);
+        var filePath = entrys[entry];
+        var destFile = path.resolve(varConfig.path.dest, filePath);
         var r = rollup({
-            entry: path.resolve(varConfig.path.src, varConfig.path.entrys[entry]),
+            entry: path.resolve(filePath),
             plugins: plugins
         })
-        .then((function (e, dest) {
+        .then((function (entry, destFile) {
             return function (bundle) {
                 return bundle.write({
                     format: 'iife',
-                    dest: dest,
-                    useStrict: false
+                    dest: destFile,
+                    useStrict: false,
+                    moduleName: entry
                 });
             };
         })(entry, destFile));
