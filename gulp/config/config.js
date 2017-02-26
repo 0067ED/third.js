@@ -12,6 +12,7 @@ module.exports = {
     },
     path: {
         src: './src',
+        html: './html',
         dest: './dist',
         entrys: './test',
         cgi: path.resolve(__dirname, '../../dev/cgi'),
