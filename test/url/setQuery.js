@@ -3,6 +3,7 @@ import setQuery from 'S3/url/setQuery';
 describe('S3/url/setQuery', function() {
     it('setQuery(url, key, value)', function () {
         expect(setQuery('http://example.com', 'a', 'c')).toEqual('http://example.com?a=c');
+        expect(setQuery('http://example.com', 'a', 1)).toEqual('http://example.com?a=1');
         expect(setQuery('http://example.com?', 'a', 'c')).toEqual('http://example.com?a=c');
         expect(setQuery('http://example.com', '@a', '@ c')).toEqual('http://example.com?%40a=%40%20c');
         expect(setQuery('http://example.com?a=1', 'a', 'c')).toEqual('http://example.com?a=c');

@@ -2,7 +2,7 @@ import escapeReg from '../lang/escapeReg';
 import globalSandbox from '../sandbox/global';
 import parseHash from './_parseHash';
 import removeLastSplit from './_removeLastSplit';
-import decodeQuery from './decodeQuery';
+import isArray from '../lang/isArray';
 
 /**
  * Set query value of url
@@ -29,7 +29,7 @@ var setQuery = function (url, key, value) {
 
     var win = globalSandbox();
     key = win.encodeURIComponent(key);
-    var values = typeof value === 'string' ? [value] : value;
+    var values = isArray(value) ? value : [value];
     var valueLength = values.length;
     var reg = new win.RegExp('(&|\\?)?(' + escapeReg(key) + '=)([^&]*)(&|$)', 'g');
     var i = 0;
