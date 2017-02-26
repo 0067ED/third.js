@@ -1,6 +1,20 @@
 import parse from 'S3/url/parse';
 
 describe('S3/url/parse', function() {
+    var DEFAULT_PORT_MAP = {
+        ftp: 21,
+        file: 0,
+        gopher: 70,
+        http: 80,
+        https: 443,
+        ws: 80,
+        wss: 443
+    };
+    var _port = (DEFAULT_PORT_MAP[location.protocol] == location.port) ? '' : (':' + location.port);
+    var thisHostname = location.hostname;
+    var thisHost = thisHostname + _port;
+    var thisOrigin = location.protocol + '//' + thisHost;
+
     it('parse(absoluteUrl)', function () {
         var url = parse('wss://example.com');
         expect(url.origin).toBe('wss://example.com');
@@ -38,28 +52,28 @@ describe('S3/url/parse', function() {
 
     it('parse(\'books/123/?a=1&b=3#hashid\')', function () {
         var url = parse('books/123/?a=1&b=3#hashid');
-        expect(url.origin).toBe('http://localhost:9876');
-        expect(url.host).toBe('localhost:9876');
-        expect(url.hostname).toBe('localhost');
+        expect(url.origin).toBe(thisOrigin);
+        expect(url.host).toBe(thisHost);
+        expect(url.hostname).toBe(thisHostname);
         expect(url.pathname).toBe('/books/123/');
         expect(url.port).toBe('9876');
         expect(url.protocol).toBe('http:');
         expect(url.search).toBe('?a=1&b=3');
         expect(url.hash).toBe('#hashid');
-        expect(url.href).toBe('http://localhost:9876/books/123/?a=1&b=3#hashid');
+        expect(url.href).toBe(thisOrigin + '/books/123/?a=1&b=3#hashid');
     });
 
     it('parse(\'./books/123/?a=1&b=3#hashid\')', function () {
         var url = parse('./books/123/?a=1&b=3#hashid');
-        expect(url.origin).toBe('http://localhost:9876');
-        expect(url.host).toBe('localhost:9876');
-        expect(url.hostname).toBe('localhost');
+        expect(url.origin).toBe(thisOrigin);
+        expect(url.host).toBe(thisHost);
+        expect(url.hostname).toBe(thisHostname);
         expect(url.pathname).toBe('/books/123/');
         expect(url.port).toBe('9876');
         expect(url.protocol).toBe('http:');
         expect(url.search).toBe('?a=1&b=3');
         expect(url.hash).toBe('#hashid');
-        expect(url.href).toBe('http://localhost:9876/books/123/?a=1&b=3#hashid');
+        expect(url.href).toBe(thisOrigin + '/books/123/?a=1&b=3#hashid');
     });
 
     it('parse(\'../1?a=1&b=3#hashid\', \'http://example.com/books/123/\')', function () {
@@ -101,7 +115,7 @@ describe('S3/url/parse', function() {
         expect(url.href).toBe('http://example.com/?a=1&b=3#hashid');
     });
 
-    it('parse(\'#hashid\')', function () {
+    it('parse(\'#hashid\', \'http://example.com/books/123\')', function () {
         var url = parse('#hashid', 'http://example.com/books/123');
         expect(url.origin).toBe('http://example.com');
         expect(url.host).toBe('example.com');
