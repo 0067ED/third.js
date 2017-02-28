@@ -19,6 +19,6 @@ const startConnect = () => {
 };
 
 
-gulp.task('server', ['rollup', 'watch'], function (callback) {
+gulp.task('server', ['build', 'watch'], function (callback) {
     startConnect();
 });

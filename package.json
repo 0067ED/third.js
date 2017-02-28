@@ -25,6 +25,7 @@
     "glob": "6.0.4",
     "gulp": "3.9.0",
     "gulp-contrib-copy": "0.1.2",
+    "gulp-html-replace": "^1.6.2",
     "gulp-rename": "1.2.2",
     "gulp-util": "3.0.7",
     "jasmine-core": "^2.5.2",

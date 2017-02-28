@@ -1,32 +1,10 @@
-const path = require('path');
-const gulp = require('gulp');
-const rollup = require('rollup').rollup;
-const alias = require('rollup-plugin-alias');
-const minify = require('uglify-js').minify;
-const config = require('../config/config');
-var fs = require('fs');
-
-function getFiles(dir) {
-    if (!fs.statSync(dir).isDirectory()) {
-        return [];
-    }
-
-    var filenames = fs.readdirSync(dir);
-    filenames = filenames.map(function (filename) {
-        return path.join(dir, filename);
-    });
-
-    return filenames.reduce(function (result, filepath, index) {
-        if (!fs.statSync(filepath).isDirectory()) {
-            if (path.extname(filepath) === '.js') {
-                result.push(filepath);
-            }
-            return result;
-        }
-
-        return result.concat(getFiles(filepath));
-    }, []);
-}
+var path = require('path');
+var gulp = require('gulp');
+var rollup = require('rollup').rollup;
+var alias = require('rollup-plugin-alias');
+var minify = require('uglify-js').minify;
+var config = require('../config/config');
+var getFiles = require('../util/getFiles');
 
 function uglify(options = {}, minifier = minify) {
     return {
