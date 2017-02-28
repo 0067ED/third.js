@@ -10,7 +10,9 @@ describe('S3/url/parse', function() {
         ws: 80,
         wss: 443
     };
-    var _port = (DEFAULT_PORT_MAP[location.protocol] == location.port) ? '' : (':' + location.port);
+    var thisPorotocol = location.protocol;
+    var thisPort = location.port;
+    var _port = (DEFAULT_PORT_MAP[thisPorotocol] == thisPort) ? '' : (':' + thisPort);
     var thisHostname = location.hostname;
     var thisHost = thisHostname + _port;
     var thisOrigin = location.protocol + '//' + thisHost;
@@ -56,8 +58,8 @@ describe('S3/url/parse', function() {
         expect(url.host).toBe(thisHost);
         expect(url.hostname).toBe(thisHostname);
         expect(url.pathname).toBe('/books/123/');
-        expect(url.port).toBe('9876');
-        expect(url.protocol).toBe('http:');
+        expect(url.port).toBe(thisPort);
+        expect(url.protocol).toBe(thisPorotocol);
         expect(url.search).toBe('?a=1&b=3');
         expect(url.hash).toBe('#hashid');
         expect(url.href).toBe(thisOrigin + '/books/123/?a=1&b=3#hashid');
@@ -69,8 +71,8 @@ describe('S3/url/parse', function() {
         expect(url.host).toBe(thisHost);
         expect(url.hostname).toBe(thisHostname);
         expect(url.pathname).toBe('/books/123/');
-        expect(url.port).toBe('9876');
-        expect(url.protocol).toBe('http:');
+        expect(url.port).toBe(thisPort);
+        expect(url.protocol).toBe(thisPorotocol);
         expect(url.search).toBe('?a=1&b=3');
         expect(url.hash).toBe('#hashid');
         expect(url.href).toBe(thisOrigin + '/books/123/?a=1&b=3#hashid');

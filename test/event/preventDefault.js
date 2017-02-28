@@ -16,10 +16,15 @@ describe('S3/event/preventDefault', function() {
     });
 
     it('preventDefault(event)', function (done) {
+        var t = 1;
         on(test, 'click', function (e) {
             preventDefault(e);
-            done();
+            t = 2;
         });
         test.click();
+        setTimeout(function () {
+            expect(t).toBe(2);
+            done();
+        }, 0);
     });
 });
