@@ -15,7 +15,7 @@ module.exports = {
         html: './html',
         dest: './dist',
         entrys: './test',
-        jasmine: './node_modules/jasmine-core/lib/jasmine-core',
+        jasmine: './html/jasmine-1.3.1',
         cgi: path.resolve(__dirname, '../../dev/cgi'),
         alias: {
             S3: path.resolve(__dirname, '../../src')

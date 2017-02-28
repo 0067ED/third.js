@@ -4,45 +4,62 @@ import {getWindow, createIframe, getOwnerWindow} from '../util';
 
 describe('S3/event/off', function() {
     var test;
+    var flag;
     beforeEach(function() {
         test = document.createElement('div');
         document.body.appendChild(test);
+        flag = false;
     });
 
     afterEach(function() {
         document.body.removeChild(test);
     });
 
-    it('off(element, event)', function (done) {
+    it('off(element, event)', function () {
         var t = 1;
-        on(test, 'click', function (e) {
-            t = 2;
+        runs(function () {
+            on(test, 'click', function (e) {
+                t = 2;
+                flag = true;
+            });
+            on(test, 'click', function (e) {
+                t = 3;
+                flag = true;
+            });
+            off(test, 'click');
+            test.click();
+            setTimeout(function () {
+                flag = true;
+            }, 9);
         });
-        on(test, 'click', function (e) {
-            t = 3;
-        });
-        off(test, 'click');
-        test.click();
-        setTimeout(function () {
+        waitsFor(function() {
+            return flag;
+        }, '', 10);
+        runs(function () {
             expect(t).toBe(1);
-            done();
-        }, 100);
+        });
     });
 
-    it('off(element, event, callback)', function (done) {
+    it('off(element, event, callback)', function () {
         var t = 1;
-        on(test, 'click', function (e) {
-            t = 2;
+        runs(function () {
+            on(test, 'click', function (e) {
+                t = 2;
+                flag = true;
+            });
+            var setThree = function (e) {
+                t = 3;
+                flag = true;
+            };
+            on(test, 'click', setThree);
+            off(test, 'click', setThree);
+            test.click();
         });
-        var setThree = function (e) {
-            t = 3;
-        };
-        on(test, 'click', setThree);
-        off(test, 'click', setThree);
-        test.click();
-        setTimeout(function () {
+        waitsFor(function() {
+            return flag;
+        }, '', 10);
+        runs(function () {
             expect(t).toBe(2);
-            done();
-        }, 100);
+        });
     });
 });

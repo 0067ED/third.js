@@ -4,11 +4,13 @@ import preventDefault from 'S3/event/preventDefault';
 describe('S3/event/preventDefault', function() {
     var test;
     var inner;
+    var flag;
     beforeEach(function() {
         test = document.createElement('div');
         test.innerHTML = '<div></div>';
         document.body.appendChild(test);
         inner = test.getElementsByTagName('testInner')[0];
+        flag = false;
     });
 
     afterEach(function() {
@@ -17,14 +19,19 @@ describe('S3/event/preventDefault', function() {
 
     it('preventDefault(event)', function (done) {
         var t = 1;
-        on(test, 'click', function (e) {
-            preventDefault(e);
-            t = 2;
+        runs(function () {
+            on(test, 'click', function (e) {
+                preventDefault(e);
+                t = 2;
+                flag = true;
+            });
+            test.click();
         });
-        test.click();
-        setTimeout(function () {
+        waitsFor(function() {
+            return flag;
+        }, '', 10);
+        runs(function () {
             expect(t).toBe(2);
-            done();
-        }, 0);
+        });
     });
 });
