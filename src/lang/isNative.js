@@ -51,7 +51,8 @@ var reNative = RegExp('^'
  * Used to detect native function like `window.encodeURIComponent` is be rewrited or not.
  * Borrow from jdalton (author of lodash)
  * https://gist.github.com/jdalton/5e34d890105aca44399f
- * @param {*} value input value to be detected.
+ * Not support IE<9 host object like `window.setTimeout`
+ * @param {Function} value input value to be detected.
  * @return {boolean} is native function or not.
  */
 export default function (value) {

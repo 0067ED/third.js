@@ -9,7 +9,7 @@ describe('S3/util/fif', function() {
             expect(iframe.nodeName.toLowerCase()).toEqual('iframe');
             expect(win.fif_loaded).toBe(true);
             expect(win.inDapIF).toBe(true);
-            expect(scripts[scripts.length - 1].src).toMatch('/cgi/jsonp/fif_test');
+            expect(scripts[1].src).toMatch('/cgi/jsonp/fif_test');
             done();
         });
     });
@@ -27,9 +27,9 @@ describe('S3/util/fif', function() {
                 expect(iframe.contentWindow.inDapIF).toBe(true);
                 expect(iframe.contentWindow.fif_count).toBe(2);
                 var scripts = iframe.contentWindow.document.getElementsByTagName('script');
-                expect(scripts[scripts.length - 1].src).toMatch('/cgi/jsonp/fif_test1');
-                expect(scripts[scripts.length - 2].src).toMatch('/cgi/jsonp/fif_test0');
-                expect(scripts[scripts.length - 3].src).toMatch('/cgi/jsonp/fif_test');
+                expect(scripts[3].src).toMatch('/cgi/jsonp/fif_test1');
+                expect(scripts[2].src).toMatch('/cgi/jsonp/fif_test0');
+                expect(scripts[1].src).toMatch('/cgi/jsonp/fif_test');
                 done();
             }
         );

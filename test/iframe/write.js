@@ -9,7 +9,8 @@ describe('S3/iframe/write', function() {
         var iframe = createIframe();
         write(iframe, html, function (win, doc) {
             expect(iframe.nodeName.toLowerCase()).toBe('iframe');
-            expect(getOwnerWindow(iframe)).toBe(window);
+            // use `window.window` instead of `window` to fixed fro IE8
+            expect(getOwnerWindow(iframe)).toBe(window.window);
             expect(win.document).toBe(doc);
             expect(win).toBe(getWindow(iframe));
             expect(doc.getElementById('test')).not.toBeNull();

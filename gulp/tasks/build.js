@@ -6,7 +6,7 @@ var htmlreplace = require('gulp-html-replace');
 
 gulp.task('build', ['jasmine', 'rollup'], function () {
     var cssFiles = 'jasmine/jasmine.css';
-    var jsFiles = getFiles(config.path.entrys);
+    var jsFiles = []; //getFiles(config.path.entrys);
     jsFiles.unshift('jasmine/boot.js');
     jsFiles.unshift('jasmine/jasmine-html.js');
     jsFiles.unshift('jasmine/jasmine.js');
