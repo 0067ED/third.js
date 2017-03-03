@@ -17,7 +17,7 @@ describe('S3/event/stopPropagation', function() {
         document.body.removeChild(test);
     });
 
-    it('stopPropagation(event)', function (done) {
+    it('stopPropagation(event)', function () {
         var t = 1;
         runs(function () {
             on(test, 'click', function (e) {

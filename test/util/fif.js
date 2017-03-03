@@ -80,7 +80,7 @@ describe('S3/util/fif', function() {
         });
     });
 
-    it('fif(url, callback, {context})', function (done) {
+    it('fif(url, callback, {context})', function () {
         var contextIframe = createIframe()
         getWindow(contextIframe).isContext = true;
         var iframe;
