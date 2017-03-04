@@ -14,7 +14,7 @@ describe('S3/event/on', function() {
         document.body.removeChild(test);
     });
 
-    it('on(element, event, callback)', function (done) {
+    it('on(element, event, callback)', function () {
         var t = 1;
         runs(function () {
             on(test, 'click', function (e) {

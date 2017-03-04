@@ -17,7 +17,7 @@ describe('S3/event/preventDefault', function() {
         document.body.removeChild(test);
     });
 
-    it('preventDefault(event)', function (done) {
+    it('preventDefault(event)', function () {
         var t = 1;
         runs(function () {
             on(test, 'click', function (e) {

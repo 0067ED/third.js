@@ -2,23 +2,45 @@ import createSandbox from 'S3/sandbox/create';
 import {getWindow, createIframe, getOwnerWindow} from '../util';
 
 describe('S3/sandbox/create', function() {
-    it('createSandbox(callback)', function (done) {
-        var iframe = createSandbox(function (win) {
-            expect(iframe.nodeName.toLowerCase()).toBe('iframe');
-            expect(getWindow(iframe)).toBe(win);
-            done();
-        });
+    var flag;
+    beforeEach(function() {
+        flag = false;
     });
 
-    it('createSandbox(callback, win)', function (done) {
+    it('createSandbox(callback)', function () {
+        var t = 1;
+        runs(function () {
+            var iframe = createSandbox(function (win) {
+                expect(iframe.nodeName.toLowerCase()).toBe('iframe');
+                expect(getWindow(iframe)).toBe(win);
+                flag = true;
+            });
+        });
+        waitsFor(function() {
+            return flag;
+        }, '', 10);
+    });
+
+    it('createSandbox(callback, win)', function () {
+        var t = 1;
         var contextIframe = createIframe();
         var contextWindow = getWindow(contextIframe);
-        var iframe = createSandbox(function (win) {
+        var iframe;
+        var win;
+        runs(function () {
+            iframe = createSandbox(function (w) {
+                win = w;
+                flag = true;
+            }, contextWindow);
+        });
+        waitsFor(function() {
+            return flag;
+        }, '', 10);
+        runs(function () {
             expect(iframe.nodeName.toLowerCase()).toBe('iframe');
             expect(getWindow(iframe)).toBe(win);
             expect(getOwnerWindow(iframe)).toBe(contextWindow);
             expect(win.parent).toBe(contextWindow);
-            done();
-        }, contextWindow);
+        });
     });
 });

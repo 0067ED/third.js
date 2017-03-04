@@ -2,41 +2,64 @@ import sandboxEval from 'S3/sandbox/eval';
 import {getWindow, createIframe, getOwnerWindow} from '../util';
 
 describe('S3/sandbox/eval', function() {
-    it('eval(jsCode, callback)', function (done) {
-        var iframe = sandboxEval('var TEST = 1;', function (win, doc) {
-            expect(iframe.nodeName.toLowerCase()).toBe('iframe');
-            expect(getWindow(iframe)).toBe(win);
-            expect(win.document).toBe(doc);
-            expect(win.TEST).toBe(1);
-            done();
-        });
+    var flag;
+    beforeEach(function() {
+        flag = false;
     });
 
-    it('eval(jsFunction, callback)', function (done) {
-        var iframe = sandboxEval(
-            function () {
-                window.TEST = 1;
-            },
-            function (win, doc) {
+    it('eval(jsCode, callback)', function () {
+        var t = 1;
+        runs(function () {
+            var iframe = sandboxEval('var TEST = 1;', function (win, doc) {
                 expect(iframe.nodeName.toLowerCase()).toBe('iframe');
                 expect(getWindow(iframe)).toBe(win);
                 expect(win.document).toBe(doc);
                 expect(win.TEST).toBe(1);
-                done();
-            }
-        );
+                flag = true;
+            });
+        });
+        waitsFor(function() {
+            return flag;
+        }, '', 10);
     });
 
-    it('eval(jsFunction, callback, charset)', function (done) {
-        var iframe = sandboxEval(
-            'var TEST = 1;',
-            function (win, doc) {
-                expect(iframe.nodeName.toLowerCase()).toBe('iframe');
-                expect(getWindow(iframe)).toBe(win);
-                expect(win.document).toBe(doc);
-                done();
-            },
-            'GBK'
-        );
+    it('eval(jsFunction, callback)', function () {
+        var t = 1;
+        runs(function () {
+            var iframe = sandboxEval(
+                function () {
+                    window.TEST = 1;
+                },
+                function (win, doc) {
+                    expect(iframe.nodeName.toLowerCase()).toBe('iframe');
+                    expect(getWindow(iframe)).toBe(win);
+                    expect(win.document).toBe(doc);
+                    expect(win.TEST).toBe(1);
+                    flag = true;
+                }
+            );
+        });
+        waitsFor(function() {
+            return flag;
+        }, '', 10);
+    });
+
+    it('eval(jsFunction, callback, charset)', function () {
+        var t = 1;
+        runs(function () {
+            var iframe = sandboxEval(
+                'var TEST = 1;',
+                function (win, doc) {
+                    expect(iframe.nodeName.toLowerCase()).toBe('iframe');
+                    expect(getWindow(iframe)).toBe(win);
+                    expect(win.document).toBe(doc);
+                    flag = true;
+                },
+                'GBK'
+            );
+        });
+        waitsFor(function() {
+            return flag;
+        }, '', 10);
     });
 });
