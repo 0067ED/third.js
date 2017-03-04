@@ -14,7 +14,8 @@ gulp.task('build', ['jasmine', 'rollup'], function () {
         'test/event/on.js',
         'test/event/preventDefault.js',
         'test/event/stopPropagation.js',
-        'test/util/fif.js'
+        'test/util/fif.js',
+        'test/sandbox/create.js'
     ]; // getFiles(config.path.entrys);
     jsFiles.unshift('jasmine-1.3.1/jasmine-html.js');
     jsFiles.unshift('jasmine-1.3.1/jasmine.js');
