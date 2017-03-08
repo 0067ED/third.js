@@ -11,10 +11,10 @@ import globalSandbox from '../sandbox/global';
  * @param {Element=} parent script节点的父元素
  */
 var createScriptTag = function (scr, url, doc, charset, parent) {
-    scr.setAttribute('type', 'text/javascript');
     if (charset) {
         scr.setAttribute('charset', charset);
     }
+    scr.setAttribute('type', 'text/javascript');
     scr.setAttribute('src', url);
 
     if (parent) {
@@ -42,20 +42,33 @@ var createScriptTag = function (scr, url, doc, charset, parent) {
  * 通过script标签加载数据，加载完成由服务器端触发回调
  * @param {string} url 加载数据的url.
  * @param {Function} callback 回调函数，如果超时第一个参数是Error对象
- * @param {number=} timeout 超时时间(单位：ms)，超过这个时间将不再响应本请求，并触发fail函数
- * @param {string=} charset script的字符集
- * @param {Function=} parent script节点的父元素
- * @param {string=} queryField 服务器端callback请求字段名，默认为callback
+ * @param {Object=} opts options
+ * @param {number=} opts.timeout 超时时间(单位：ms)，超过这个时间将不再响应本请求，并触发fail函数
+ * @param {string=} opts.charset script的字符集
+ * @param {Function=} opts.parent script节点的父元素
+ * @param {string=} opts.query 服务器端callback请求字段名，默认为callback
  */
-var jsonp = function (url, callback, timeout, charset, parent, queryField) {
+var jsonp = function (url, callback, opts) {
+    // timeout, charset, parent, query) {
+    var timeout;
+    var charset;
+    var parent;
+    var query;
+    if (opts) {
+        timeout = opts.timeout;
+        charset = opts.charset;
+        parent = opts.parent;
+        query = opts.query;
+    }
+
     var doc = parent ? parent.ownerDocument : document;
     var win = doc.defaultView || doc.parentWindow;
-    var scr = doc.createElement('SCRIPT');
+    var scr = doc.createElement('script');
     var prefix = 'S3JSONPPREFIX';
-    queryField = queryField || 'callback';
+    query = query || 'callback';
     timeout = timeout || 10000;
 
-    var reg = new RegExp('(?:\\?|&)' + queryField + '=([^&]*)');
+    var reg = new RegExp('(?:\\?|&)' + query + '=([^&]*)');
     var timer;
     var callbackName;
     /*
@@ -91,7 +104,7 @@ var jsonp = function (url, callback, timeout, charset, parent, queryField) {
     };
 
     var r = url.match(reg);
-    callbackName = r ? r[1] : prefix + uuid();
+    callbackName = r ? r[1] : prefix + uuid() + (+new win.Date());
     win[callbackName] = getCallBack(false);
 
     if (timeout) {
@@ -100,7 +113,7 @@ var jsonp = function (url, callback, timeout, charset, parent, queryField) {
 
     if (!r) {
         // no callback params in url
-        url += (url.indexOf('?') < 0 ? '?' : '&') + queryField + '=' + callbackName;
+        url += (url.indexOf('?') < 0 ? '?' : '&') + query + '=' + callbackName;
     }
 
     createScriptTag(scr, url, doc, charset, parent);

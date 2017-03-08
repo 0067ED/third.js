@@ -1,4 +1,5 @@
 import toArray from '../lang/toArray';
+import isWindow from '../lang/isWindow';
 
 /**
  * The Method Queue Pattern
@@ -27,18 +28,22 @@ import toArray from '../lang/toArray';
  *
  * @param {string} targetName name on Window
  * @param {Object} proxy proxy object
- * @param {Window=} context window object
- * @param {function(Object, string, Object):Function=} methodCaller setup your own caller.
- *                                  methodCaller(proxy, method, params) {
+ * @param {Window|Object=} opts window object or options
+ * @param {Window=} opts.context window object
+ * @param {function(Object, string, Object):Function=} opts.callback
+ *                                  setup your own caller.
+ *                                  callback(proxy, method, params) {
  *                                      proxy[method](...params);
  *                                  }
- * @param {string=} readyFuncName The function name of proxy to execute ready callback.
- *                                    Default is `ready`.
+ * @param {string=} opts.ready The function name of proxy to execute ready callback.
+ *                             Default is `ready`.
  */
-var mqp = function (targetName, proxy, context, methodCaller, readyFuncName) {
-    context = context || window;
+var mqp = function (targetName, proxy, opts) {
+    var optsIsWindowOrUndefined = !opts || isWindow(opts);
+    context = (optsIsWindowOrUndefined ? opts : opts.context) || window;
     context[targetName] = context[targetName] || [];
-    readyFuncName = readyFuncName || 'ready';
+    methodCaller = optsIsWindowOrUndefined ? null : opts.callback;
+    readyFuncName = (optsIsWindowOrUndefined ? null : opts.ready) || 'ready';
 
     var target = context[targetName];
     var call = function (params) {

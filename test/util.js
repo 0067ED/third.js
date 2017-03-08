@@ -11,6 +11,10 @@ export var createIframe = function (id) {
     return contextIframe;
 };
 
+export var createSecondIframe = function () {
+    return createIframe('GLOBAL_TEST_IFRAME_2');
+};
+
 export var getWindow = function (iframe) {
     return iframe.contentWindow;
 };
