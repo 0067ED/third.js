@@ -4,13 +4,8 @@ var adBlock = function () {
     var doc = win.document;
     var ads = doc.createElement('div');
     ads.setAttribute('id', 'ads');
-    var hasAdBlock = false;
-    try {
-        // body may not exist, that's why we need try/catch
-        attachIntoDOM(ads, win);
-        hasAdBlock = !!doc.getElementById('ads');
-    }
-    catch (e) {}
+    attachIntoDOM(ads, win);
+    var hasAdBlock = !!doc.getElementById('ads');
 
     if (hasAdBlock && ads.parentNode) {
         ads.parentNode.removeChild(ads);
