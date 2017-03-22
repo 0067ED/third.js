@@ -5,12 +5,24 @@ import getByWindow from './_getByWindow';
 
 var MESSAGE = 'message';
 var EXPANDO = 'S3MESSAGE_LISTENERS' + uuid();
+/**
+ * add listener
+ * @param {Window} context window context.
+ * @param {function(Object)} callback listeners.
+ */
 var addListener = function (context, callback) {
     var inited = !!context[EXPANDO];
     var listeners = context[EXPANDO] = context[EXPANDO] || [];
     listeners.push(callback);
     return inited
 };
+/**
+ * call listeners
+ * @param {Window} context window context.
+ * @param {Object} data data.
+ * @param {string} data.origin origin.
+ * @param {string} data.message message.
+ */
 var callListeners = function (context, data) {
     var listeners = context[EXPANDO];
     if (!listeners || !listeners.length) {
