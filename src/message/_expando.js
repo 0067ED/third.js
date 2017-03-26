@@ -1,3 +1,7 @@
-// echo "NAVIGATOR" | md5
-// a2cb97bf01cea0beb39535a05312fe1b
-export default 'S3MESSAGE_A2CB97BF01CEA0BEB39535A05312FE1B';
+import uuid from '../lang/uuid';
+
+export default {
+    TRIGGERS: 'S3MESSAGE_715B94309A3DB7F3E9FBA7F309880EEC',
+    CALLBACKS: 'S3MESSAGE_CALLBACKS' + uuid(),
+    TRUE_CALLBACKS: 'S3MESSAGE_TRUE_CALLBACKS' + uuid()
+};

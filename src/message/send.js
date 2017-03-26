@@ -1,14 +1,12 @@
 import detectPostMessage from '../detect/postMessage';
-import isWindow from '../lang/isWindow';
-import uuid from '../lang/uuid';
-import getByWindow from './_getByWindow';
-import EXPANDO_NAVIGATOR_KEY from './_expando';
+import getWindow from './_getWindow';
+import expando from './_expando';
 
 var sendByPostMessage = function (channel, target, message) {
     if (!target) {
         return;
     }
-    target = getByWindow(target);
+    target = getWindow(target);
     target.postMessage(message + '', '*');
 };
 
@@ -17,8 +15,8 @@ var sendByNavigator = function (channel, target, message) {
         return;
     }
 
-    var navigatorCallback = window.navigator[EXPANDO_NAVIGATOR_KEY + channel];
-    if (!navigatorCallback) {
+    var navigatorCallback = window.navigator[expando.TRIGGERS + channel];
+    if (typeof navigatorCallback !== 'function') {
         return;
     }
 

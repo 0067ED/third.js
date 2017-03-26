@@ -1,47 +1,44 @@
 import detectPostMessage from '../detect/postMessage';
-import isWindow from '../lang/isWindow';
-import uuid from '../lang/uuid';
-import getByWindow from './_getByWindow';
+import getWindow from './_getWindow';
+import expando from './_expando';
 
 var MESSAGE = 'message';
-var EXPANDO = 'S3MESSAGE_LISTENERS' + uuid();
+var CALLBACKS_EXPANDO = expando.CALLBACKS;
+var TRUE_CALLBACKS_EXPANDO = expando.TRUE_CALLBACKS;
 /**
  * add listener
- * @param {string} channel channel name.
  * @param {Window} context window context.
  * @param {function(Object)} callback listeners.
  */
-var addListener = function (channel, context, callback) {
-    var inited = !!context[EXPANDO];
-    var listeners = context[EXPANDO] = context[EXPANDO] || [];
-    listeners.push([channel, callback]);
+var addListener = function (context, callback) {
+    var inited = !!context[CALLBACKS_EXPANDO];
+    var listeners = context[CALLBACKS_EXPANDO] = context[CALLBACKS_EXPANDO] || [];
+    listeners.push(callback);
     return inited
 };
 /**
  * call listeners
- * @param {string} channel channel name.
  * @param {Window} context window context.
  * @param {Object} data data.
  * @param {string} data.origin origin.
  * @param {string} data.message message.
  */
-var callListeners = function (channel, context, data) {
-    var listeners = context[EXPANDO];
+var callListeners = function (context, data) {
+    var listeners = context[CALLBACKS_EXPANDO];
     if (!listeners || !listeners.length) {
         return;
     }
 
     for (var i = 0; i < listeners.length; i++) {
-        var listener = listeners[i];
-        if (listener[0] === channel) {
-            listener[1](data);
+        if (listeners[i]) {
+            listeners[i](data);
         }
     }
 };
 
-var listenByMessage = function (channel, callback, context) {
-    context = getByWindow(context);
-    var inited = addListener(channel, context, callback);
+var listenByMessage = function (channel, context, callback) {
+    context = getWindow(context);
+    var inited = addListener(context, callback);
     if (inited) {
         return;
     }
@@ -50,11 +47,12 @@ var listenByMessage = function (channel, callback, context) {
         // For Chrome, the origin property is in the event.originalEvent object.
         var origin = event.origin || event.originalEvent.origin;
         var message = event.data;
-        callListeners(channel, context, {
+        callListeners(context, {
             origin: event.origin,
             message: message
         });
     };
+    context[TRUE_CALLBACKS_EXPANDO] = trueCallback;
     if ('addEventListener' in context) {
         context.addEventListener(MESSAGE, trueCallback, false);
     }
@@ -63,28 +61,28 @@ var listenByMessage = function (channel, callback, context) {
     }
 };
 
-var listenByNavigator = function (channel, callback, context) {
-    context = getByWindow(context);
-    var inited = addListener(channel, context, callback);
+var listenByNavigator = function (channel, context, callback) {
+    context = getWindow(context);
+    var inited = addListener(context, callback);
     if (inited) {
         return;
     }
 
-    context.navigator[EXPANDO_NAVIGATOR_KEY + channel] = function (data) {
-        callListeners(channel, context, data);
+    context.navigator[expando.TRIGGERS + channel] = function (data) {
+        callListeners(context, data);
     };
 };
 
 /**
  * listen message.
  * @param {string} channel channel name.
+ * @param {Window|Element} context which window context to listen
+ *                                 or which iframe element.
+ *                                 Must has same origin with the current window context.
  * @param {function(Object)} callback callbacks
  *                                   callback(data);
  *                                   console.log(data.message);
  *                                   console.log(data.origin);
- * @param {Window|Element} context which window context to listen
- *                                 or which iframe element.
- *                                 Must has same origin with the current window context.
  */
 var listen = detectPostMessage() ? listenByMessage : listenByNavigator;
 export default listen;
