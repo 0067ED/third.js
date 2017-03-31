@@ -1,5 +1,5 @@
 var postMessageDetect = function () {
-    return 'postMessage' in window;;
+    return 'postMessage' in window;
 };
 
 export default postMessageDetect;
