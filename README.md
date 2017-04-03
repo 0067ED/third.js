@@ -15,3 +15,11 @@
 - [ ] `S3.style`
 - [ ] `S3.message`
 - [ ] Add build tool.
+
+## LOG
+
+- 1.0.0
+    - [update] Updated `request/jsonp` doc
+    - [bugfix] Fixed `request/jsonp` bug
+    - [update] Added test case for `request/ping` and `request/jsonp`
+    - [feature] Added `join` param for `lang/uuid`

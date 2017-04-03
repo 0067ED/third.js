@@ -4,11 +4,11 @@ import log from '../util/log';
 import globalSandbox from '../sandbox/global';
 
 /**
- * @param {Element} scr script节点
- * @param {string} url script节点的地址
- * @param {Document=} doc document
- * @param {string=} charset 编码
- * @param {Element=} parent script节点的父元素
+ * @param {Element} scr script node.
+ * @param {string} url script src url.
+ * @param {Document=} doc document.
+ * @param {string=} charset charset.
+ * @param {Element=} parent parent node of script node.
  */
 var createScriptTag = function (scr, url, doc, charset, parent) {
     if (charset) {
@@ -39,17 +39,17 @@ var createScriptTag = function (scr, url, doc, charset, parent) {
 
 
 /**
- * 通过script标签加载数据，加载完成由服务器端触发回调
- * @param {string} url 加载数据的url.
- * @param {Function} callback 回调函数，如果超时第一个参数是Error对象
- * @param {Object=} opts options
- * @param {number=} opts.timeout 超时时间(单位：ms)，超过这个时间将不再响应本请求，并触发fail函数
- * @param {string=} opts.charset script的字符集
- * @param {Function=} opts.parent script节点的父元素
- * @param {string=} opts.query 服务器端callback请求字段名，默认为callback
+ * JSONP as you known
+ * @param {string} url url
+ * @param {Function} callback callback of JSONP request.
+ *                              callback(err, data);
+ * @param {Object=} opts options.
+ * @param {number=} opts.timeout timeout in ms.
+ * @param {string=} opts.charset charset.
+ * @param {Function=} opts.parent parent node of script node.
+ * @param {string=} opts.query query key of callback name.
  */
 var jsonp = function (url, callback, opts) {
-    // timeout, charset, parent, query) {
     var timeout;
     var charset;
     var parent;
@@ -72,7 +72,10 @@ var jsonp = function (url, callback, opts) {
     var timer;
     var callbackName;
     /*
-     * 返回一个函数，用于立即（挂在window上）或者超时（挂在setTimeout中）时执行
+     * Return an function, and bind it on window.
+     *
+     * @param {boolean} onTimeout is this returned function as timeout callback
+     * @return {Function} callback
      */
     var getCallBack = function (onTimeOut) {
         return function () {
@@ -104,7 +107,7 @@ var jsonp = function (url, callback, opts) {
     };
 
     var r = url.match(reg);
-    callbackName = r ? r[1] : prefix + uuid() + (+new win.Date());
+    callbackName = r ? r[1] : prefix + uuid('_') + (+new win.Date());
     win[callbackName] = getCallBack(false);
 
     if (timeout) {

@@ -11,13 +11,13 @@ import createIframeByHTML from '../iframe/createByHTML';
  * @param {function(Element, Window)} callback executed after form created.
  * @param {Object|Window} opts options.
  * @param {Window} opts.context window.
- * @param {String} opts.encoding encoding.
+ * @param {String} opts.charset charset.
  * @return {Element} iframe element.
  */
 var createForm = function (url, params, callback, opts) {
     var optsIsWindowOrUndefined = !opts || isWindow(opts);
     var context = (optsIsWindowOrUndefined ? opts : opts.context) || window;
-    var encoding = optsIsWindowOrUndefined ? 'UTF-8' : opts.encoding;
+    var charset = optsIsWindowOrUndefined ? 'UTF-8' : opts.charset;
 
     // create form
     var html = '';
@@ -54,7 +54,7 @@ var createForm = function (url, params, callback, opts) {
         + '<!DOCTYPE html>'
         + '<html lang="en">'
         + '<head>'
-        +     '<meta charset="' + encoding + '">'
+        +     '<meta charset="' + charset + '">'
         + '</head>'
         + '<body>'
         +     '<form id="S3FAKEFORM"'

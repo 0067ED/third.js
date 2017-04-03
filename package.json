@@ -1,6 +1,6 @@
 {
-  "name": "qidian_da",
-  "version": "0.6.3",
+  "name": "thirdjs",
+  "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
   "scripts": {
@@ -20,6 +20,7 @@
     "babel-eslint": "5.0.0-beta6",
     "babel-loader": "5.4.0",
     "babel-runtime": "5.8.35",
+    "body-parser": "^1.17.1",
     "connect": "3.4.0",
     "eslint": "2.13.1",
     "glob": "6.0.4",
@@ -38,6 +39,7 @@
     "karma-rollup-preprocessor": "^3.0.3",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^2.0.1",
+    "qs": "^6.4.0",
     "require-dir": "0.1.0",
     "rollup": "0.34.10",
     "rollup-plugin-alias": "^1.2.0",

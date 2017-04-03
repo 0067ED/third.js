@@ -93,7 +93,7 @@ var xhrPing = function (url, params, callback) {
     var xhr = new window.XMLHttpRequest();
     xhr.open('POST', url, true);
     xhr.withCredentials = true;
-    xhr.setRequestHeader('Content-Type', 'text/plain');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     if (callback) {
         xhr.onreadystatechange = function () {
             if (xhr.readyState !== 4) {

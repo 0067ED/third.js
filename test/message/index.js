@@ -32,7 +32,7 @@ describe('S3/message', function() {
         });
         waitsFor(function() {
             return flag;
-        }, '', 200);
+        }, '', 2000);
     });
 
     it('send', function () {
@@ -54,6 +54,6 @@ describe('S3/message', function() {
         });
         waitsFor(function() {
             return flag;
-        }, '', 200);
+        }, '', 2000);
     });
 });

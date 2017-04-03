@@ -1,18 +1,20 @@
-var url = require('url');
-var iconv = require('iconv-lite');
+const qs = require('qs');
+const url = require('url');
+const iconv = require('iconv-lite');
+const LOG_PREFIX = '[third-server][jsonp]';
 
-module.exports = function ping(callback, opts) {
+module.exports = (callback, opts) => {
     opts = opts || {};
-    var callbackNameKey = opts.callbackKey || 'callback';
-    var encodingKey = opts.encodingKey || 'encoding';
-    var defaultEncoding = opts.encoding || 'utf-8';
+    const callbackNameKey = opts.callbackKey || 'callback';
+    const encodingKey = opts.encodingKey || 'encoding';
+    const defaultEncoding = opts.encoding || 'utf-8';
     if (!iconv.encodingExists(defaultEncoding)) {
-        throw new Error(`[CORS] Encoding "${defaultEncoding}" is not supported.`);
+        throw new Error(`${LOG_PREFIX} Encoding "${defaultEncoding}" is not supported.`);
     }
 
-    return function (req, res, next) {
-        var urlParts = url.parse(req.url);
-        var encoding = urlParts.query[encodingKey] || defaultEncoding;
+    return (req, res, next) => {
+        const queryParts = qs.parse(url.parse(req.url).query);
+        let encoding = queryParts[encodingKey] || defaultEncoding;
         if (!iconv.encodingExists(encoding)) {
             encoding = defaultEncoding;
         }
@@ -20,28 +22,47 @@ module.exports = function ping(callback, opts) {
         // no cache for ping request
         res.setHeader('Cache-Control', 'private, max-age=0, no-cache');
         res.setHeader('Pragma', 'no-cache');
-        // js file
-        res.setHeader('Content-Type', `application/javascript; charset=${encoding}`);
-
-        var callbackName = urlParts.query[callbackNameKey];
-        var result = callback(req, res);
-        if (result == null) {
-            result += '';
-        }
-        else if (typeof result !== 'string') {
-            // stringify object, array and other thing
-            result = JSON.stringify(result);
-        }
-
+        const callbackName = queryParts[callbackNameKey];
         if (callbackName) {
-            result = `${callbackName}(${result})`;
+            if (!callbackName.match(/^[a-zA-Z][a-zA-Z0-9_]*$/)) {
+                const err = new Error(`${LOG_PREFIX} ${callbackNameKey} should only contains chars in 'a-zA-Z0-9_'.`);
+                next(err);
+                return;
+            }
+            // js file
+            res.setHeader('Content-Type', `application/javascript; charset=${encoding}`);
+        }
+        else {
+            // JSON data
+            res.setHeader('Content-Type', `application/json; charset=${encoding}`);
         }
 
-        var resultBuffer = iconv.encode(result, encoding);
-        res.writeHead(200, {
-            'Content-Length': Buffer.byteLength(resultBuffer)
-        });
-        res.end(resultBuffer);
-        next();
+        let result = callback(queryParts, req, res);
+        if (result && typeof result.then === 'function') {
+            result.then(end, (err) => {
+                next(err);
+            });
+        }
+        else {
+            end(result);
+        }
+
+        function end(result) {
+            if (result == null) {
+                result = '';
+            }
+
+            result = JSON.stringify(result);
+            if (callbackName) {
+                result = `${callbackName}(${result})`;
+            }
+
+            const resultBuffer = iconv.encode(result, encoding);
+            res.writeHead(200, {
+                'Content-Length': Buffer.byteLength(resultBuffer)
+            });
+            res.end(resultBuffer);
+            next();
+        }
     };
 };
