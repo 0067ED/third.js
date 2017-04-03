@@ -1,7 +1,6 @@
 import isWindow from '../lang/isWindow';
 import escapeHTML from '../lang/escapeHTML';
 import isArray from '../lang/isArray';
-import createAnonymousIframe from '../iframe/createAnonymous';
 import createIframeByHTML from '../iframe/createByHTML';
 
 /**

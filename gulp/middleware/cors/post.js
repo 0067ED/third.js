@@ -57,10 +57,11 @@ module.exports = (callback, opts) => {
             result = JSON.stringify(result);
 
             if (!callbackName) {
-                const referer = url.parse(req.headers.referer);
+                const referer = req.headers.referer ? url.parse(req.headers.referer) : null;
+                const refOrigin = referer ? `${referer.protocol}//${referer.host}` : '*';
                 // POST return JSON
                 res.setHeader('Content-Type', `application/json; charset=${encoding}`);
-                res.setHeader('Access-Control-Allow-Origin', `${referer.protocol}//${referer.host}`);
+                res.setHeader('Access-Control-Allow-Origin', refOrigin);
                 res.setHeader('Access-Control-Allow-Credentials', 'true');
             }
             else {
