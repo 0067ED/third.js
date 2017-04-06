@@ -1,22 +1,21 @@
-import isWindow from '../lang/isWindow';
 import escapeHTML from '../lang/escapeHTML';
 import isArray from '../lang/isArray';
 import createIframeByHTML from '../iframe/createByHTML';
 
 /**
- * create iframe form
+ * Create an form inside an friendly iframe.
  * @param {string} url form action url.
  * @param {Object} params params data.
  * @param {function(Element, Window)} callback executed after form created.
- * @param {Object|Window} opts options.
+ * @param {Object=} opts options.
  * @param {Window} opts.context window.
  * @param {String} opts.charset charset.
  * @return {Element} iframe element.
  */
 var createForm = function (url, params, callback, opts) {
-    var optsIsWindowOrUndefined = !opts || isWindow(opts);
-    var context = (optsIsWindowOrUndefined ? opts : opts.context) || window;
-    var charset = optsIsWindowOrUndefined ? 'UTF-8' : opts.charset;
+    var optsIsUndefined = opts == null;
+    var context = opts && opts.context || window;
+    var charset = opts && opts.charset || 'UTF-8';
 
     // create form
     var html = '';

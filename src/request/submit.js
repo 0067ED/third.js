@@ -1,0 +1,1 @@
+import submitByIframe from './submitByIframe';
