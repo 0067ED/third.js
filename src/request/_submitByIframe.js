@@ -7,15 +7,18 @@ import parseJSON from '../json/parse';
 import createAnonymousIframe from '../iframe/createAnonymous';
 import attachIntoDOM from '../dom/attachIntoDOM';
 
-const S3_SUBMIT_CHANNEL_NAME = 'S3SUBMIT_CHANNEL_4657fb088b5cd68c122890a678f64846';
-const S3_SUBMIT_IFRAME_ID = 'S3SUBMIT_IFRAME_';
+var S3_SUBMIT_CHANNEL_NAME = 'S3SUBMIT_CHANNEL_4657fb088b5cd68c122890a678f64846';
+var S3_SUBMIT_IFRAME_ID = 'S3SUBMIT_IFRAME_';
 
 /**
  * create iframe form
- * @param {string} url form action url.
- * @param {Object} params params data.
- * @param {function(Element, Window)} callback executed after form created.
- * @param {Object|Window} opts options.
+ * @param {string|Element} url form action url
+ *                         or form element.
+ * @param {Object|function(Object|string|Error)} params params data
+ *                                          or callback executed after form created.
+ * @param {function(Object|string)|Object} callback callback executed after form created
+ *                                          or options.
+ * @param {Object} opts options.
  * @param {Window} opts.context window.
  * @param {String} opts.charset charset.
  * @param {String} opts.dataType Only support JSON or text.
@@ -26,7 +29,13 @@ export default function submitByIframe(url, param, callback, opts) {
     if (useForm) {
         form = url;
         opts = callback;
-        callback = param;
+        callback = params;
+        url = form.action;
+    }
+
+    if (!useForm || form.nodeName === 'FORM') {
+        callback(new Error('[S3][request][submitByIframe] Wrong parameter.'));
+        return;
     }
 
     var context = opts && opts.context || window;
@@ -52,6 +61,4 @@ export default function submitByIframe(url, param, callback, opts) {
         attachIntoDOM(iframe, context);
         form.submit();
     }
-
-    // should throw error.
 };

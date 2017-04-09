@@ -35,8 +35,6 @@ module.exports = (callback, opts) => {
         urlencodedParser(req, res, () => {
             done(req.body);
         });
-        next();
-
 
         function done(data) {
             let result = callback(data, req, res);

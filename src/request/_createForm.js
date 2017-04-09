@@ -72,4 +72,4 @@ var createForm = function (url, params, callback, opts) {
     }, context);
 };
 
-export default jsonp;
+export default createForm;

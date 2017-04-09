@@ -2,6 +2,8 @@ import uuid from '../lang/uuid';
 import toQuery from '../url/toQuery';
 import hasSendBeacon from '../detect/sendBeacon';
 import hasCors from '../detect/cors';
+import globalSandbox from '../sandbox/global';
+import xhrRequest from './_xhr';
 
 /**
  * Build params.
@@ -75,7 +77,7 @@ var imgPing = function (url, params, callback) {
  * @return {boolean} can send beacon or not
  */
 var beaconPing = function (url, params) {
-    return hasSendBeacon() && window.navigator.sendBeacon(url, params);
+    return hasSendBeacon() && globalSandbox().navigator.sendBeacon(url, params);
 };
 
 /**
@@ -90,28 +92,7 @@ var xhrPing = function (url, params, callback) {
         return false;
     }
 
-    var xhr = new window.XMLHttpRequest();
-    xhr.open('POST', url, true);
-    xhr.withCredentials = true;
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    if (callback) {
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState !== 4) {
-                return;
-            }
-
-            var status = xhr.status;
-            var isSuccess = status >= 200 && status < 400;
-            var error = null;
-            if (!isSuccess) {
-                var errorName = 'XhrPing' + (status < 500 ? 'ClientError' : 'ServerError');
-                error = new Error(errorName + ' ' + status);
-                error.name = errorName;
-            }
-            callback(error);
-        };
-    }
-    xhr.send(params);
+    xhrRequest(url, params, callback);
     return true;
 };
 

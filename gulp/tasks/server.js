@@ -34,8 +34,14 @@ const startConnect = () => {
         callbackKey: 'cb',
         encoding: 'gbk'
     }));
-    app.use('/post', third('post', (data, req, res) => {
-        console.log(`[POST]${req.url}`);
+    app.use('/submitWithText', third('post', (data, req, res) => {
+        console.log(`[SUBMIT][TEXT]${req.url}`);
+        console.log('|   ' + JSON.stringify(data));
+        data.from = 'server';
+        return data;
+    }));
+    app.use('/submitWithJSON', third('post', (data, req, res) => {
+        console.log(`[SUBMIT][JSON]${req.url}`);
         console.log('|   ' + JSON.stringify(data));
         data.from = 'server';
         return data;
