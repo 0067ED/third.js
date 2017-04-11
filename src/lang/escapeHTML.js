@@ -13,4 +13,4 @@ var escapeHTML = function (input) {
         .replace(/'/g, '&#39;');
 };
 
-export default escapeReg;
+export default escapeHTML;

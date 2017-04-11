@@ -38,7 +38,7 @@ const startConnect = () => {
         console.log(`[SUBMIT][TEXT]${req.url}`);
         console.log('|   ' + JSON.stringify(data));
         data.from = 'server';
-        return data;
+        return JSON.stringify(data);
     }));
     app.use('/submitWithJSON', third('post', (data, req, res) => {
         console.log(`[SUBMIT][JSON]${req.url}`);

@@ -1,13 +1,13 @@
 import submit from 'S3/request/submit';
+import parseJSON from 'S3/json/parse';
 import {getWindow, createIframe, getOwnerWindow} from '../util';
 
 describe('S3/request/submit', function() {
     var flag;
-    var test;
-    beforeEach(function() {
-        test = document.createElement('div');
+    function addForm(url) {
+        var test = document.createElement('div');
         test.innerHTML = ''
-            + '<form action="/submitWithJSON/form/1" method="post" enctype="multipart/form-data">'
+            + '<form action="' + url + '" method="post" enctype="multipart/form-data">'
             + '<input type="hidden" name="secret" value="X_X"></input>'
             + '<input type="email" name="email" value="zmmbreeze0825@gmail.com"></input>'
             + '<input type="text" name="username" value="zmmbreeze"></input>'
@@ -16,11 +16,13 @@ describe('S3/request/submit', function() {
             + '<input type="file" name="files" multiple></input>'
             + '</form>';
         document.body.appendChild(test);
+        return test;
+    }
+    beforeEach(function() {
         flag = false;
     });
 
     afterEach(function() {
-        test.parentNode.removeChild(test);
     });
 
     it('submit(url, params, callback) return text', function () {
@@ -34,6 +36,28 @@ describe('S3/request/submit', function() {
                 function (error, data) {
                     flag = true;
                     expect(data).toBe('{"test":"submit(url, params, callback) use xhr return text","arr":["1","2"],"from":"server"}');
+                },
+                {
+                    dataType: 'teXt'
+                }
+            );
+        });
+        waitsFor(function() {
+            return flag;
+        }, '', 200);
+    });
+
+    it('submit(url, params, callback) return text but parse into json', function () {
+        runs(function () {
+            submit(
+                '/submitWithText/3',
+                {
+                    test: 'submit(url, params, callback) use xhr return text but parse into json',
+                    arr: [1, 2]
+                },
+                function (error, data) {
+                    flag = true;
+                    expect(data.test).toBe('submit(url, params, callback) use xhr return text but parse into json');
                 }
             );
         });
@@ -45,17 +69,14 @@ describe('S3/request/submit', function() {
     it('submit(url, params, callback, opts) return json', function () {
         runs(function () {
             submit(
-                '/submitWithJSON/1',
+                '/submitWithJSON/2',
                 {
-                    test: 'submit(url, params, callback) use xhr return data',
+                    test: 'submit(url, params, callback) use xhr return json',
                     arr: [1, 2]
                 },
                 function (error, data) {
                     flag = true;
-                    expect(data.test).toBe('submit(url, params, callback) use xhr return data');
-                },
-                {
-                    dataType: 'json'
+                    expect(data.test).toBe('submit(url, params, callback) use xhr return json');
                 }
             );
         });
@@ -64,22 +85,66 @@ describe('S3/request/submit', function() {
         }, '', 200);
     });
 
-    it('submit(form, callback) return data', function () {
+    it('submit(form, callback) return text', function () {
+        var test = addForm('/submitWithText/form/1');
         runs(function () {
             submit(
                 test.getElementsByTagName('form')[0],
                 function (error, data) {
                     flag = true;
-                    console.log(data);
+                    data = parseJSON(data);
                     expect(data.secret).toBe('X_X');
                 },
                 {
-                    dataType: 'json'
+                    dataType: 'teXt'
                 }
             );
         });
         waitsFor(function() {
+            if (test.parentNode) {
+                test.parentNode.removeChild(test);
+            }
             return flag;
         }, '', 200);
     });
+
+    it('submit(form, callback) return text but parse into json', function () {
+        var test = addForm('/submitWithText/form/3');
+        runs(function () {
+            submit(
+                test.getElementsByTagName('form')[0],
+                function (error, data) {
+                    flag = true;
+                    expect(data.secret).toBe('X_X');
+                }
+            );
+        });
+        waitsFor(function() {
+            if (test.parentNode) {
+                test.parentNode.removeChild(test);
+            }
+            return flag;
+        }, '', 200);
+    });
+
+    /*
+    it('submit(form, callback) return json', function () {
+        var test = addForm('/submitWithJSON/form/2');
+        runs(function () {
+            submit(
+                test.getElementsByTagName('form')[0],
+                function (error, data) {
+                    flag = true;
+                    expect(data.secret).toBe('X_X');
+                }
+            );
+        });
+        waitsFor(function() {
+            if (test.parentNode) {
+                test.parentNode.removeChild(test);
+            }
+            return flag;
+        }, '', 200);
+    });
+*/
 });

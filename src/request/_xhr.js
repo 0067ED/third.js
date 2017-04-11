@@ -20,8 +20,8 @@ export default function xhr(url, params, callback, opts) {
     if (typeof params === 'string') {
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     }
+
     var dataType = (opts && opts.dataType || 'text').toLowerCase();
-    xhr.responseType = dataType;
     if (callback) {
         xhr.onreadystatechange = function () {
             if (xhr.readyState !== 4) {
@@ -37,10 +37,8 @@ export default function xhr(url, params, callback, opts) {
                 error.name = errorName;
             }
 
-            var isJSONType = dataType === 'json';
-            var data = isJSONType
-                ? xhr.response
-                : (isJSONType ? parseJSON(xhr.responseText || '') : xhr.responseText);
+            var text = xhr.responseText || '';
+            var data = dataType === 'json' ? parseJSON(text) : text;
             callback(error, data);
         };
     }

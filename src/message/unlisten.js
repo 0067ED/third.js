@@ -72,7 +72,7 @@ var unlistenByNavigator = function (channel, context, callback) {
  * @param {Window|Element} context which window context to listen
  *                                 or which iframe element.
  *                                 Must has same origin with the current window context.
- * @param {function(Object)} callback callbacks
+ * @param {function(Object)=} callback callbacks
  *                                   callback(data);
  *                                   console.log(data.message);
  *                                   console.log(data.origin);

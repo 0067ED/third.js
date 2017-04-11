@@ -30,12 +30,12 @@ var createForm = function (url, params, callback, opts) {
         value = value == null ? '' : value;
         html += ''
             + '<input type="text" '
-            + 'name="' + encodeHTML(key) + '" '
-            + 'value="' + encodeHTML(value.toString()) + '"/>';
+            + 'name="' + escapeHTML(key) + '" '
+            + 'value="' + escapeHTML(value.toString()) + '"/>';
     }
-    for (var key in data) {
-        if (data.hasOwnProperty(key)) {
-            var value = data[key];
+    for (var key in params) {
+        if (params.hasOwnProperty(key)) {
+            var value = params[key];
             if (isArray(value)) {
                 key += '[]';
                 for (var i = 0, l = value.length; i < l; i++) {

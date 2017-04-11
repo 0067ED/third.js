@@ -4,7 +4,7 @@ import globalSandbox from '../sandbox/global';
 import toQuery from '../url/toQuery';
 import hasCors from '../detect/cors';
 
-var supportXHR = hasCors() === 'xhr';
+var supportXHR = false;
 
 var submit = supportXHR
     ? function (url, params, callback, opts) {
@@ -32,6 +32,10 @@ var submit = supportXHR
             }
             data = new FormData(form);
         }
+
+        // default dataType is 'json'
+        opts = opts || {};
+        opts.dataType = opts.dataType || 'json';
         xhrRequest(url, data, callback, opts);
     }
     : submitByIframe;

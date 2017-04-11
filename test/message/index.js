@@ -36,20 +36,22 @@ describe('S3/message', function() {
     });
 
     it('send', function () {
+        var url = parseUrl('.');
+        var html = '<iframe src="sendMessageToParent.html?name=test_child_2"></iframe>';
+        var targetUrl = parseUrl('sendMessageToParent.html');
+        var callback = function (data) {
+            if (data.message === 'init') {
+                var targetContext = getWindow(test.getElementsByTagName('iframe')[0]);
+                send('test_child_2', targetContext, 'message from parent');
+                return;
+            }
+            expect(data.origin).toBe(targetUrl.origin);
+            expect(data.message).toBe(url.origin + '|message from parent');
+            flag = true;
+            unlisten('test_parent', window, callback);
+        };
         runs(function () {
-            var url = parseUrl('.');
-            var html = '<iframe src="sendMessageToParent.html?name=test_child_2"></iframe>';
-            var targetUrl = parseUrl('sendMessageToParent.html');
-            listen('test_parent', window, function (data) {
-                if (data.message === 'init') {
-                    var targetContext = getWindow(test.getElementsByTagName('iframe')[0]);
-                    send('test_child_2', targetContext, 'message from parent');
-                    return;
-                }
-                expect(data.origin).toBe(targetUrl.origin);
-                expect(data.message).toBe(url.origin + '|message from parent');
-                flag = true;
-            });
+            listen('test_parent', window, callback);
             test.innerHTML = html;
         });
         waitsFor(function() {

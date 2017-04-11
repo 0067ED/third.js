@@ -16,7 +16,7 @@ describe('S3/util/fif', function() {
         });
         waitsFor(function() {
             return flag;
-        }, '', 100);
+        }, '', 200);
         runs(function () {
             var win = iframe.contentWindow;
             var scripts = win.document.getElementsByTagName('script');
@@ -43,7 +43,7 @@ describe('S3/util/fif', function() {
         });
         waitsFor(function() {
             return flag;
-        }, '', 100);
+        }, '', 200);
         runs(function () {
             expect(iframe.nodeName.toLowerCase()).toEqual('iframe');
             expect(iframe.contentWindow.fif_loaded).toBe(true);
@@ -71,7 +71,7 @@ describe('S3/util/fif', function() {
         });
         waitsFor(function() {
             return flag;
-        }, '', 100);
+        }, '', 200);
         runs(function () {
             var win = iframe.contentWindow;
             expect(iframe.nodeName.toLowerCase()).toEqual('iframe');
@@ -97,7 +97,7 @@ describe('S3/util/fif', function() {
         });
         waitsFor(function() {
             return flag;
-        }, '', 100);
+        }, '', 200);
         runs(function () {
             var win = iframe.contentWindow;
             expect(iframe.nodeName.toLowerCase()).toEqual('iframe');

@@ -19,6 +19,11 @@ module.exports = (callback, opts) => {
     return (req, res, next) => {
         const queryParts = qs.parse(url.parse(req.url).query);
         let callbackName = queryParts[callbackNameKey];
+        if (!callbackName.match(/^[0-9a-zA-Z_]+$/)) {
+            next(new Error(`[CORS][post] Wrong format for "${callbackNameKey}=${callbackName}".`));
+            return;
+        }
+
         let encoding = queryParts[encodingKey] || defaultEncoding;
         if (!iconv.encodingExists(encoding)) {
             encoding = defaultEncoding;
@@ -75,7 +80,9 @@ module.exports = (callback, opts) => {
                 result = '';
             }
             const resultIsString = typeof result === 'string';
-            result = JSON.stringify(result);
+            if (!resultIsString) {
+                result = JSON.stringify(result);
+            }
 
             if (!callbackName) {
                 const referer = req.headers.referer ? url.parse(req.headers.referer) : null;
@@ -98,15 +105,15 @@ module.exports = (callback, opts) => {
                     </head>
                     <body>
                         <script>
-                        const data = ${result};
-                        const callback = ${callbackName};
+                        const data = ${JSON.stringify(result)};
+                        const callbackName = ${callbackName};
                         (function () {
                             const supportPM = 'postMessage' in window;
                             const sendByPostMessage = function (data) {
                                 window.parent.postMessage(data, '*');
                             };
                             const sendByNavigator = function (callback, data) {
-                                const navigatorCallback = window.navigator[callback];
+                                const navigatorCallback = window.navigator[callbackName];
                                 if (typeof navigatorCallback !== 'function') {
                                     return;
                                 }

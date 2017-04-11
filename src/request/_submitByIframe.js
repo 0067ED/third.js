@@ -1,13 +1,15 @@
 import createForm from './_createForm';
 import listen from '../message/listen';
+import unlisten from '../message/unlisten';
 import isWindow from '../lang/isWindow';
 import uuid from '../lang/uuid';
+// import parseUrl from '../url/parse';
 import parseJSON from '../json/parse';
 
 import createAnonymousIframe from '../iframe/createAnonymous';
 import attachIntoDOM from '../dom/attachIntoDOM';
 
-var S3_SUBMIT_CHANNEL_NAME = 'S3SUBMIT_CHANNEL_4657fb088b5cd68c122890a678f64846';
+var S3_SUBMIT_CHANNEL_NAME = 'S3SUBMIT_CHANNEL_';
 var S3_SUBMIT_IFRAME_ID = 'S3SUBMIT_IFRAME_';
 
 /**
@@ -21,9 +23,10 @@ var S3_SUBMIT_IFRAME_ID = 'S3SUBMIT_IFRAME_';
  * @param {Object} opts options.
  * @param {Window} opts.context window.
  * @param {String} opts.charset charset.
+ * @param {String} opts.query query name of callback.
  * @param {String} opts.dataType Only support JSON or text.
  */
-export default function submitByIframe(url, param, callback, opts) {
+export default function submitByIframe(url, params, callback, opts) {
     var useForm = typeof url !== 'string';
     var form;
     if (useForm) {
@@ -33,29 +36,38 @@ export default function submitByIframe(url, param, callback, opts) {
         url = form.action;
     }
 
-    if (!useForm || form.nodeName === 'FORM') {
-        callback(new Error('[S3][request][submitByIframe] Wrong parameter.'));
-        return;
+    var channelName = S3_SUBMIT_CHANNEL_NAME + uuid('_');
+    var query = opts && opts.query || 'callback';
+    url += (url.indexOf('?') < 0 ? '?' : '&') + query + '=' + channelName;
+    if (useForm) {
+        form.action = url;
     }
 
     var context = opts && opts.context || window;
     var dataType = (opts && opts.dataType || 'json').toLowerCase();
     // listen respond
-    listen(S3_SUBMIT_CHANNEL_NAME, context, function (data) {
+    listen(channelName, context, function thisCallback(data) {
+        unlisten(channelName, context, thisCallback);
+        /*
+        var apiOrigin = parseUrl(url).origin;
+        if (data.origin !== apiOrigin) {
+            return;
+        }
+        */
         data = dataType === 'json' ? parseJSON(data.message) : data.message;
-        callback(data);
+        callback(null, data);
     });
 
     if (!useForm) {
-        // submitByIframe('/api', {param: 1}, function, opts);
-        var formIframe = createForm(url, param, function (form, win) {
+        // submitByIframe('/api', {test: 1}, function, opts);
+        var formIframe = createForm(url, params, function (form, win) {
             form.submit();
         }, opts);
     }
     else if (form.nodeName === 'FORM') {
         // submitByIframe(form, function, opts);
         var iframeId = S3_SUBMIT_IFRAME_ID + uuid('_');
-        var iframe = createAnonymous(context);
+        var iframe = createAnonymousIframe(context);
         iframe.id = iframeId;
         form.setAttribute('target', iframeId);
         attachIntoDOM(iframe, context);
