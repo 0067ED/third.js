@@ -48,13 +48,13 @@ export default function submitByIframe(url, params, callback, opts) {
     // listen respond
     listen(channelName, context, function thisCallback(data) {
         unlisten(channelName, context, thisCallback);
-        /*
-        var apiOrigin = parseUrl(url).origin;
-        if (data.origin !== apiOrigin) {
+        // data.message === channelName + data
+        if (data.message.indexOf(channelName) !== 0) {
+            // not returned data
             return;
         }
-        */
-        data = dataType === 'json' ? parseJSON(data.message) : data.message;
+        var message = data.message.slice(channelName.length);
+        data = dataType === 'json' ? parseJSON(message) : message;
         callback(null, data);
     });
 
@@ -66,10 +66,10 @@ export default function submitByIframe(url, params, callback, opts) {
     }
     else if (form.nodeName === 'FORM') {
         // submitByIframe(form, function, opts);
-        var iframeId = S3_SUBMIT_IFRAME_ID + uuid('_');
+        var iframeName = S3_SUBMIT_IFRAME_ID + uuid('_');
         var iframe = createAnonymousIframe(context);
-        iframe.id = iframeId;
-        form.setAttribute('target', iframeId);
+        iframe.name = iframeName;
+        form.setAttribute('target', iframeName);
         attachIntoDOM(iframe, context);
         form.submit();
     }

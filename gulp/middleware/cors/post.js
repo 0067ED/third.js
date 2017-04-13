@@ -110,7 +110,7 @@ module.exports = (callback, opts) => {
                         (function () {
                             const supportPM = 'postMessage' in window;
                             const sendByPostMessage = function (data) {
-                                window.parent.postMessage(data, '*');
+                                window.parent.postMessage(callbackName + data, '*');
                             };
                             const sendByNavigator = function (callback, data) {
                                 const navigatorCallback = window.navigator[callbackName];
@@ -130,7 +130,7 @@ module.exports = (callback, opts) => {
                                 const useDefaultPort = (DEFAULT_PORT_MAP[ptl] + '') === port;
                                 const host = hostname + (useDefaultPort  ? '' : (':' + port));
                                 navigatorCallback({
-                                    message: data + '',
+                                    message: callbackName + data + '',
                                     origin: protocol + '//' + host
                                 });
                             };
