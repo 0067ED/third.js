@@ -4,7 +4,7 @@ import globalSandbox from '../sandbox/global';
 import toQuery from '../url/toQuery';
 import hasCors from '../detect/cors';
 
-var supportXHR = false;
+var supportXHR = hasCors() === 'xhr';
 
 var submit = supportXHR
     ? function (url, params, callback, opts) {

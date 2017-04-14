@@ -19,7 +19,7 @@ module.exports = (callback, opts) => {
     return (req, res, next) => {
         const queryParts = qs.parse(url.parse(req.url).query);
         let callbackName = queryParts[callbackNameKey];
-        if (!callbackName.match(/^[0-9a-zA-Z_]+$/)) {
+        if (callbackName && !callbackName.match(/^[0-9a-zA-Z_]+$/)) {
             next(new Error(`[CORS][post] Wrong format for "${callbackNameKey}=${callbackName}".`));
             return;
         }
