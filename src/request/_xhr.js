@@ -16,7 +16,9 @@ export default function xhr(url, params, callback, opts) {
     var xhr = new XHR();
     xhr.open('POST', url, true);
     xhr.withCredentials = true;
-    xhr.setRequestHeader('Cache-Control', 'no-cache');
+    // make sure it's [Simple requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS#Simple_requests)
+    // which don't trigger CORS preflight.
+    // xhr.setRequestHeader('Cache-Control', 'no-cache');
     if (typeof params === 'string') {
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     }
