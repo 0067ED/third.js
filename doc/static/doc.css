@@ -4,95 +4,78 @@ body, div, p, h1, h2, h3, h4, h5, h6 {
 }
 body {
     margin-bottom: 100px;
-    font: 16px/20px arial,sans-serif;
+    font: 20px/2 arial,sans-serif;
 }
 
 
 /* header */
 .header {
+    padding: 2em;
     overflow: hidden;
-    height: 240px;
     color: #FFF;
     background: #0067ED;
 }
 .header h1 {
-    margin: 80px auto;
-    max-width: 1024px;
-    width: 100%;
-    line-height: 80px;
-    font-size: 60px;
+    margin: 0 auto;
+    font-size: 3em;
+    text-align: center;
 }
 
 
 /* module */
 .module {
-    margin-top: 80px;
-    width: 100%;
-}
-.module > * {
-    margin: 0 auto;
-    max-width: 1024px;
-}
-
-/* module head prefix */
-.module h2:before,
-.module h3:before {
-    margin-right: 10px;
-    width: 36px;
-    text-align: right;
+    padding: 0 2em;
 }
 
 /* module h2 */
 .module h2 {
-    line-height: 40px;
-    font-size: 36px;
+    margin: 0 -1em;
+    padding: 1em;
+    font-size: 2em;
     font-weight: normal;
-}
-.module h2:before {
-    content: '#';
+    background: #dfe1e8;
 }
 
 /* module h3 */
 .module h3 {
-    margin-top: 60px;
-    line-height: 40px;
-    font-size: 24px;
-}
-.module h3:before {
-    content: '##';
+    padding: 2em 0 1em;
+    font-size: 1em;
 }
 
 /* module h3 */
 .module h4 {
-    margin-top: 40px;
-    line-height: 20px;
-    font-size: 16px;
+    padding: 1em 0;
+    font-size: 1em;
 }
 
 
 /* code */
 .code {
-    margin-top: 20px;
-    padding: 20px 20px 0 20px;
-    background: #EEE;
+    padding: 0 0;
     box-sizing: border-box;
 }
 .code > pre {
-    margin: 20px -20px 0 -20px;
-    padding: 20px;
-    line-height: 24px;
-    font-size: 16px;
-    color: #FFF;
-    background: #333;
+    margin: 2em -2em 0;
+    padding: 2em;
+    font-size: 1em;
+    overflow-x: scroll;
+    background: #f7f7f9;
+    border: 1px solid #dfe1e8;
+    border-left: none;
+    border-right: none;
+    box-sizing: border-box;
 }
 
 /* table */
 .module table {
-    margin-top: 20px;
+    margin: 0;
+    padding: 0;
     display: table;
-    width: 100%;
+    max-width: 100%;
+    font-size: 1em;
     border-collapse: collapse;
     border-spacing: 0;
+    box-sizing: border-box;
 }
 .module table caption {
     padding: 0;
@@ -103,10 +86,8 @@ body {
 }
 .module table td,
 .module table th {
-    padding: 10px 5px;
-    line-height: 20px;
+    padding: 0.5em 0.25em;
+    font-size: 1em;
     border: 1px solid #dddddd;
-}
-.module table th {
-    min-width: 90px;
+    box-sizing: border-box;
 }
