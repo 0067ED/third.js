@@ -4,7 +4,7 @@ var config = require('../config/config');
 var getFiles = require('../util/getFiles');
 var htmlreplace = require('gulp-html-replace');
 
-gulp.task('build', ['jasmine', 'rollup'], function () {
+gulp.task('build', ['jasmine', 'rollup', 'doc'], function () {
     var cssFiles = 'jasmine-1.3.1/jasmine.css';
     var jsFiles = getFiles(config.path.entrys);
     /*

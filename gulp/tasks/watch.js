@@ -5,4 +5,5 @@ gulp.task('watch', function () {
     gulp.watch(`${config.path.src}/**/*.js`, ['rollup']);
     gulp.watch(`${config.path.entrys}/**/*.js`, ['rollup']);
     gulp.watch(`${config.path.html}/**/*.html`, ['build']);
+    gulp.watch(`${config.path.doc}/**/*`, ['doc']);
 });

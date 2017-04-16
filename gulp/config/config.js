@@ -15,6 +15,7 @@ module.exports = {
         html: './html',
         dest: './dist',
         entrys: './test',
+        doc: './doc',
         jasmine: './html/jasmine-1.3.1',
         cgi: path.resolve(__dirname, '../../dev/cgi'),
         alias: {

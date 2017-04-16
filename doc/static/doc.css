@@ -1,0 +1,112 @@
+body, div, p, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: normal;
+}
+body {
+    margin-bottom: 100px;
+    font: 16px/20px arial,sans-serif;
+}
+
+
+/* header */
+.header {
+    overflow: hidden;
+    height: 240px;
+    color: #FFF;
+    background: #0067ED;
+}
+.header h1 {
+    margin: 80px auto;
+    max-width: 1024px;
+    width: 100%;
+    line-height: 80px;
+    font-size: 60px;
+}
+
+
+/* module */
+.module {
+    margin-top: 80px;
+    width: 100%;
+}
+.module > * {
+    margin: 0 auto;
+    max-width: 1024px;
+}
+
+/* module head prefix */
+.module h2:before,
+.module h3:before {
+    margin-right: 10px;
+    width: 36px;
+    text-align: right;
+}
+
+/* module h2 */
+.module h2 {
+    line-height: 40px;
+    font-size: 36px;
+    font-weight: normal;
+}
+.module h2:before {
+    content: '#';
+}
+
+/* module h3 */
+.module h3 {
+    margin-top: 60px;
+    line-height: 40px;
+    font-size: 24px;
+}
+.module h3:before {
+    content: '##';
+}
+
+/* module h3 */
+.module h4 {
+    margin-top: 40px;
+    line-height: 20px;
+    font-size: 16px;
+}
+
+
+/* code */
+.code {
+    margin-top: 20px;
+    padding: 20px 20px 0 20px;
+    background: #EEE;
+    box-sizing: border-box;
+}
+.code > pre {
+    margin: 20px -20px 0 -20px;
+    padding: 20px;
+    line-height: 24px;
+    font-size: 16px;
+    color: #FFF;
+    background: #333;
+}
+
+/* table */
+.module table {
+    margin-top: 20px;
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.module table caption {
+    padding: 0;
+}
+.module table tbody tr:nth-child(odd) td,
+.module table tbody tr:nth-child(odd) th {
+    background-color: #f9f9f9;
+}
+.module table td,
+.module table th {
+    padding: 10px 5px;
+    line-height: 20px;
+    border: 1px solid #dddddd;
+}
+.module table th {
+    min-width: 90px;
+}

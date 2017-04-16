@@ -41,13 +41,17 @@ var submit = supportXHR
     : submitByIframe;
 
 /**
- * create iframe form
- * @param {string} url form action url.
- * @param {Object} params params data.
- * @param {function(Element, Window)} callback executed after form created.
- * @param {Object|Window} opts options.
+ * Submit
+ * @param {string|Element} url form action url
+ *                         or form element.
+ * @param {Object|function(Error, Object|string)} params params data
+ *                                                or callback executed after form created.
+ * @param {function(Error, Object|string)|Object} callback callback executed after form created
+ *                                                or options.
+ * @param {Object} opts options.
  * @param {Window} opts.context window.
  * @param {String} opts.charset charset.
+ * @param {String} opts.query query name of callback.
  * @param {String} opts.dataType Only support JSON or text.
  */
 export default submit;

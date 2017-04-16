@@ -16,9 +16,9 @@ var S3_SUBMIT_IFRAME_ID = 'S3SUBMIT_IFRAME_';
  * create iframe form
  * @param {string|Element} url form action url
  *                         or form element.
- * @param {Object|function(Object|string|Error)} params params data
- *                                          or callback executed after form created.
- * @param {function(Object|string)|Object} callback callback executed after form created
+ * @param {Object|function(Error, Object|string)} params params data
+ *                                                or callback executed after form created.
+ * @param {function(Error, Object|string)|Object} callback callback executed after form created
  *                                          or options.
  * @param {Object} opts options.
  * @param {Window} opts.context window.
