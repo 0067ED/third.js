@@ -5,6 +5,10 @@ body, div, p, h1, h2, h3, h4, h5, h6 {
 body {
     margin-bottom: 100px;
     font: 20px/2 arial,sans-serif;
+    color: #424b50;
+}
+code {
+    font-family: Consolas, Monaco, monospace;
 }
 
 
@@ -33,16 +37,41 @@ body {
     padding: 1em;
     font-size: 2em;
     font-weight: normal;
-    background: #dfe1e8;
+    background: #efefef;
 }
 
 /* module h3 */
 .module h3 {
+    position: relative;
     padding: 2em 0 1em;
     font-size: 1em;
+    text-align: center;
+}
+.module h3:before {
+    content: '';
+    position: absolute;
+    bottom: 1em;
+    left: 50%;
+    width: 5em;
+    height: 1px;
+    transform: translateX(-50%);
+    background: #CCC;
+}
+.module h3 code:before,
+.module h3 code:after {
+    color: #CCC;
+}
+.module h3 code:before {
+    content: '<';
+    margin-right: 1px;
+}
+.module h3 code:after {
+    content: '>';
+    margin-left: 1px;
 }
 
-/* module h3 */
+
+/* module h4 */
 .module h4 {
     padding: 1em 0;
     font-size: 1em;
@@ -58,12 +87,16 @@ body {
     margin: 2em -2em 0;
     padding: 2em;
     font-size: 1em;
+    line-height: 30px;
     overflow-x: scroll;
     background: #f7f7f9;
-    border: 1px solid #dfe1e8;
+    border: 1px solid #efefef;
     border-left: none;
     border-right: none;
     box-sizing: border-box;
+}
+.code > pre code {
+    font-size: 16px;
 }
 
 /* table */
@@ -86,8 +119,10 @@ body {
 }
 .module table td,
 .module table th {
-    padding: 0.5em 0.25em;
+    min-width: 100px;
+    padding: 0.25em;
     font-size: 1em;
+    font-weight: normal;
     border: 1px solid #dddddd;
     box-sizing: border-box;
 }

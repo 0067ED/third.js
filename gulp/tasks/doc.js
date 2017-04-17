@@ -4,8 +4,20 @@ const copy = require('gulp-contrib-copy');
 const Vinyl = require('vinyl');
 const through = require('through2');
 const config = require('../config/config');
+const hljs = require('highlight.js');
 const MarkdownIt = require('markdown-it');
-const md = new MarkdownIt();
+const md = new MarkdownIt({
+    highlight: function (str, lang) {
+        if (lang && hljs.getLanguage(lang)) {
+            try {
+                return hljs.highlight(lang, str).value;
+            }
+            catch (e) {}
+        }
+
+        return ''; // use external default escaping
+    }
+});
 md.use(require('markdown-it-anchor'), {});
 md.use(require('markdown-it-container'), 'code', {});
 
@@ -46,6 +58,7 @@ function transDoc(pathname) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Third.js document</title>
+    <link rel="stylesheet" href="../static/tomorrow.css">
     <link rel="stylesheet" href="../static/doc.css">
 </head>
 <body>

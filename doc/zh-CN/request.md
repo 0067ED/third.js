@@ -110,6 +110,8 @@ submit('/api/submit', data, function (error, data) {
 
 :::code
 
+#### 文件上传及表单提交
+
 当需要上传文件时，传递给`submit`函数的参数需要变成`form`表单的node节点。
 
 ```html

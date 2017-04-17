@@ -30,6 +30,7 @@
     "gulp-html-replace": "^1.6.2",
     "gulp-rename": "1.2.2",
     "gulp-util": "^3.0.7",
+    "highlight.js": "^9.10.0",
     "jasmine-core": "^2.5.2",
     "karma": "^1.4.0",
     "karma-babel-preprocessor": "^6.0.1",
