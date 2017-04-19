@@ -4,93 +4,122 @@ body, div, p, h1, h2, h3, h4, h5, h6 {
 }
 body {
     margin-bottom: 100px;
-    font: 20px/2 arial,sans-serif;
-    color: #424b50;
+    font: 16px/2 arial,sans-serif;
+    color: #343a40;
 }
 code {
     font-family: Consolas, Monaco, monospace;
+}
+a {
+    text-decoration: none;
+    color: #343a40;
 }
 
 
 /* header */
 .header {
-    padding: 2em;
+    padding: 112px 32px;
     overflow: hidden;
-    color: #FFF;
-    background: #0067ED;
 }
 .header h1 {
     margin: 0 auto;
-    font-size: 3em;
+    line-height: 1;
+    font-size: 64px;
     text-align: center;
+}
+
+
+/* outline */
+.outline {
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 0;
+    width: 600px;
+    list-style: none;
+}
+.outline li {
+    float: left;
+    width: 150px;
+    text-align: center;
+    font-size: 24px;
 }
 
 
 /* module */
 .module {
-    padding: 0 2em;
+    padding: 0 32px;
+}
+.module > * {
+    margin: 32px 0;
+}
+.module > div,
+.module > p,
+.module > blockquote,
+.code > div,
+.code > p,
+.code > blockquote {
+    max-width: 700px;
 }
 
 /* module h2 */
 .module h2 {
-    margin: 0 -1em;
-    padding: 1em;
-    font-size: 2em;
+    margin: 0 -32px;
+    padding: 32px;
+    font-size: 32px;
     font-weight: normal;
-    background: #efefef;
+    background: #dee2e6;
 }
 
 /* module h3 */
 .module h3 {
     position: relative;
-    padding: 2em 0 1em;
-    font-size: 1em;
-    text-align: center;
-}
-.module h3:before {
-    content: '';
-    position: absolute;
-    bottom: 1em;
-    left: 50%;
-    width: 5em;
-    height: 1px;
-    transform: translateX(-50%);
-    background: #CCC;
-}
-.module h3 code:before,
-.module h3 code:after {
-    color: #CCC;
+    margin: 64px 0 32px;
+    line-height: 32px;
+    font-size: 24px;
 }
 .module h3 code:before {
-    content: '<';
-    margin-right: 1px;
+    content: '¶';
+    margin-right: 5px;
+    position: absolute;
+    left: -32px;
+    width: 32px;
+    color: #adb5bd;
+    text-align: center;
 }
-.module h3 code:after {
-    content: '>';
-    margin-left: 1px;
-}
-
 
 /* module h4 */
 .module h4 {
-    padding: 1em 0;
-    font-size: 1em;
+    font-size: 16px;
 }
 
+/* blockquote */
+.module blockquote {
+    margin-left: -18px;
+    padding-left: 16px;
+    color: #868e96;
+    border-left: 2px solid currentColor;
+}
 
 /* code */
+.module .code {
+    margin: 32px 0;
+    padding: 0;
+    max-width: 100%;
+}
 .code {
-    padding: 0 0;
     box-sizing: border-box;
 }
+.code > * {
+    margin: 32px 0;
+}
 .code > pre {
-    margin: 2em -2em 0;
-    padding: 2em;
-    font-size: 1em;
+    margin: 0 -32px 0;
+    padding: 16px 32px;
+    font-size: 16px;
     line-height: 30px;
     overflow-x: scroll;
     background: #f7f7f9;
-    border: 1px solid #efefef;
+    border: 1px solid #dee2e6;
     border-left: none;
     border-right: none;
     box-sizing: border-box;
@@ -101,11 +130,10 @@ code {
 
 /* table */
 .module table {
-    margin: 0;
     padding: 0;
     display: table;
     max-width: 100%;
-    font-size: 1em;
+    font-size: 16px;
     border-collapse: collapse;
     border-spacing: 0;
     box-sizing: border-box;
@@ -120,8 +148,8 @@ code {
 .module table td,
 .module table th {
     min-width: 100px;
-    padding: 0.25em;
-    font-size: 1em;
+    padding: 4px;
+    font-size: 16px;
     font-weight: normal;
     border: 1px solid #dddddd;
     box-sizing: border-box;

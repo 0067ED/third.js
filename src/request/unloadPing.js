@@ -10,7 +10,6 @@ import supportSendBeacon from '../detect/sendBeacon';
  * @param {string} opts.randomKey Add random query to make old IE not cache for img ping.
  *                                This is the cache key name. Default is 'z'.
  *                                If empty string then no random query.
- * @param {string} opts.transport Specify transport way. eg: img, xhr, beacon.
  */
 var unloadPing = function (url, params, opts) {
     var ssb = supportSendBeacon();

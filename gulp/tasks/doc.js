@@ -3,6 +3,7 @@ const gutil = require('gulp-util');
 const copy = require('gulp-contrib-copy');
 const Vinyl = require('vinyl');
 const through = require('through2');
+const cheerio = require('cheerio');
 const config = require('../config/config');
 const hljs = require('highlight.js');
 const MarkdownIt = require('markdown-it');
@@ -51,6 +52,12 @@ function transDoc(pathname) {
             }
             callback();
         }, function (callback) {
+            const $ = cheerio.load(Buffer.concat(files).toString());
+            let html = '';
+            $('h2').each((i, h2) => {
+                const $h2 = $(h2);
+                html += `<li><a href="#${$h2.attr('id')}">${$h2.attr('id')}</a></li>`;
+            });
             files.unshift(new Buffer(`<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,6 +71,9 @@ function transDoc(pathname) {
 <body>
 <div class="header">
     <h1>Third.js</h1>
+    <ul class="outline">
+        ${html}
+    </ul>
 </div>`));
             files.push(new Buffer(`</body></html>`));
             this.push(new Vinyl({

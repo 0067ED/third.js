@@ -21,6 +21,7 @@
     "babel-loader": "5.4.0",
     "babel-runtime": "5.8.35",
     "body-parser": "^1.17.1",
+    "cheerio": "^0.22.0",
     "connect": "3.4.0",
     "eslint": "2.13.1",
     "glob": "6.0.4",

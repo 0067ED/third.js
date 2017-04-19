@@ -1,5 +1,12 @@
 ## request 模块
 
+此模块的函数主要用于跨域的前后端数据请求。目前提供了三种请求协议：`ping`、`jsonp`和`submit`。他们的优缺点，及适用情况如下：
+
+| 协议 | 优点 | 缺点 | 适用情况 |
+| ---- | --- | --- | ------- |
+| `ping` | 很轻量，在页面关闭时也能发送数据 | 不能接收返回数据，不太适合发送大数据量 | 适合用于不关心返回数据的小数据量提交场景，例如鼠标点击监测数据的提交（类似Google Analytics） |
+| `jsonp` | 能接收返回数据 | 不太适合发送大数据量 | 适用于小数据量提交但有需要返回数据的场景，例如初始化配置的拉取 |
+| `submit` | 能接收返回数据，支持发送大数据量，包括图片上传 | 操作很重，相对来说消耗更多资源 | 适用于大数据量提交的场景，例如文件上传的情况 |
 
 ### `request/ping`
 
@@ -25,7 +32,7 @@ ping('/api/ping', {
 | 参数名 | 类型 | 描述 | 默认值 | 可选值 | 是否可选 |
 | ----- | ---- | ---- | ----- | ------ | ------- |
 | url | string | 请求地址 | - | - | 否 |
-| params | Object|string|Array.<Object> | 请求参数 | - | - | 否 |
+| params | Object\|string\|Array.<Object> | 请求参数 | - | - | 否 |
 | options | Object | 可选配置 | - | - | 是 |
 | options.randomKey | string | 当使用`Image`实例来发送数据时，为避免缓存会自动添加一个随机串字段。`randomKey`是随机串的字段名 | 'z' | - | 是 |
 | options.transport | string | 强制使用一种数据传输方法，默认会自动选择最优的一种 | 'auto' | 'img', 'xhr', 'beacon' | 是 |
@@ -36,6 +43,33 @@ ping('/api/ping', {
 | 类型 | 描述 |
 | ---- | ---- |
 | boolean | 是否已发送（为true时不能代表发送成功，只能说明已尝试发送 |
+
+
+
+### `request/unloadPing`
+
+:::code
+
+`unloadPing`与`ping`方法的不同之处在于：`unloadPing`是处理在页面关闭时候发送请求的方法，它是`ping`方法的特殊变种。普通的ping请求在页面关闭时很容易发送失败，而它使用了特别的手段，确保请求可以更高概率的发送成功。
+
+```javascript
+var unloadPing = require('S3/request/unloadPing');
+unloadPing('/api/ping', {
+    id: '0067ED',
+    data: [2, 3, 4]
+});
+```
+:::
+
+#### 函数的参数
+
+| 参数名 | 类型 | 描述 | 默认值 | 可选值 | 是否可选 |
+| ----- | ---- | ---- | ----- | ------ | ------- |
+| url | string | 请求地址 | - | - | 否 |
+| params | Object\|string\|Array.<Object> | 请求参数 | - | - | 否 |
+| options | Object | 可选配置 | - | - | 是 |
+| options.randomKey | string | 当使用`Image`实例来发送数据时，为避免缓存会自动添加一个随机串字段。`randomKey`是随机串的字段名 | 'z' | - | 是 |
+
 
 
 ### `request/jsonp`
@@ -101,7 +135,7 @@ submit('/api/submit', data, function (error, data) {
 | 参数名 | 类型 | 描述 | 默认值 | 可选值 | 是否可选 |
 | ----- | ---- | ---- | ----- | ------ | ------- |
 | url | string | 请求地址 | - | - | 否 |
-| params | Object|string|Array.<Object> | 请求参数 | - | - | 否 |
+| params | Object\|string\|Array.<Object> | 请求参数 | - | - | 否 |
 | callback | function(Error=, *) | 回调函数。如果请求出错，第一个参数为`Error`实例，否则为`null`。第二个参数为JSONP回调的返回数据 | - | - | 否 |
 | options | Object | 可选配置 | - | - | 是 |
 | options.dataType | string | 返回数据的类型 | 'json' | 'json', 'text' | 是 |
