@@ -70,7 +70,7 @@ function transDoc(pathname) {
 </head>
 <body>
 <div class="header">
-    <h1>Third.js</h1>
+    <h1><span>Third.js</span></h1>
     <ul class="outline">
         ${html}
     </ul>

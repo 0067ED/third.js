@@ -6,6 +6,7 @@
 
 > NOTE：注意为了实现降级支持旧浏览器，此模块的函数不支持标签之间的通讯
 
+
 ### `message/listen`
 
 :::code
@@ -30,3 +31,45 @@ listen('parent', window, function (data) {
 | channel | string | `window`对象的唯一标识名 | - | - | 否 |
 | context | window\|Element | `iframe`的dom对象，或者`window`对象 | - | - | 否 |
 | callback | function(Object) | 收到消息之后的回调函数，参数值为`Object`类型。包含`message`和`origin`两个参数，它们都是字符串类型 | - | - | 否 |
+
+
+### `message/unlisten`
+
+:::code
+
+此函数用于取消消息监听。
+
+```javascript
+var unlisten = require('S3/message/unlisten');
+unlisten('parent', window);
+```
+:::
+
+#### 函数的参数
+
+| 参数名 | 类型 | 描述 | 默认值 | 可选值 | 是否可选 |
+| ----- | ---- | ---- | ----- | ------ | ------- |
+| channel | string | `window`对象的唯一标识名 | - | - | 否 |
+| context | window\|Element | `iframe`的dom对象，或者`window`对象 | - | - | 否 |
+| callback | function(Object)= | 收到消息之后的回调函数，参数值为`Object`类型。包含`message`和`origin`两个参数，它们都是字符串类型 | - | - | 是 |
+
+
+### `message/send`
+
+:::code
+
+此函数用于发送消息。
+
+```javascript
+var send = require('S3/message/send');
+send('parent', window.parent, 'message');
+```
+:::
+
+#### 函数的参数
+
+| 参数名 | 类型 | 描述 | 默认值 | 可选值 | 是否可选 |
+| ----- | ---- | ---- | ----- | ------ | ------- |
+| channel | string | `window`对象的唯一标识名 | - | - | 否 |
+| context | window\|Element | `iframe`的dom对象，或者`window`对象 | - | - | 否 |
+| callback | function(Object)= | 收到消息之后的回调函数，参数值为`Object`类型。包含`message`和`origin`两个参数，它们都是字符串类型 | - | - | 是 |

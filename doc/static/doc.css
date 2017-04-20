@@ -14,11 +14,17 @@ a {
     text-decoration: none;
     color: #343a40;
 }
+a:hover {
+    border-radius: 2px;
+    padding: 4px;
+    color: #FFF;
+    background-color: #495057;
+}
 
 
 /* header */
 .header {
-    padding: 112px 32px;
+    padding: 144px 32px;
     overflow: hidden;
 }
 .header h1 {
@@ -27,20 +33,26 @@ a {
     font-size: 64px;
     text-align: center;
 }
+.header h1 span {
+    padding: 10px;
+    color: #FFF;
+    background-color: #495057;
+    border-radius: 5px;
+}
 
 
 /* outline */
 .outline {
     overflow: hidden;
-    margin: 0 auto;
+    margin: 32px auto 0;
     padding: 0;
-    width: 600px;
+    max-width: 256px;
     list-style: none;
 }
 .outline li {
-    float: left;
-    width: 150px;
+    width: 100%;
     text-align: center;
+    text-transform: uppercase;
     font-size: 24px;
 }
 
@@ -67,6 +79,7 @@ a {
     padding: 32px;
     font-size: 32px;
     font-weight: normal;
+    text-transform: uppercase;
     background: #dee2e6;
 }
 
