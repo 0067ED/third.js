@@ -8,7 +8,7 @@ import createIframeByHTML from '../iframe/createByHTML';
  * @return {Element} iframe element.
  */
 export default function (jsfiles, callback, charset) {
-    charset = 'charset="' + (charset || 'utf-8') + '"';
+    charset = ' charset="' + (charset || 'utf-8') + '"';
     var html = '';
     if (typeof jsfiles === 'string') {
         html = '<script' + charset + ' src="' + jsfiles + '"></script>';

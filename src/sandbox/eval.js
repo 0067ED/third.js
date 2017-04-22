@@ -14,6 +14,6 @@ export default function (js, callback, charset) {
         // is function.
         js = '(' + js.toString() + ')()';
     }
-    charset = 'charset="' + (charset || 'utf-8') + '"';
+    charset = ' charset="' + (charset || 'utf-8') + '"';
     return createIframeByHTML('<script' + charset + '>' + js + '</script>', callback);
 };
