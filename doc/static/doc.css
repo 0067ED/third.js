@@ -20,6 +20,9 @@ a:hover {
     color: #FFF;
     background-color: #495057;
 }
+img {
+    max-width: 100%;
+}
 
 
 /* header */
