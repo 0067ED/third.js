@@ -10,7 +10,7 @@
 此函数用于创建沙盒，沙盒的本质是一个空的、隐藏的、非跨域iframe节点。
 
 ```javascript
-var create = require('S3/sandbox/create');
+var create = require('third/sandbox/create');
 window.encodeURIComponent = 'test';
 create(function (win) {
     console.log(win.encodeURIComponent !== 'test'); // true
@@ -41,7 +41,7 @@ create(function (win) {
 > NOTE: Third工具库内基本所有涉及到native API调用的函数，都会使用`global()`函数来获取或调用native的API函数。这是为了避免浏览器的提供的native API被网页开发者重写。
 
 ```javascript
-var global = require('S3/sandbox/global');
+var global = require('third/sandbox/global');
 window.encodeURIComponent = 'test';
 // 未创建时
 console.log(global() === window);   // true
@@ -75,7 +75,7 @@ global(function (win) {
 此函数用于创建沙盒，并在沙盒内部执行指定的JS。
 
 ```javascript
-var eval = require('S3/sandbox/eval');
+var eval = require('third/sandbox/eval');
 eval('window.test = 1;', function (win) {
     console.log(win.test);      // 1
 });
@@ -104,7 +104,7 @@ eval('window.test = 1;', function (win) {
 此函数用于创建沙盒，并在沙盒内部加载并执行指定的远程JS文件（单个或多个）。
 
 ```javascript
-var load = require('S3/sandbox/load');
+var load = require('third/sandbox/load');
 load('http://example.com/script.js', function (win, doc) {
     console.log(win.test);      // 1
 });

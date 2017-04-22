@@ -1,7 +1,7 @@
 import {createIframe, getWindow} from '../util';
-import getScrollTop from 'S3/dom/getScrollTop';
+import getScrollTop from 'third/dom/getScrollTop';
 
-describe('S3/dom/getScrollTop', function() {
+describe('third/dom/getScrollTop', function() {
     it('getScrollTop()', function () {
         window.scrollTo(0, 0);
         var r1 = getScrollTop();

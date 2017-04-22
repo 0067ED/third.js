@@ -1,6 +1,6 @@
-import deleteQuery from 'S3/url/deleteQuery';
+import deleteQuery from 'third/url/deleteQuery';
 
-describe('S3/url/deleteQuery', function() {
+describe('third/url/deleteQuery', function() {
     it('deleteQuery(url, key)', function () {
         expect(deleteQuery('?a=1', 'a')).toBe('');
         expect(deleteQuery('http://example.com?a=1', 'a')).toBe('http://example.com');

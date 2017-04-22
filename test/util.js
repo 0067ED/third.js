@@ -1,7 +1,7 @@
-import send from 'S3/message/send';
-import listen from 'S3/message/listen';
-import parse from 'S3/url/parse';
-import getQuery from 'S3/url/getQuery';
+import send from 'third/message/send';
+import listen from 'third/message/listen';
+import parse from 'third/url/parse';
+import getQuery from 'third/url/getQuery';
 
 export var createIframe = function (id) {
     id = id || 'GLOBAL_TEST_IFRAME';

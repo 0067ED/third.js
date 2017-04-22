@@ -1,6 +1,6 @@
-import isObject from 'S3/lang/isObject';
+import isObject from 'third/lang/isObject';
 
-describe('S3/lang/isObject', function() {
+describe('third/lang/isObject', function() {
     it('isObject(input)', function () {
         expect(isObject({a: 1})).toBeTruthy();
         expect(isObject(new Object())).toBeTruthy();

@@ -1,7 +1,7 @@
-import toQuery from 'S3/url/toQuery';
-import getQuery from 'S3/url/getQuery';
+import toQuery from 'third/url/toQuery';
+import getQuery from 'third/url/getQuery';
 
-describe('S3/url/toQuery', function() {
+describe('third/url/toQuery', function() {
     it('toQuery(Object)', function () {
         var obj = toQuery({
             a: 1,

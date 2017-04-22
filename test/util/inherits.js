@@ -1,6 +1,6 @@
-import inherits from 'S3/util/inherits';
+import inherits from 'third/util/inherits';
 
-describe('S3/util/inherits', function() {
+describe('third/util/inherits', function() {
     it('inherits(SubClass, SuperClass)', function() {
         function Father() {
             this.firstName = 'jinx';

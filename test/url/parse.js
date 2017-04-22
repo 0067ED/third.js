@@ -1,6 +1,6 @@
-import parse from 'S3/url/parse';
+import parse from 'third/url/parse';
 
-describe('S3/url/parse', function() {
+describe('third/url/parse', function() {
     var DEFAULT_PORT_MAP = {
         ftp: 21,
         file: 0,

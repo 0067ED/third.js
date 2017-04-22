@@ -1,8 +1,8 @@
-import jsonp from 'S3/request/jsonp';
-import parseUrl from 'S3/url/parse';
+import jsonp from 'third/request/jsonp';
+import parseUrl from 'third/url/parse';
 import {getWindow, createIframe, getOwnerWindow} from '../util';
 
-describe('S3/request/jsonp', function() {
+describe('third/request/jsonp', function() {
     var flag;
     beforeEach(function() {
         flag = false;

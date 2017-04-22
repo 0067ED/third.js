@@ -1,7 +1,7 @@
 import {createIframe, getWindow} from '../util';
-import getPageHeight from 'S3/dom/getPageHeight';
+import getPageHeight from 'third/dom/getPageHeight';
 
-describe('S3/dom/getPageHeight', function() {
+describe('third/dom/getPageHeight', function() {
     it('getPageHeight()', function () {
         var r1 = getPageHeight();
         // make sure page height not change.

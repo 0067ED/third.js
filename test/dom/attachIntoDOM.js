@@ -1,7 +1,7 @@
 import {createIframe, getWindow} from '../util';
-import attachIntoDOM from 'S3/dom/attachIntoDOM';
+import attachIntoDOM from 'third/dom/attachIntoDOM';
 
-describe('S3/dom/attachIntoDOM', function() {
+describe('third/dom/attachIntoDOM', function() {
     var test;
     beforeEach(function() {
         test = document.createElement('div');

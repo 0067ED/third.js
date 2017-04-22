@@ -34,7 +34,7 @@ export default function xhr(url, params, callback, opts) {
             var isSuccess = status >= 200 && status < 400;
             var error = null;
             if (!isSuccess) {
-                var errorName = '[S3][request] XHR ' + (status < 500 ? 'ClientError' : 'ServerError');
+                var errorName = '[THIRD] XHR ' + (status < 500 ? 'ClientError' : 'ServerError');
                 error = new Error(errorName + ' ' + status);
                 error.name = errorName;
             }

@@ -1,6 +1,6 @@
-import capitalize from 'S3/lang/capitalize';
+import capitalize from 'third/lang/capitalize';
 
-describe('S3/lang/capitalize', function() {
+describe('third/lang/capitalize', function() {
     it('capitalize(input)', function () {
         expect(capitalize('aPPLE.Inc')).toBe('Apple.inc');
         expect(capitalize('.aPPLE.Inc')).toBe('.apple.inc');

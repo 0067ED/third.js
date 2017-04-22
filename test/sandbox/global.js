@@ -1,7 +1,7 @@
-import global from 'S3/sandbox/global';
+import global from 'third/sandbox/global';
 import {getWindow, createIframe, getOwnerWindow} from '../util';
 
-describe('S3/sandbox/global', function() {
+describe('third/sandbox/global', function() {
     var flag;
     beforeEach(function() {
         flag = false;

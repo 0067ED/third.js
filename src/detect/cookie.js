@@ -1,6 +1,6 @@
 import uuid from '../lang/uuid';
 
-var TEST_COOKIE_NAME = 'S3COOKIENAME' + uuid();
+var TEST_COOKIE_NAME = 'THIRDCOOKIENAME' + uuid();
 /**
  * detect cookie support
  * copy from https://github.com/Modernizr/Modernizr/blob/33f00fbbeb12e92bf24711ea386e722cce6f60cc/feature-detects/cookies.js

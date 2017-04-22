@@ -1,6 +1,6 @@
-import isArray from 'S3/lang/isArray';
+import isArray from 'third/lang/isArray';
 
-describe('S3/lang/isArray', function() {
+describe('third/lang/isArray', function() {
     it('isArray(input)', function () {
         expect(isArray([1, 2])).toBeTruthy();
         expect(isArray(new Array())).toBeTruthy();

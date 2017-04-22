@@ -1,7 +1,7 @@
-import createAnonymous from 'S3/iframe/createAnonymous';
+import createAnonymous from 'third/iframe/createAnonymous';
 import {getWindow, createIframe, getOwnerWindow} from '../util';
 
-describe('S3/iframe/createAnonymous', function() {
+describe('third/iframe/createAnonymous', function() {
     it('createAnonymous()', function () {
         var iframe = createAnonymous();
         expect(iframe.nodeName.toLowerCase()).toBe('iframe');

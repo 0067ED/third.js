@@ -1,8 +1,8 @@
-import on from 'S3/event/on';
-import off from 'S3/event/off';
+import on from 'third/event/on';
+import off from 'third/event/off';
 import {getWindow, createIframe, getOwnerWindow} from '../util';
 
-describe('S3/event/off', function() {
+describe('third/event/off', function() {
     var test;
     var flag;
     beforeEach(function() {

@@ -1,7 +1,7 @@
 import {createIframe, getWindow} from '../util';
-import android from 'S3/browser/android';
+import android from 'third/browser/android';
 
-describe('S3/browser/android', function() {
+describe('third/browser/android', function() {
     it('android', function () {
         expect(typeof android).toBe('string');
         if (window.console && window.console.log) {

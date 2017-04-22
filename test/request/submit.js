@@ -1,8 +1,8 @@
-import submit from 'S3/request/submit';
-import parseJSON from 'S3/json/parse';
+import submit from 'third/request/submit';
+import parseJSON from 'third/json/parse';
 import {getWindow, createIframe, getOwnerWindow} from '../util';
 
-describe('S3/request/submit', function() {
+describe('third/request/submit', function() {
     var flag;
     function addForm(url) {
         var test = document.createElement('div');

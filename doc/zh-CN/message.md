@@ -14,7 +14,7 @@
 此函数用于监听消息。
 
 ```javascript
-var listen = require('S3/message/listen');
+var listen = require('third/message/listen');
 listen('parent', window, function (data) {
     console.log(typeof data.origin);        // string
     console.log(data.origin);               // source of message's origin
@@ -40,7 +40,7 @@ listen('parent', window, function (data) {
 此函数用于取消消息监听。
 
 ```javascript
-var unlisten = require('S3/message/unlisten');
+var unlisten = require('third/message/unlisten');
 unlisten('parent', window);
 ```
 :::
@@ -61,7 +61,7 @@ unlisten('parent', window);
 此函数用于发送消息。
 
 ```javascript
-var send = require('S3/message/send');
+var send = require('third/message/send');
 send('parent', window.parent, 'message');
 ```
 :::

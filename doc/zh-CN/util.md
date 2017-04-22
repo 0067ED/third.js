@@ -16,7 +16,7 @@
 > NOTE: 使用Friendly iframe方式加载JS文件有一个巨大的优势，就是不会block页面的load事件。
 
 ```javascript
-var fif = require('S3/util/fif');
+var fif = require('third/util/fif');
 fif('script.js', function (context, doc) {
     // TODO script loaded
 });
@@ -54,7 +54,7 @@ fif(['script1.js', 'script2.js'], function (context, doc) {
 假设我们按照如下形式提供SDK的接口：
 
 ```javascript
-var mqp = require('S3/util/mqp');
+var mqp = require('third/util/mqp');
 (function () {
     var ExportApi = {
         ready(callback) {
@@ -99,7 +99,7 @@ var mqp = require('S3/util/mqp');
 如果通过函数名来调用代理API的方式不能满足你的需求，则可以自定义`options.callback`这个回调函数。样例如下：
 
 ```javascript
-var mqp = require('S3/util/mqp');
+var mqp = require('third/util/mqp');
 (function () {
     var ExportApi = {
         ready(callback) {},
@@ -143,7 +143,7 @@ var mqp = require('S3/util/mqp');
 此函数实现了简易的类继承功能。
 
 ```javascript
-var inherits = require('S3/util/inherits');
+var inherits = require('third/util/inherits');
 function Father(firstName) {
     this.firstName = firstName;
     this.lastName = 'zhou';
@@ -178,7 +178,7 @@ console.log(new Son('mm').myName());   // mmzhou
 > NOTE: 此函数不应该在实际的生产环境中使用，建议仅用于一些特殊情况下的debug。
 
 ```javascript
-var log = require('S3/util/log');
+var log = require('third/util/log');
 log.group('THIRD');
 log('message');
 log.groupEnd();

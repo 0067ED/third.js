@@ -1,6 +1,6 @@
-import getQuerys from 'S3/url/getQuerys';
+import getQuerys from 'third/url/getQuerys';
 
-describe('S3/url/getQuerys', function() {
+describe('third/url/getQuerys', function() {
     it('getQuerys(url)', function () {
         expect(getQuerys('')).toEqual({});
         expect(getQuerys('#a=2')).toEqual({});

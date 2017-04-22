@@ -1,7 +1,7 @@
 import {createIframe, getWindow} from '../util';
-import sendBeacon from 'S3/detect/sendBeacon';
+import sendBeacon from 'third/detect/sendBeacon';
 
-describe('S3/detect/sendBeacon', function() {
+describe('third/detect/sendBeacon', function() {
     it('sendBeacon()', function () {
         var r1 = sendBeacon();
         var r2 = sendBeacon();

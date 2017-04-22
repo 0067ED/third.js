@@ -1,8 +1,8 @@
-import createAnonymous from 'S3/iframe/createAnonymous';
-import write from 'S3/iframe/write';
+import createAnonymous from 'third/iframe/createAnonymous';
+import write from 'third/iframe/write';
 import {getWindow, createIframe, getOwnerWindow} from '../util';
 
-describe('S3/iframe/write', function() {
+describe('third/iframe/write', function() {
     var html = '<div id="test">test</div>';
     var flag;
     beforeEach(function() {

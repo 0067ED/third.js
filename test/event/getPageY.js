@@ -1,7 +1,7 @@
-import on from 'S3/event/on';
-import getPageY from 'S3/event/getPageY';
+import on from 'third/event/on';
+import getPageY from 'third/event/getPageY';
 
-describe('S3/event/getPageY', function() {
+describe('third/event/getPageY', function() {
     var test;
     var flag;
     beforeEach(function() {

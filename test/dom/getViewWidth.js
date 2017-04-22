@@ -1,7 +1,7 @@
 import {createIframe, getWindow} from '../util';
-import getViewHeight from 'S3/dom/getViewHeight';
+import getViewHeight from 'third/dom/getViewHeight';
 
-describe('S3/dom/getViewHeight', function() {
+describe('third/dom/getViewHeight', function() {
     it('getViewHeight()', function () {
         var r1 = getViewHeight();
         // make sure page not resize.

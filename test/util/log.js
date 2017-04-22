@@ -1,6 +1,6 @@
-import log from 'S3/util/log';
+import log from 'third/util/log';
 
-describe('S3/util/log', function() {
+describe('third/util/log', function() {
     it('log', function() {
         function test() {
             log('log');

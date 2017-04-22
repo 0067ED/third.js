@@ -1,7 +1,7 @@
 import {createIframe, getWindow} from '../util';
-import getPageWidth from 'S3/dom/getPageWidth';
+import getPageWidth from 'third/dom/getPageWidth';
 
-describe('S3/dom/getPageWidth', function() {
+describe('third/dom/getPageWidth', function() {
     it('getPageWidth()', function () {
         var r1 = getPageWidth();
         // make sure page width not change.

@@ -1,7 +1,7 @@
 import {createIframe, getWindow} from '../util';
-import isPreviewLoad from 'S3/detect/isPreviewLoad';
+import isPreviewLoad from 'third/detect/isPreviewLoad';
 
-describe('S3/detect/isPreviewLoad', function() {
+describe('third/detect/isPreviewLoad', function() {
     it('isPreviewLoad()', function () {
         var r1 = isPreviewLoad();
         var r2 = isPreviewLoad();

@@ -10,7 +10,7 @@
 此函数用于绑定`document ready`事件。
 
 ```javascript
-var domReady = require('S3/event/domReady');
+var domReady = require('third/event/domReady');
 function readyCallback() {
     // TODO
 }
@@ -34,7 +34,7 @@ domReady(readyCallback, document.getElementById('iframe').contentWindow);
 此函数用于绑定DOM事件。
 
 ```javascript
-var on = require('S3/event/on');
+var on = require('third/event/on');
 on(document.body, 'click', function (e) {});
 on(window, 'load', function (e) {});
 ```
@@ -62,7 +62,7 @@ on(window, 'load', function (e) {});
 此函数用于取消DOM事件的绑定。
 
 ```javascript
-var off = require('S3/event/off');
+var off = require('third/event/off');
 function callback(e) {
     // TODO
 }
@@ -93,8 +93,8 @@ off(window, 'load');
 此函数用于阻止浏览器事件的默认行为，它兼容旧版本的IE（>=6）。
 
 ```javascript
-var on = require('S3/event/on');
-var preventDefault = require('S3/event/preventDefault');
+var on = require('third/event/on');
+var preventDefault = require('third/event/preventDefault');
 function callback(e) {
     preventDefault(e);
 }
@@ -116,8 +116,8 @@ on(document.body, 'click', callback);
 此函数用于阻止浏览器事件的继续传播，它兼容旧版本的IE（>=6）。
 
 ```javascript
-var on = require('S3/event/on');
-var stopPropagation = require('S3/event/stopPropagation');
+var on = require('third/event/on');
+var stopPropagation = require('third/event/stopPropagation');
 function callback(e) {
     stopPropagation(e);
 }
@@ -139,8 +139,8 @@ on(document.body, 'click', callback);
 此函数用于获取事件对象的目标节点，即`target`值（此方法对旧版本的IE做了fallback处理）。
 
 ```javascript
-var on = require('S3/event/on');
-var getTarget = require('S3/event/getTarget');
+var on = require('third/event/on');
+var getTarget = require('third/event/getTarget');
 function callback(e) {
     console.log(getTarget(e));          // body
 }
@@ -168,8 +168,8 @@ on(document.body, 'click', callback);
 此函数用于获取键盘事件的按键值。
 
 ```javascript
-var on = require('S3/event/on');
-var getKeyCode = require('S3/event/getKeyCode');
+var on = require('third/event/on');
+var getKeyCode = require('third/event/getKeyCode');
 function callback(e) {
     console.log(getKeyCode(e));          // 20
 }
@@ -197,8 +197,8 @@ on(document.body, 'keyup', callback);
 此函数用于获取鼠标事件的点击位置距离页面左上角的水平距离。如果只想获取距离可视区域左上角的距离，则直接用`event.clientX`。
 
 ```javascript
-var on = require('S3/event/on');
-var getPageX = require('S3/event/getPageX');
+var on = require('third/event/on');
+var getPageX = require('third/event/getPageX');
 function callback(e) {
     console.log(getPageX(e));          // 20
     console.log(e.clientX);            // 20
@@ -227,8 +227,8 @@ on(document.body, 'click', callback);
 此函数用于获取鼠标事件的点击位置距离页面左上角的垂直距离。如果只想获取距离可视区域左上角的距离，则直接用`event.clientX`。
 
 ```javascript
-var on = require('S3/event/on');
-var getPageY = require('S3/event/getPageY');
+var on = require('third/event/on');
+var getPageY = require('third/event/getPageY');
 function callback(e) {
     console.log(getPageY(e));          // 200
     console.log(e.clientY);            // 20

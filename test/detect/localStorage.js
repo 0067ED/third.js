@@ -1,7 +1,7 @@
 import {createIframe, getWindow} from '../util';
-import localStorage from 'S3/detect/localStorage';
+import localStorage from 'third/detect/localStorage';
 
-describe('S3/detect/localStorage', function() {
+describe('third/detect/localStorage', function() {
     it('localStorage()', function () {
         var r1 = localStorage();
         var r2 = localStorage();

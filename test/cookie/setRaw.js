@@ -1,7 +1,7 @@
 import {createIframe, getWindow} from '../util';
-import setRaw from 'S3/cookie/setRaw';
+import setRaw from 'third/cookie/setRaw';
 
-describe('S3/cookie/setRaw', function() {
+describe('third/cookie/setRaw', function() {
     it('setRaw()', function () {
     });
 });

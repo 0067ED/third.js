@@ -9,7 +9,7 @@
 此函数用于解析URL地址。
 
 ```javascript
-var parse = require('S3/url/parse');
+var parse = require('third/url/parse');
 var url = parse('http://example.com:8000/books/12?type=music#hash');
 console.log(url.protocol);      // 'http:'
 console.log(url.origin);        // 'http://example.com:8000'
@@ -58,7 +58,7 @@ console.log(url2.hostname);     // example.com
 此函数用于获取指定URL上指定参数名的搜索参数值。
 
 ```javascript
-var getQuery = require('S3/url/getQuery');
+var getQuery = require('third/url/getQuery');
 var types = getQuery('?type=1&type=2#type=3', 'type');
 console.log(types);             // ['1', '2']
 
@@ -91,7 +91,7 @@ console.log(noname);            // ''
 此函数用于获取指定URL上的所有搜索参数值。
 
 ```javascript
-var getQuerys = require('S3/url/getQuerys');
+var getQuerys = require('third/url/getQuerys');
 var querys = getQuerys('?team=%230067ED&type=1&type=2#type=3');
 console.log(querys.team);             // '#0067ED'
 console.log(querys.type);             // ['1', '2']
@@ -118,7 +118,7 @@ console.log(querys.type);             // ['1', '2']
 此函数用于获取指定URL上的所有搜索参数值。
 
 ```javascript
-var getFirstQuery = require('S3/url/getFirstQuery');
+var getFirstQuery = require('third/url/getFirstQuery');
 var firstType = getFirstQuery('?team=%230067ED&type=1&type=2#type=3', 'type');
 console.log(firstType);             // '1'
 ```
@@ -145,7 +145,7 @@ console.log(firstType);             // '1'
 此函数用于判断指定URL上是否包含了指定参数名的参数。
 
 ```javascript
-var hasQuery = require('S3/url/hasQuery');
+var hasQuery = require('third/url/hasQuery');
 console.log(hasQuery('?team=%230067ED&type=1&type=2', 'type'));      // true
 console.log(hasQuery('?team=&type=1&type=2#type=3', 'team'));        // true
 console.log(hasQuery('?type=1&type=2#type=3', 'team'));              // false
@@ -173,7 +173,7 @@ console.log(hasQuery('?type=1&type=2#type=3', 'team'));              // false
 此函数用于更新指定URL上的指定参数名的参数值。
 
 ```javascript
-var setQuery = require('S3/url/setQuery');
+var setQuery = require('third/url/setQuery');
 var updatedUrl = setQuery('?team=%230067ED&type=1&type=2', 'type', 3);
 console.log(updatedUrl);        // '?team=%230067ED&type=3'
 updatedUrl = setQuery('?team=%230067ED&type=1&type=2', 'type', [3, 4]);
@@ -205,7 +205,7 @@ console.log(updatedUrl);        // '?team=%230067ED&type='
 此函数用于删除指定URL上的指定参数名的参数。
 
 ```javascript
-var deleteQuery = require('S3/url/deleteQuery');
+var deleteQuery = require('third/url/deleteQuery');
 var updatedUrl = deleteQuery('?team=%230067ED&type=1&type=2', 'type');
 console.log(updatedUrl);        // '?team=%230067ED&type=3'
 updatedUrl = deleteQuery('?type=1&type=2', 'type');
@@ -238,7 +238,7 @@ console.log(updatedUrl);        // ''
 > NOTE：如果某个参数的值是数组，则会在生成的字符串形式中给参数名加上`[]`后缀。此行为与`jQuery.param`方法的行为保持一致.
 
 ```javascript
-var toQuery = require('S3/url/toQuery');
+var toQuery = require('third/url/toQuery');
 console.log(toQuery({
     team: '#0067ED',
     members: ['michael', 'john', 'jerry']

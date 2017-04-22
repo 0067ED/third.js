@@ -1,6 +1,6 @@
-import getFirstQuery from 'S3/url/getFirstQuery';
+import getFirstQuery from 'third/url/getFirstQuery';
 
-describe('S3/url/getFirstQuery', function() {
+describe('third/url/getFirstQuery', function() {
     it('getFirstQuery(url, key)', function () {
         expect(getFirstQuery('http://192.168.1.2:8000?a=1', 'a')).toBe('1');
         expect(getFirstQuery('http://test.com?a=1', 'a')).toBe('1');

@@ -1,6 +1,6 @@
-import isNative from 'S3/lang/isNative';
+import isNative from 'third/lang/isNative';
 
-describe('S3/lang/isNative', function() {
+describe('third/lang/isNative', function() {
     it('isNative(input)', function () {
         // Can't support IE < 9
         // expect(isNative(window.setTimeout)).toBeTruthy();

@@ -1,7 +1,7 @@
 import {createIframe, getWindow} from '../util';
-import getText from 'S3/dom/getText';
+import getText from 'third/dom/getText';
 
-describe('S3/dom/getText', function() {
+describe('third/dom/getText', function() {
     var test;
     beforeEach(function() {
         test = document.createElement('div');

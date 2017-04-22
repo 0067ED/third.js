@@ -10,7 +10,7 @@
 此函数用于判断当前浏览器是否使用adBlock插件来屏蔽广告。
 
 ```javascript
-var adBlock = require('S3/detect/adBlock');
+var adBlock = require('third/detect/adBlock');
 console.log(adBlock());
 ```
 :::
@@ -29,7 +29,7 @@ console.log(adBlock());
 此函数用于判断浏览器是否支持cookie。
 
 ```javascript
-var cookie = require('S3/detect/cookie');
+var cookie = require('third/detect/cookie');
 console.log(cookie());
 ```
 :::
@@ -51,7 +51,7 @@ console.log(cookie());
 2. `xdr`只会出现在IE9和IE8中，它们可以通过`XDomainRequest`对象来实现跨域请求
 
 ```javascript
-var cors = require('S3/detect/cors');
+var cors = require('third/detect/cors');
 console.log(cors());
 ```
 :::
@@ -71,7 +71,7 @@ console.log(cors());
 此函数用于检测当前浏览器的flash插件的版本号。
 
 ```javascript
-var flash = require('S3/detect/flash');
+var flash = require('third/detect/flash');
 console.log(flash());       // '25.0.0'
 ```
 :::
@@ -90,7 +90,7 @@ console.log(flash());       // '25.0.0'
 此函数用于判断当前JS的运行环境是否是在`frame`或`iframe`标签中。
 
 ```javascript
-var inFrame = require('S3/detect/inFrame');
+var inFrame = require('third/detect/inFrame');
 console.log(inFrame());       // '25.0.0'
 ```
 :::
@@ -109,7 +109,7 @@ console.log(inFrame());       // '25.0.0'
 此函数用于判断当前JS的运行环境是否是在预渲染过程中。
 
 ```javascript
-var isPrerender = require('S3/detect/isPrerender');
+var isPrerender = require('third/detect/isPrerender');
 console.log(isPrerender());                             // true
 console.log(isPrerender(iframe.contentWindow));         // false
 ```
@@ -139,7 +139,7 @@ console.log(isPrerender(iframe.contentWindow));         // false
 Safari会去真正的加载解析这几个站点页面，然后截图并保存。而当用户点开这些站点时则会再次重新加载解析这些页面。`isPreviewLoad`函数则是用来判断当前的JS运行环境是否是在这个预览界面的截图流程中。
 
 ```javascript
-var isPreviewLoad = require('S3/detect/isPreviewLoad');
+var isPreviewLoad = require('third/detect/isPreviewLoad');
 console.log(isPrerender());                             // true
 console.log(isPrerender(iframe.contentWindow));         // false
 ```
@@ -165,7 +165,7 @@ console.log(isPrerender(iframe.contentWindow));         // false
 此函数用于判断当前浏览器是否支持`localStorage`
 
 ```javascript
-var localStorage = require('S3/detect/localStorage');
+var localStorage = require('third/detect/localStorage');
 console.log(localStorage());                             // true
 ```
 :::
@@ -184,7 +184,7 @@ console.log(localStorage());                             // true
 此函数用于判断当前浏览器是否支持`sessionStorage`
 
 ```javascript
-var sessionStorage = require('S3/detect/sessionStorage');
+var sessionStorage = require('third/detect/sessionStorage');
 console.log(sessionStorage());                             // true
 ```
 :::
@@ -203,7 +203,7 @@ console.log(sessionStorage());                             // true
 此函数用于判断当前浏览器是否支持`postMessage`
 
 ```javascript
-var postMessage = require('S3/detect/postMessage');
+var postMessage = require('third/detect/postMessage');
 console.log(postMessage());                             // true
 ```
 :::
@@ -222,7 +222,7 @@ console.log(postMessage());                             // true
 此函数用于判断当前浏览器是否支持`sendBeacon`
 
 ```javascript
-var sendBeacon = require('S3/detect/sendBeacon');
+var sendBeacon = require('third/detect/sendBeacon');
 console.log(sendBeacon());                             // true
 ```
 :::
@@ -241,7 +241,7 @@ console.log(sendBeacon());                             // true
 此函数用于判断当前浏览器是否支持`touch`事件
 
 ```javascript
-var touchEvents = require('S3/detect/touchEvents');
+var touchEvents = require('third/detect/touchEvents');
 console.log(touchEvents());                             // true
 ```
 :::

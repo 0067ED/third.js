@@ -1,6 +1,6 @@
-import setQuery from 'S3/url/setQuery';
+import setQuery from 'third/url/setQuery';
 
-describe('S3/url/setQuery', function() {
+describe('third/url/setQuery', function() {
     it('setQuery(url, key, value)', function () {
         expect(setQuery('http://example.com', 'a', 'c')).toEqual('http://example.com?a=c');
         expect(setQuery('http://example.com', 'a', 1)).toEqual('http://example.com?a=1');

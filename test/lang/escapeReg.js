@@ -1,6 +1,6 @@
-import escapeReg from 'S3/lang/escapeReg';
+import escapeReg from 'third/lang/escapeReg';
 
-describe('S3/lang/escapeReg', function() {
+describe('third/lang/escapeReg', function() {
     it('escapeReg(input)', function () {
         expect(escapeReg('.*+?^=!:${}()|[]\/\\-')).toBe('\\.\\*\\+\\?\\^\\=\\!\\:\\$\\{\\}\\(\\)\\|\\[\\]\\\/\\\\\\-');
         var reg = new RegExp('\\s([' + escapeReg('.*+?^=!:${}()|[]\/\\-') + '])\\s');

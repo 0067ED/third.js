@@ -1,7 +1,7 @@
 import uuid from '../lang/uuid';
 
 var sessionStorageDetect = function () {
-    var sessionName = 'S3SESSIONSTORAGE' + uuid();
+    var sessionName = 'THIRDSESSIONSTORAGE' + uuid();
     var api = 'sessionStorage';
     try {
         window[api].setItem(sessionName, 1);

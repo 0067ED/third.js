@@ -1,7 +1,7 @@
 import {createIframe, getWindow} from '../util';
-import sessionStorage from 'S3/detect/sessionStorage';
+import sessionStorage from 'third/detect/sessionStorage';
 
-describe('S3/detect/sessionStorage', function() {
+describe('third/detect/sessionStorage', function() {
     it('sessionStorage()', function () {
         var r1 = sessionStorage();
         var r2 = sessionStorage();

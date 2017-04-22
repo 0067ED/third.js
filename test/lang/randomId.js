@@ -1,6 +1,6 @@
-import randomId from 'S3/lang/randomId';
+import randomId from 'third/lang/randomId';
 
-describe('S3/lang/randomId', function() {
+describe('third/lang/randomId', function() {
     it('randomId()', function () {
         var result = {};
         var repeat = false;

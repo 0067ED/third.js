@@ -1,7 +1,7 @@
-import sandboxEval from 'S3/sandbox/eval';
+import sandboxEval from 'third/sandbox/eval';
 import {getWindow, createIframe, getOwnerWindow} from '../util';
 
-describe('S3/sandbox/eval', function() {
+describe('third/sandbox/eval', function() {
     var flag;
     beforeEach(function() {
         flag = false;

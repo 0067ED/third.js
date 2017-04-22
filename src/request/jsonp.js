@@ -64,7 +64,7 @@ var jsonp = function (url, callback, opts) {
     var doc = parent ? parent.ownerDocument : document;
     var win = doc.defaultView || doc.parentWindow;
     var scr = doc.createElement('script');
-    var prefix = 'S3JSONPPREFIX';
+    var prefix = 'THIRDJSONPPREFIX';
     query = query || 'callback';
     timeout = timeout || 10000;
 

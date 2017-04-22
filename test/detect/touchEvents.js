@@ -1,7 +1,7 @@
 import {createIframe, getWindow} from '../util';
-import touchEvents from 'S3/detect/touchEvents';
+import touchEvents from 'third/detect/touchEvents';
 
-describe('S3/detect/touchEvents', function() {
+describe('third/detect/touchEvents', function() {
     it('touchEvents()', function () {
         var r1 = touchEvents();
         var r2 = touchEvents();

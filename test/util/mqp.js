@@ -1,7 +1,7 @@
-import mqp from 'S3/util/mqp';
+import mqp from 'third/util/mqp';
 import {getWindow, createIframe} from '../util';
 
-describe('S3/util/mqp', function() {
+describe('third/util/mqp', function() {
     it('mqp(target, proxy)', function() {
         var count = 1;
         window.__TEST_MQP = window.__TEST_MQP || [];

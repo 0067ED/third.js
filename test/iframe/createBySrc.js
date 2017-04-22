@@ -1,7 +1,7 @@
-import createBySrc from 'S3/iframe/createBySrc';
+import createBySrc from 'third/iframe/createBySrc';
 import {getWindow, createIframe, getOwnerWindow} from '../util';
 
-describe('S3/iframe/write', function() {
+describe('third/iframe/write', function() {
     it('createBySrc(src)', function () {
         var iframe = createBySrc('/cgi/html/test');
         expect(iframe.nodeName.toLowerCase()).toBe('iframe');

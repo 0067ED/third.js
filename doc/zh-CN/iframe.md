@@ -12,9 +12,9 @@
 > NOTE: 新创建的`iframe`节点并没有被插入到页面中去，而且在IE下直接获取其`contentWindow`可能会出错。此方法一般需要和`dom/attachIntoDOM`和`iframe/ready`或者`iframe/write`函数一起使用。
 
 ```javascript
-var createAnonymous = require('S3/iframe/createAnonymous');
-var write = require('S3/iframe/write');
-var attachIntoDOM = require('S3/dom/attachIntoDOM');
+var createAnonymous = require('third/iframe/createAnonymous');
+var write = require('third/iframe/write');
+var attachIntoDOM = require('third/dom/attachIntoDOM');
 var iframe = createAnonymous();
 attachIntoDOM(iframe);
 write(iframe, '<div>IMPORTANT MESSAGE!</div>', function () {});
@@ -37,9 +37,9 @@ write(iframe, '<div>IMPORTANT MESSAGE!</div>', function () {});
 > NOTE: 在IE浏览器下，如果当前页面修改过`document.domain`，那么即使是同域名的iframe节点，直接通过`contentWindow`获取其window对象，也会报跨域的错误。为了解决这个问题，需要同时再设置iframe节点内的`document.domain`为相同值。故这个方法并不是同步的，而是异步的。
 
 ```javascript
-var createAnonymous = require('S3/iframe/createAnonymous');
-var ready = require('S3/iframe/ready');
-var attachIntoDOM = require('S3/dom/attachIntoDOM');
+var createAnonymous = require('third/iframe/createAnonymous');
+var ready = require('third/iframe/ready');
+var attachIntoDOM = require('third/dom/attachIntoDOM');
 var iframe = createAnonymous();
 attachIntoDOM(iframe);
 ready(iframe, function (win, doc) {
@@ -63,9 +63,9 @@ ready(iframe, function (win, doc) {
 此函数用于修改iframe（非跨域，必须已经在dom树中）节点内部的HTML。
 
 ```javascript
-var createAnonymous = require('S3/iframe/createAnonymous');
-var write = require('S3/iframe/write');
-var attachIntoDOM = require('S3/dom/attachIntoDOM');
+var createAnonymous = require('third/iframe/createAnonymous');
+var write = require('third/iframe/write');
+var attachIntoDOM = require('third/dom/attachIntoDOM');
 var iframe = createAnonymous();
 attachIntoDOM(iframe);
 write(iframe, '<div>IMPORTANT MESSAGE!</div>', function (win, doc) {
@@ -90,7 +90,7 @@ write(iframe, '<div>IMPORTANT MESSAGE!</div>', function (win, doc) {
 此函数用于根据指定的HTML字符串创建一个隐藏的iframe（非跨域）节点，iframe节点会被自动插入到DOM树中（位置不确定）。
 
 ```javascript
-var createByHTML = require('S3/iframe/createByHTML');
+var createByHTML = require('third/iframe/createByHTML');
 var iframe = createByHTML('<div>IMPORTANT MESSAGE!</div>', function (win, doc) {
     // TODO
 });
@@ -119,7 +119,7 @@ var iframe = createByHTML('<div>IMPORTANT MESSAGE!</div>', function (win, doc) {
 此函数用于根据指定的页面地址创建一个隐藏的iframe（可能会跨域）节点，iframe节点会被自动插入到DOM树中（位置不确定）。
 
 ```javascript
-var createBySrc = require('S3/iframe/createBySrc');
+var createBySrc = require('third/iframe/createBySrc');
 var iframe = createBySrc('http://example.com/iframe.html');
 ```
 :::

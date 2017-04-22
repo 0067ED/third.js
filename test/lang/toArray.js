@@ -1,6 +1,6 @@
-import toArray from 'S3/lang/toArray';
+import toArray from 'third/lang/toArray';
 
-describe('S3/lang/toArray', function() {
+describe('third/lang/toArray', function() {
     var main;
     beforeEach(function() {
         main = document.createElement('div');

@@ -1,7 +1,7 @@
-import fif from 'S3/util/fif';
+import fif from 'third/util/fif';
 import {getWindow, createIframe} from '../util';
 
-describe('S3/util/fif', function() {
+describe('third/util/fif', function() {
     var flag;
     beforeEach(function() {
         flag = false;

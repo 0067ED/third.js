@@ -9,7 +9,7 @@
 此函数用于修改字符串，使其除了第一个字母以外其他全部小写，第一个字母大写。
 
 ```javascript
-var capitalize = require('S3/lang/capitalize');
+var capitalize = require('third/lang/capitalize');
 console.log(capitalize('aPPle'));       // 'Apple'
 ```
 :::
@@ -44,7 +44,7 @@ console.log(capitalize('aPPle'));       // 'Apple'
 使用例子如下：
 
 ```javascript
-var escapeHTML = require('S3/lang/escapeHTML');
+var escapeHTML = require('third/lang/escapeHTML');
 document.body.innerHTML = escapeHTML('user<span>name</span>');
 ```
 :::
@@ -69,7 +69,7 @@ document.body.innerHTML = escapeHTML('user<span>name</span>');
 此函数用于将输入字符串中的部分字符进行转义。一般用于对不确定的字符串做转移，然后作为正则表达式的一部分使用。
 
 ```javascript
-var escapeReg = require('S3/lang/escapeReg');
+var escapeReg = require('third/lang/escapeReg');
 new RegExp('^\\s*' + escapeReg('[a]') + '=\\s*(.*?)\\s*$', 'g')
 ```
 :::
@@ -94,7 +94,7 @@ new RegExp('^\\s*' + escapeReg('[a]') + '=\\s*(.*?)\\s*$', 'g')
 此函数用于判断输入的参数是否是字符串
 
 ```javascript
-var type = require('S3/lang/type');
+var type = require('third/lang/type');
 console.log(type(true));                    // boolean
 console.log(type(1));                       // number
 console.log(type('string'));                // string
@@ -127,7 +127,7 @@ console.log(type(new Error()));             // error
 此函数用于判断输入的参数是否是字符串
 
 ```javascript
-var isArray = require('S3/lang/isArray');
+var isArray = require('third/lang/isArray');
 console.log(isArray([1, 2, 3]));            // true
 console.log(isArray(new Array()));          // true
 console.log(isArray('1, 2, 3'));            // false
@@ -154,7 +154,7 @@ console.log(isArray('1, 2, 3'));            // false
 此函数用于判断输入的参数是否是Object类型的对象。
 
 ```javascript
-var isObject = require('S3/lang/isObject');
+var isObject = require('third/lang/isObject');
 console.log(isObject({}));                      // true
 console.log(isObject(new Object()));            // true
 console.log(isObject(new Array()));             // false
@@ -184,7 +184,7 @@ console.log(isObject(window));                  // false
 > NOTE: 注意此函数只能用于判断已经挂载到页面上的`window`对象。如果是新创建的`iframe`标签，但尚未append到页面中，则此`iframe`标签内的`window`对象是不能通过此判断的。
 
 ```javascript
-var isWindow = require('S3/lang/isWindow');
+var isWindow = require('third/lang/isWindow');
 console.log(isWindow(window));                  // true
 console.log(isWindow({}));                      // false
 ```
@@ -214,7 +214,7 @@ console.log(isWindow({}));                      // false
 > 在IE<9之前的浏览器中，很多作为函数其实都是`host object`。对这些函数调用`isNative`方法就会出现浏览器的兼容性问题。例如：`window.setTimeout`。
 
 ```javascript
-var isNative = require('S3/lang/isNative');
+var isNative = require('third/lang/isNative');
 console.log(isNative(window.encodeURIComponent));       // true
 window.encodeURIComponent = function () {};
 console.log(isNative(window.encodeURIComponent));       // false
@@ -243,7 +243,7 @@ console.log(isNative(JSON.stringify));                  // true
 此函数用于生成一个随机数。
 
 ```javascript
-var random = require('S3/lang/random');
+var random = require('third/lang/random');
 console.log(random());
 ```
 :::
@@ -262,7 +262,7 @@ console.log(random());
 此函数用于生成一个随机的字符串。这个id是`random`函数随机生成的数字转换成36进制后的字符串。
 
 ```javascript
-var randomId = require('S3/lang/randomId');
+var randomId = require('third/lang/randomId');
 console.log(randomId());
 ```
 :::
@@ -281,7 +281,7 @@ console.log(randomId());
 此函数用于生成一个随机的ID。ID由四组随机字符串通过连接符串起来的
 
 ```javascript
-var uuid = require('S3/lang/uuid');
+var uuid = require('third/lang/uuid');
 console.log(uuid());
 console.log(uuid('_'));
 ```
@@ -307,7 +307,7 @@ console.log(uuid('_'));
 此函数用于将近似数组的对象转换成真正的数组，一般用于处理函数参数、`NodeList`等等。
 
 ```javascript
-var toArray = require('S3/lang/toArray');
+var toArray = require('third/lang/toArray');
 console.log(toArray(document.getElementsByTagName('p')));
 console.log(toArray(arguments));
 ```

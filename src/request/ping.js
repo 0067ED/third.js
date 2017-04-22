@@ -40,7 +40,7 @@ var buildParams = function (params, opts) {
  */
 var imgPing = function (url, params, callback) {
     var concatUrl = [url, params].join(url.indexOf('?') >= 0 ? '&' : '?');
-    var key = 'S3PING_IMG' + uuid();
+    var key = 'THIRDPING_IMG' + uuid();
     var img = new Image();
     window[key] = img;
     var done = function (errorText) {

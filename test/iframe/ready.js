@@ -1,7 +1,7 @@
-import ready from 'S3/iframe/ready';
+import ready from 'third/iframe/ready';
 import {getWindow, createIframe, getOwnerWindow} from '../util';
 
-describe('S3/iframe/ready', function() {
+describe('third/iframe/ready', function() {
     var flag;
     beforeEach(function() {
         flag = false;

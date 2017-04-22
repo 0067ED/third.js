@@ -1,7 +1,7 @@
 import {createIframe, getWindow} from '../util';
-import getScrollLeft from 'S3/dom/getScrollLeft';
+import getScrollLeft from 'third/dom/getScrollLeft';
 
-describe('S3/dom/getScrollLeft', function() {
+describe('third/dom/getScrollLeft', function() {
     it('getScrollLeft()', function () {
         window.scrollTo(0, 0);
         var r1 = getScrollLeft();

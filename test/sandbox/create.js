@@ -1,7 +1,7 @@
-import createSandbox from 'S3/sandbox/create';
+import createSandbox from 'third/sandbox/create';
 import {getWindow, createIframe, getOwnerWindow} from '../util';
 
-describe('S3/sandbox/create', function() {
+describe('third/sandbox/create', function() {
     var flag;
     beforeEach(function() {
         flag = false;

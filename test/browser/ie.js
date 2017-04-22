@@ -1,7 +1,7 @@
 import {createIframe, getWindow} from '../util';
-import ie from 'S3/browser/ie';
+import ie from 'third/browser/ie';
 
-describe('S3/browser/ie', function() {
+describe('third/browser/ie', function() {
     it('ie', function () {
         expect(typeof ie).toBe('string');
         if (window.console && window.console.log) {

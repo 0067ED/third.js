@@ -1,10 +1,10 @@
-import ping from 'S3/request/ping';
-import parseUrl from 'S3/url/parse';
-import hasSendBeacon from 'S3/detect/sendBeacon';
-import hasCors from 'S3/detect/cors';
+import ping from 'third/request/ping';
+import parseUrl from 'third/url/parse';
+import hasSendBeacon from 'third/detect/sendBeacon';
+import hasCors from 'third/detect/cors';
 import {getWindow, createIframe, getOwnerWindow} from '../util';
 
-describe('S3/request/ping', function() {
+describe('third/request/ping', function() {
     var flag;
     beforeEach(function() {
         flag = false;

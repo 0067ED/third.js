@@ -1,7 +1,7 @@
 import {createIframe, getWindow} from '../util';
-import adBlock from 'S3/detect/adBlock';
+import adBlock from 'third/detect/adBlock';
 
-describe('S3/detect/adBlock', function() {
+describe('third/detect/adBlock', function() {
     it('adBlock()', function () {
         var r1 = adBlock();
         var r2 = adBlock();

@@ -1,7 +1,7 @@
 import {createIframe, getWindow} from '../util';
-import flash from 'S3/detect/flash';
+import flash from 'third/detect/flash';
 
-describe('S3/detect/flash', function() {
+describe('third/detect/flash', function() {
     it('flash()', function () {
         var r1 = flash();
         var r2 = flash();

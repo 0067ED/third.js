@@ -9,8 +9,8 @@ import parseJSON from '../json/parse';
 import createAnonymousIframe from '../iframe/createAnonymous';
 import attachIntoDOM from '../dom/attachIntoDOM';
 
-var S3_SUBMIT_CHANNEL_NAME = 'S3SUBMIT_CHANNEL_';
-var S3_SUBMIT_IFRAME_ID = 'S3SUBMIT_IFRAME_';
+var THIRD_SUBMIT_CHANNEL_NAME = 'THIRDSUBMIT_CHANNEL_';
+var THIRD_SUBMIT_IFRAME_ID = 'THIRDSUBMIT_IFRAME_';
 
 /**
  * create iframe form
@@ -36,7 +36,7 @@ export default function submitByIframe(url, params, callback, opts) {
         url = form.action;
     }
 
-    var channelName = S3_SUBMIT_CHANNEL_NAME + uuid('_');
+    var channelName = THIRD_SUBMIT_CHANNEL_NAME + uuid('_');
     var query = opts && opts.query || 'callback';
     url += (url.indexOf('?') < 0 ? '?' : '&') + query + '=' + channelName;
     if (useForm) {
@@ -66,7 +66,7 @@ export default function submitByIframe(url, params, callback, opts) {
     }
     else if (form.nodeName === 'FORM') {
         // submitByIframe(form, function, opts);
-        var iframeName = S3_SUBMIT_IFRAME_ID + uuid('_');
+        var iframeName = THIRD_SUBMIT_IFRAME_ID + uuid('_');
         var iframe = createAnonymousIframe(context);
         iframe.name = iframeName;
         form.setAttribute('target', iframeName);

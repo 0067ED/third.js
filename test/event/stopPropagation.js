@@ -1,7 +1,7 @@
-import on from 'S3/event/on';
-import stopPropagation from 'S3/event/stopPropagation';
+import on from 'third/event/on';
+import stopPropagation from 'third/event/stopPropagation';
 
-describe('S3/event/stopPropagation', function() {
+describe('third/event/stopPropagation', function() {
     var test;
     var inner;
     var flag;

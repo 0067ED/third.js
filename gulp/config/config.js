@@ -19,7 +19,7 @@ module.exports = {
         jasmine: './html/jasmine-1.3.1',
         cgi: path.resolve(__dirname, '../../dev/cgi'),
         alias: {
-            S3: path.resolve(__dirname, '../../src')
+            third: path.resolve(__dirname, '../../src')
         }
     },
     port: {

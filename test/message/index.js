@@ -1,10 +1,10 @@
-import send from 'S3/message/send';
-import listen from 'S3/message/listen';
-import unlisten from 'S3/message/unlisten';
-import parseUrl from 'S3/url/parse';
+import send from 'third/message/send';
+import listen from 'third/message/listen';
+import unlisten from 'third/message/unlisten';
+import parseUrl from 'third/url/parse';
 import {getWindow, createIframe, getOwnerWindow} from '../util';
 
-describe('S3/message', function() {
+describe('third/message', function() {
     var flag;
     var test;
     beforeEach(function() {

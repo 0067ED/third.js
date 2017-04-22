@@ -14,7 +14,7 @@
 > 更多信息可以参考[这篇文章](http://www.stevesouders.com/blog/2010/05/11/appendchild-vs-insertbefore/)。
 
 ```javascript
-var attachIntoDOM = require('S3/dom/attachIntoDOM');
+var attachIntoDOM = require('third/dom/attachIntoDOM');
 console.log(attachIntoDOM(document.createElement('div')));
 ```
 :::
@@ -34,7 +34,7 @@ console.log(attachIntoDOM(document.createElement('div')));
 此函数用于获取页面的高度。
 
 ```javascript
-var getPageHeight = require('S3/dom/getPageHeight');
+var getPageHeight = require('third/dom/getPageHeight');
 console.log(getPageHeight());
 ```
 :::
@@ -59,7 +59,7 @@ console.log(getPageHeight());
 此函数用于获取页面的宽度。
 
 ```javascript
-var getPageWidth = require('S3/dom/getPageWidth');
+var getPageWidth = require('third/dom/getPageWidth');
 console.log(getPageWidth());
 ```
 :::
@@ -84,7 +84,7 @@ console.log(getPageWidth());
 此函数用于获取页面可视区域左上角点的`left`值（相对于页面左上角点）。
 
 ```javascript
-var getScrollLeft = require('S3/dom/getScrollLeft');
+var getScrollLeft = require('third/dom/getScrollLeft');
 console.log(getScrollLeft());
 ```
 :::
@@ -109,7 +109,7 @@ console.log(getScrollLeft());
 此函数用于获取页面可视区域左上角点的`top`值（相对于页面左上角点）。
 
 ```javascript
-var getScrollTop = require('S3/dom/getScrollTop');
+var getScrollTop = require('third/dom/getScrollTop');
 console.log(getScrollTop());
 ```
 :::
@@ -134,7 +134,7 @@ console.log(getScrollTop());
 此函数用于获取页面可视区域的高度。
 
 ```javascript
-var getViewHeight = require('S3/dom/getViewHeight');
+var getViewHeight = require('third/dom/getViewHeight');
 console.log(getViewHeight());
 ```
 :::
@@ -159,7 +159,7 @@ console.log(getViewHeight());
 此函数用于获取页面可视区域的宽度。
 
 ```javascript
-var getViewWidth = require('S3/dom/getViewWidth');
+var getViewWidth = require('third/dom/getViewWidth');
 console.log(getViewWidth());
 ```
 :::
@@ -184,7 +184,7 @@ console.log(getViewWidth());
 此函数用于获取指定节点内的文字，相当于`node.textContent`但做了兼容处理。
 
 ```javascript
-var getText = require('S3/dom/getText');
+var getText = require('third/dom/getText');
 console.log(getText(document.getElementById('text')));
 ```
 :::

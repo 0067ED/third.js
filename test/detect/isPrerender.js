@@ -1,7 +1,7 @@
 import {createIframe, getWindow} from '../util';
-import isPrerender from 'S3/detect/isPrerender';
+import isPrerender from 'third/detect/isPrerender';
 
-describe('S3/detect/isPrerender', function() {
+describe('third/detect/isPrerender', function() {
     it('isPrerender()', function () {
         var r1 = isPrerender();
         var r2 = isPrerender();

@@ -1,6 +1,6 @@
-import isWindow from 'S3/lang/isWindow';
+import isWindow from 'third/lang/isWindow';
 
-describe('S3/lang/isWindow', function() {
+describe('third/lang/isWindow', function() {
     it('isWindow(input)', function () {
         expect(isWindow(window)).toBeTruthy();
         expect(isWindow(window.document)).toBeFalsy();

@@ -9,7 +9,7 @@
 此函数用于把字符串解析成JSON对象。如果浏览器支持原生的`window.JSON`，则会优先使用原生的方法。
 
 ```javascript
-var parse = require('S3/json/parse');
+var parse = require('third/json/parse');
 console.log(parse('{"a": 1}').a);       // 1
 ```
 :::

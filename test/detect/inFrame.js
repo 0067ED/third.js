@@ -1,7 +1,7 @@
 import {createIframe, getWindow} from '../util';
-import inFrame from 'S3/detect/inFrame';
+import inFrame from 'third/detect/inFrame';
 
-describe('S3/detect/inFrame', function() {
+describe('third/detect/inFrame', function() {
     it('inFrame()', function () {
         var r1 = inFrame();
         var r2 = inFrame();

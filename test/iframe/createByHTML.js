@@ -1,7 +1,7 @@
-import createByHTML from 'S3/iframe/createByHTML';
+import createByHTML from 'third/iframe/createByHTML';
 import {getWindow, createIframe, getOwnerWindow} from '../util';
 
-describe('S3/iframe/createByHTML', function() {
+describe('third/iframe/createByHTML', function() {
     var html = '<div id="test">test</div>';
     var flag;
     beforeEach(function() {

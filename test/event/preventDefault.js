@@ -1,7 +1,7 @@
-import on from 'S3/event/on';
-import preventDefault from 'S3/event/preventDefault';
+import on from 'third/event/on';
+import preventDefault from 'third/event/preventDefault';
 
-describe('S3/event/preventDefault', function() {
+describe('third/event/preventDefault', function() {
     var test;
     var inner;
     var flag;

@@ -1,6 +1,6 @@
-import type from 'S3/lang/type';
+import type from 'third/lang/type';
 
-describe('S3/lang/type', function() {
+describe('third/lang/type', function() {
     it('type(input)', function () {
         expect(type(true)).toBe('boolean');
         expect(type(1)).toBe('number');

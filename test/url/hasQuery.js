@@ -1,6 +1,6 @@
-import hasQuery from 'S3/url/hasQuery';
+import hasQuery from 'third/url/hasQuery';
 
-describe('S3/url/hasQuery', function() {
+describe('third/url/hasQuery', function() {
     it('hasQuery(url, key)', function () {
         expect(hasQuery('http://192.168.1.2:8000?a=1', 'a')).toBeTruthy();
         expect(hasQuery('http://test.com?a=1', 'a')).toBeTruthy();

@@ -1,7 +1,7 @@
 import {createIframe, getWindow} from '../util';
-import cookie from 'S3/detect/cookie';
+import cookie from 'third/detect/cookie';
 
-describe('S3/detect/cookie', function() {
+describe('third/detect/cookie', function() {
     it('cookie()', function () {
         var r1 = cookie();
         var r2 = cookie();

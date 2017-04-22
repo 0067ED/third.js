@@ -55,7 +55,7 @@ var createForm = function (url, params, callback, opts) {
         +     '<meta charset="' + charset + '">'
         + '</head>'
         + '<body>'
-        +     '<form id="S3FAKEFORM"'
+        +     '<form id="THIRDFAKEFORM"'
         +         'action="' + url + '" '
         +         'method="POST" '
         +         'enctype="application/x-www-form-urlencoded">'
@@ -65,7 +65,7 @@ var createForm = function (url, params, callback, opts) {
         + '</html>';
 
     return createIframeByHTML(html, function (win, doc) {
-        var form = doc.getElementById('S3FAKEFORM');
+        var form = doc.getElementById('THIRDFAKEFORM');
         if (callback) {
             callback(form, win);
         }

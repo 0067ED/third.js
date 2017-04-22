@@ -1,6 +1,6 @@
-import isString from 'S3/lang/isString';
+import isString from 'third/lang/isString';
 
-describe('S3/lang/isString', function() {
+describe('third/lang/isString', function() {
     it('isString(input)', function () {
         expect(isString('input')).toBeTruthy();
         expect(isString(new String())).toBeFalsy();

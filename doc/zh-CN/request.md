@@ -19,7 +19,7 @@
 3. 调用`XMLHttpRequest`对象发送跨域请求
 
 ```javascript
-var ping = require('S3/request/ping');
+var ping = require('third/request/ping');
 ping('/api/ping', {
     id: '0067ED',
     data: [2, 3, 4]
@@ -53,7 +53,7 @@ ping('/api/ping', {
 `unloadPing`与`ping`方法的不同之处在于：`unloadPing`是处理在页面关闭时候发送请求的方法，它是`ping`方法的特殊变种。普通的ping请求在页面关闭时很容易发送失败，而它使用了特别的手段，确保请求可以更高概率的发送成功。
 
 ```javascript
-var unloadPing = require('S3/request/unloadPing');
+var unloadPing = require('third/request/unloadPing');
 unloadPing('/api/ping', {
     id: '0067ED',
     data: [2, 3, 4]
@@ -79,7 +79,7 @@ unloadPing('/api/ping', {
 向指定服务器地址发起JSONP请求。
 
 ```javascript
-var jsonp = require('S3/request/jsonp');
+var jsonp = require('third/request/jsonp');
 jsonp('/api/ping', function (error, data) {
     if (error) {
         // something going wrong.
@@ -114,7 +114,7 @@ jsonp('/api/ping', function (error, data) {
 2. 使用`iframe`加`form`表单来发起跨域请求
 
 ```javascript
-var submit = require('S3/request/submit');
+var submit = require('third/request/submit');
 var data = {
     id: '0067ED',
     data: [1, 2, 3]
@@ -155,7 +155,7 @@ submit('/api/submit', data, function (error, data) {
     <input type="file" name="head"></input>
 </form>
 <script>
-var submit = require('S3/request/submit');
+var submit = require('third/request/submit');
 var submitForm = document.getElementById('submitForm');
 var data = {
     id: '0067ED',

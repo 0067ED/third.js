@@ -1,7 +1,7 @@
 import {createIframe, getWindow} from '../util';
-import cors from 'S3/detect/cors';
+import cors from 'third/detect/cors';
 
-describe('S3/detect/cors', function() {
+describe('third/detect/cors', function() {
     it('cors()', function () {
         var r1 = cors();
         var r2 = cors();

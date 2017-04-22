@@ -1,7 +1,7 @@
-import on from 'S3/event/on';
-import getTarget from 'S3/event/getTarget';
+import on from 'third/event/on';
+import getTarget from 'third/event/getTarget';
 
-describe('S3/event/getTarget', function() {
+describe('third/event/getTarget', function() {
     var test;
     var flag;
     beforeEach(function() {
