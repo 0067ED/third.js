@@ -1,4 +1,4 @@
-## jason 模块
+## json 模块
 
 此模块的函数都是JSON相关的操作，是对原生对象`window.JSON`的polyfill。
 
