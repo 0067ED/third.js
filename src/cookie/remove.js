@@ -1,4 +1,4 @@
-import set from './set';
+import setRaw from './setRaw';
 
 /**
  * Remove cookie.
@@ -10,7 +10,7 @@ import set from './set';
  * @return {boolean} success or not.
  */
 var remove = function (key, options) {
-    return set(key, '', {
+    return setRaw(key, '', {
         context: options && options.context,
         expires: new Date(0),
         domain: options && options.domain,

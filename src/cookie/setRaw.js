@@ -5,7 +5,7 @@ import globalSandbox from '../sandbox/global';
  * Set raw cookie.
  *
  * @param {string} key cookie name.
- * @param {string} value cookie value.
+ * @param {string|number} value cookie value.
  * @param {Object=} options options.
  * @param {Window=} options.context window context.
  * @param {number=} options.expires cookie expired time in milliseconds.
@@ -15,6 +15,7 @@ import globalSandbox from '../sandbox/global';
  */
 var setRaw = function (key, value, options) {
     var win = (options && options.context) || window;
+    value = value + '';
     value = globalSandbox().encodeURIComponent(value);
     var newCookie = key + '=' + value + '; ';
 
