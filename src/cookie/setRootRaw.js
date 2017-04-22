@@ -5,12 +5,15 @@ import setRaw from './setRaw';
  *
  * @param {string} key cookie name.
  * @param {string} value cookie value.
- * @param {Window=} win window context.
- * @param {number=} expires cookie expired time in milliseconds.
- * @param {Array.<string>=} extraBlackList ['exampleA.com', 'B.com']
+ * @param {Object=} options options.
+ * @param {Window=} options.context window context.
+ * @param {number=} options.expires cookie expired time in milliseconds.
+ * @param {Array.<string>=} options.extraBlackList ['exampleA.com', 'B.com']
  * @return {string} if success return root domain, otherwise return empty string.
  */
-var setRootRaw = function (key, value, win, expires, extraBlackList) {
+var setRootRaw = function (key, value, options) {
+    var win = (options && options.context) || window;
+    var extraBlackList = options && options.extraBlackList;
     var domainBlackList = {
         '.com': 1,
         '.net': 1,
@@ -39,7 +42,12 @@ var setRootRaw = function (key, value, win, expires, extraBlackList) {
             continue;
         }
 
-        var success = setRaw(key, value, win, expires, subDomain, '/');
+        var success = setRaw(key, value, {
+            context: win,
+            expires: options && options.expires,
+            domain: subDomain,
+            path: '/'
+        });
         if (success) {
             rootDomain = subDomain;
             break;

@@ -6,13 +6,16 @@ import getPathCount from './_getPathCount';
  * Get domain and path count string.
  *      domainCount + '-' + pathCount + '$'
  *
- * @param {Window=} win window context.
- * @param {string=} domain cookie domain.
- * @param {string=} path cookie path.
+ * @param {Object=} options options.
+ * @param {Window=} options.context window context.
+ * @param {string=} options.domain cookie domain.
+ * @param {string=} options.path cookie path.
  * @return {string} count string.
  */
-var getDomainAndPathCount = function (win, domain, path) {
-    win = win || window;
+var getDomainAndPathCount = function (options) {
+    var win = (options && options.context) || window;
+    var domain = options && options.domain;
+    var path = options && options.path;
 
     var location = win.location;
     var pathCount = getPathCount(path != null ? path : location.pathname);

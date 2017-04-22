@@ -5,14 +5,15 @@ import getRaw from './getRaw';
  * Get cookie value.
  *
  * @param {string} key key name.
- * @param {Window=} win window context.
- * @param {string=} domain cookie domain.
- * @param {string=} path cookie path.
+ * @param {Object=} options options.
+ * @param {Window=} options.context window context.
+ * @param {string=} options.domain cookie domain.
+ * @param {string=} options.path cookie path.
  * @return {string} cookie value.
  */
-var get = function (key, win, domain, path) {
-    var results = getRaw(key, win);
-    var domainAndPathCount = getDomainAndPathCount(win, domain, path);
+var get = function (key, options) {
+    var results = getRaw(key, options);
+    var domainAndPathCount = getDomainAndPathCount(options);
     for (var i = 0; i < results.length; i++) {
         var r = results[i];
         if (r.indexOf(domainAndPathCount) === 0) {

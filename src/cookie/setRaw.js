@@ -6,29 +6,30 @@ import globalSandbox from '../sandbox/global';
  *
  * @param {string} key cookie name.
  * @param {string} value cookie value.
- * @param {Window=} win window context.
- * @param {number=} expires cookie expired time in milliseconds.
- * @param {string=} domain cookie domain.
- * @param {string=} path cookie path.
+ * @param {Object=} options options.
+ * @param {Window=} options.context window context.
+ * @param {number=} options.expires cookie expired time in milliseconds.
+ * @param {string=} options.domain cookie domain.
+ * @param {string=} options.path cookie path.
  * @return {boolean} success or not.
  */
-var setRaw = function (key, value, win, expires, domain, path) {
-    win = win || window;
+var setRaw = function (key, value, options) {
+    var win = (options && options.context) || window;
     value = globalSandbox().encodeURIComponent(value);
     var newCookie = key + '=' + value + '; ';
 
-    if (path != null) {
-        newCookie += 'path=' + path + '; ';
+    if (options && options.path != null) {
+        newCookie += 'path=' + options.path + '; ';
     }
 
-    if (expires != null) {
+    if (options && options.expires != null) {
         var date = new Date();
-        date.setTime(date.getTime() + expires);
+        date.setTime(date.getTime() + options.expires);
         newCookie += 'expires=' + date.toGMTString() + '; ';
     }
 
-    if (domain != null) {
-        newCookie += 'domain=' + domain + ';';
+    if (options && options.domain != null) {
+        newCookie += 'domain=' + options.domain + ';';
     }
 
     var doc = win.document;

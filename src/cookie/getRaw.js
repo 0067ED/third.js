@@ -5,11 +5,12 @@ import globalSandbox from '../sandbox/global';
  * Get raw cookie value.
  *
  * @param {string} key key name.
- * @param {Window=} win window context.
+ * @param {Object=} options options.
+ * @param {Window=} options.context window context.
  * @return {Array.<string>} cookie value array.
  */
-var getRaw = function (key, win) {
-    win = win || window;
+var getRaw = function (key, options) {
+    var win = (options && options.context) || window;
     var result = [];
     var cookies = win.document.cookie.split(';');
     var regex = new RegExp('^\\s*' + escapeReg(key) + '=\\s*(.*?)\\s*$');
