@@ -5,7 +5,7 @@ import attachIntoDOM from '../dom/attachIntoDOM';
 
 /**
  * Create an sandbox by iframe.
- * @param {function(Window)=} callback callbacks.
+ * @param {function(Window)} callback callbacks.
  * @param {Window=} win window context.
  * @return {Element} iframe.
  */

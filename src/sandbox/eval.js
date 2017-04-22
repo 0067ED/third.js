@@ -6,7 +6,7 @@ import typeOf from '../lang/type';
  * @param {string|Function} js javascript code string or javascript function.
  *                             NOTE: function has no context.
  * @param {function(window, document)} callback callback.
- * @param {string=} charset charset, default is none.
+ * @param {string=} charset charset, default is utf-8.
  * @return {Element} iframe element.
  */
 export default function (js, callback, charset) {
@@ -14,6 +14,6 @@ export default function (js, callback, charset) {
         // is function.
         js = '(' + js.toString() + ')()';
     }
-    charset = charset ? ('charset="' + charset + '"') : '';
+    charset = 'charset="' + (charset || 'utf-8') + '"';
     return createIframeByHTML('<script' + charset + '>' + js + '</script>', callback);
 };

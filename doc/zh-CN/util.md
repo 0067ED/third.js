@@ -9,9 +9,11 @@
 此函数实现了**Friendly iframe**（简称fif）方式的加载JS文件的方法。Friendly iframe是[IAB](https://www.iab.com/)（The Interactive Advertising Bureau）推荐的加载广告的方法。它一般有如下的特点：
 
 1. 创建一个iframe，它的和父页面是同域的，不会收到同源策略影响
-2. iframe内部有一个或多个script标签，它们会加载远程的JS文件
+2. iframe内部有一个或多个script节点，它们会加载远程的JS文件
 3. iframe内部的JS环境中有一个全局变量`inDapIF`，它的值为`true`
 4. 被加载的远程JS文件需要从全局变量`inDapIF`此来判断当前加载它的方法是否是Friendly iframe（它们可能还需要兼容普通加载的方式）
+
+> NOTE: 使用Friendly iframe方式加载JS文件有一个巨大的优势，就是不会block页面的load事件。
 
 ```javascript
 var fif = require('S3/util/fif');
@@ -32,13 +34,13 @@ fif(['script1.js', 'script2.js'], function (context, doc) {
 | callback | function(Window, Document) | 回调函数，输入参数是iframe内的window和document对象 | - | - | 否 |
 | options  | Object= | 可选配置 | - | - | 是 |
 | options.fifMark  | string= | 替换`inDapIF`的变量名 | 'inDapIF' | - | 是 |
-| options.context  | Window= | 在指定的window对象中创建的firendly iframe标签 | - | - | 是 |
+| options.context  | Window= | 在指定的window对象中创建friendly iframe节点 | 默认为当前JS的运行环境 | - | 是 |
 
 #### 返回值
 
 | 类型 | 描述 |
 | ---- | ---- |
-| Element | 新创建的`iframe`DOM元素 |
+| Element | 新创建的`iframe`DOM节点 |
 
 
 ### `util/mqp`
