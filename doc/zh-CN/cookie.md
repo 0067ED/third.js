@@ -24,7 +24,7 @@ set('key', 'value');
 | key | string | cookie的名字 | - | - | 否 |
 | value | string\|number | cookie的值 | - | - | 否 |
 | options | Object= | 可选配置 | - | - | 否 |
-| options.context | Window= | 指定需要设置cookie的window对象 | - | - | 否 |
+| options.context | Window= | 指定需要设置cookie的window对象 | 默认为当前JS执行环境的window对象 | - | 否 |
 | options.expires | number= | 指定cookie多长时间后过期（微秒） | - | - | 否 |
 | options.domain  | string= | 指定设置cookie的域名 | - | - | 否 |
 | options.path    | string= | 指定设置cookie的路径 | - | - | 否 |
@@ -59,7 +59,7 @@ console.log(get('key') === 'value');        // true
 | ----- | ---- | ---- | ----- | ------ | ------- |
 | key | string | cookie的名字 | - | - | 否 |
 | options | Object= | 可选配置 | - | - | 否 |
-| options.context | Window= | 指定需要设置cookie的window对象 | - | - | 否 |
+| options.context | Window= | 指定需要设置cookie的window对象 | 默认为当前JS执行环境的window对象 | - | 否 |
 | options.domain  | string= | 指定设置cookie的域名 | - | - | 否 |
 | options.path    | string= | 指定设置cookie的路径 | - | - | 否 |
 
@@ -93,7 +93,7 @@ console.log(get('key') === 'value');        // false
 | ----- | ---- | ---- | ----- | ------ | ------- |
 | key | string | cookie的名字 | - | - | 否 |
 | options | Object= | 可选配置 | - | - | 否 |
-| options.context | Window= | 指定需要设置cookie的window对象 | - | - | 否 |
+| options.context | Window= | 指定需要设置cookie的window对象 | 默认为当前JS执行环境的window对象 | - | 否 |
 | options.domain  | string= | 指定设置cookie的域名 | - | - | 否 |
 | options.path    | string= | 指定设置cookie的路径 | - | - | 否 |
 
@@ -126,7 +126,7 @@ setRaw('key', 'value');
 | key | string | cookie的名字 | - | - | 否 |
 | value | string\|number | cookie的值 | - | - | 否 |
 | options | Object= | 可选配置 | - | - | 否 |
-| options.context | Window= | 指定需要设置cookie的window对象 | - | - | 否 |
+| options.context | Window= | 指定需要设置cookie的window对象 | 默认为当前JS执行环境的window对象 | - | 否 |
 | options.expires | number= | 指定cookie多长时间后过期（微秒） | - | - | 否 |
 | options.domain  | string= | 指定设置cookie的域名 | - | - | 否 |
 | options.path    | string= | 指定设置cookie的路径 | - | - | 否 |
@@ -168,7 +168,7 @@ console.log(getRaw('key')[1] === 'value2');       // true
 | ----- | ---- | ---- | ----- | ------ | ------- |
 | key | string | cookie的名字 | - | - | 否 |
 | options | Object= | 可选配置 | - | - | 否 |
-| options.context | Window= | 指定需要设置cookie的window对象 | - | - | 否 |
+| options.context | Window= | 指定需要设置cookie的window对象 | 默认为当前JS执行环境的window对象 | - | 否 |
 
 #### 返回值
 
@@ -197,7 +197,7 @@ setRootRaw('key', 'value');
 | key | string | cookie的名字 | - | - | 否 |
 | value | string\|number | cookie的值 | - | - | 否 |
 | options | Object= | 可选配置 | - | - | 否 |
-| options.context | Window= | 指定需要设置cookie的window对象 | - | - | 否 |
+| options.context | Window= | 指定需要设置cookie的window对象 | 默认为当前JS执行环境的window对象 | - | 否 |
 | options.expires | number= | 指定cookie多长时间后过期（微秒） | - | - | 否 |
 | options.extraBlackList  | Array.<string>= | 指定设置cookie的域名 | - | - | 否 |
 
