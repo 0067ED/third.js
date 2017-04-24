@@ -4,10 +4,12 @@ const copy = require('gulp-contrib-copy');
 const Vinyl = require('vinyl');
 const through = require('through2');
 const cheerio = require('cheerio');
+const path = require('path');
 const config = require('../config/config');
 const hljs = require('highlight.js');
 const MarkdownIt = require('markdown-it');
 const md = new MarkdownIt({
+    html: true,
     highlight: function (str, lang) {
         if (lang && hljs.getLanguage(lang)) {
             try {
@@ -22,9 +24,35 @@ const md = new MarkdownIt({
 md.use(require('markdown-it-anchor'), {});
 md.use(require('markdown-it-container'), 'code', {});
 
-function transDoc(pathname) {
+const HEADER_HTML = `<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Third.js document</title>
+        <link rel="stylesheet" href="/doc/static/tomorrow.css">
+        <link rel="stylesheet" href="/doc/static/doc.css">
+    </head>
+    <body class="page-{pageClass}">
+    <div class="main">
+        <div class="header">
+            <h1><a href="index.html">Third.js</a></h1>
+            <div class="header-info">专注于第三方Javascript SDK开发的前端工具库</div>
+        </div>
+        <ul class="menu">
+            <li><a href="tutorial.html">入门教程</a></li>
+            <li><a href="api.html">API文档</a></li>
+            <li><a href="https://github.com/0067ED/third.js" target="_blank">GITHUB</a></li>
+        </ul>`;
+const FOOTER_HTML = `
+    </div>
+    </body>
+    </html>`;
+
+function transApiDoc(pathname) {
     const files = [];
-    gulp.src(config.path.doc + '/' + pathname + '/*.md')
+    gulp.src(`${config.path.doc}/${pathname}/*.md`)
         .pipe(through.obj(function (file, encoding, callback) {
             if (file.isNull() || file.contents == null) {
                 callback(null, file);
@@ -54,45 +82,86 @@ function transDoc(pathname) {
         }, function (callback) {
             const $ = cheerio.load(Buffer.concat(files).toString());
             let html = '';
-            $('h2').each((i, h2) => {
-                const $h2 = $(h2);
-                html += `<li><a href="#${$h2.attr('id')}">${$h2.attr('id')}</a></li>`;
+            $('h2').each((i, h) => {
+                const $h = $(h);
+                let innerHtml = '';
+                $h.nextAll('h3').each((i, h3) => {
+                    const $h3 = $(h3);
+                    innerHtml += `<li><a href="#${$h3.attr('id')}">${$h3.text()}</a></li>`;
+                });
+
+                html += `<li>
+                    <a href="#${$h.attr('id')}">
+                        ${$h.attr('id')}
+                    </a>
+                    <ul class="outline-inner">${innerHtml}</ul>
+                </li>`;
             });
-            files.unshift(new Buffer(`<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Third.js document</title>
-    <link rel="stylesheet" href="../static/tomorrow.css">
-    <link rel="stylesheet" href="../static/doc.css">
-</head>
-<body>
-<div class="header">
-    <h1><span>Third.js</span></h1>
-    <ul class="outline">
-        ${html}
-    </ul>
-</div>`));
-            files.push(new Buffer(`</body></html>`));
+
+            files.unshift(new Buffer(`${HEADER_HTML.replace('{pageClass}', 'api')}
+                <div class="module">
+                <h2>OUTLINE</h2>
+                <div class="outline">
+                    <ul class="outline-outter">
+                        ${html}
+                    </ul>
+                </div>
+                </div>`));
+            files.push(new Buffer(FOOTER_HTML));
             this.push(new Vinyl({
                 base: config.path.doc,
-                path: config.path.doc + '/' + pathname + '/index.html',
+                path: `${config.path.doc}/${pathname}.html`,
                 contents: Buffer.concat(files)
             }));
             callback();
         }))
-        .pipe(gulp.dest(config.path.dest + '/doc'));
+        .pipe(gulp.dest(`${config.path.dest}/doc`));
 }
 
+
+function transDoc(pathname) {
+    gulp.src(`${config.path.doc}/${pathname}/*.md`)
+        .pipe(through.obj(function (file, encoding, callback) {
+            if (file.isNull() || file.contents == null) {
+                callback(null, file);
+                return;
+            }
+
+            if (file.isStream()) {
+                callback(new gutil.PluginError('doc task', 'stream content is not supported'));
+                return;
+            }
+
+            try {
+                file.path = file.path.replace(/\.md$/, '.html');
+                const pageClass = path.basename(file.path, '.html');
+                file.contents = new Buffer(`${HEADER_HTML.replace('{pageClass}', pageClass)}
+                    <div class="module">${md.render(file.contents.toString())}</div>
+                    ${FOOTER_HTML}`);
+                this.push(file);
+            }
+            catch (err) {
+                callback(new gutil.PluginError('doc task', err, {
+                    fileName: file.path,
+                    showstack: true
+                }));
+            }
+            callback();
+        }))
+        .pipe(gulp.dest(`${config.path.dest}/doc/${pathname}`));
+}
+
+
 gulp.task('doc', function () {
-    ['zh-CN'].forEach(transDoc);
+    ['zh-CN'].forEach((language) => {
+        transApiDoc(`${language}/api`);
+        transDoc(language);
+    });
     const staticFiles = [
         config.path.doc + '/**/*',
         '!' + config.path.doc + '/**/*.md'
     ];
     gulp.src(staticFiles)
         .pipe(copy())
-        .pipe(gulp.dest(config.path.dest + '/doc'));
+        .pipe(gulp.dest(`${config.path.dest}/doc`));
 });

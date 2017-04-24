@@ -5,18 +5,18 @@ body, div, p, h1, h2, h3, h4, h5, h6 {
 body {
     margin-bottom: 100px;
     font: 16px/2 arial,sans-serif;
-    color: #343a40;
+    color: #495057;
 }
 code {
     font-family: Consolas, Monaco, monospace;
 }
 a {
+    padding: 4px;
     text-decoration: none;
     color: #343a40;
 }
 a:hover {
     border-radius: 2px;
-    padding: 4px;
     color: #FFF;
     background-color: #495057;
 }
@@ -25,9 +25,48 @@ img {
 }
 
 
+
+/* outline */
+.outline {
+    margin: 0;
+    padding: 30px 0 10px;
+    max-width: 700px;
+    overflow: auto;
+}
+.outline ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.outline .outline-outter {
+    margin: 0;
+    padding: 0;
+}
+.outline li {
+}
+.outline .outline-outter > li {
+    margin-bottom: 16px;
+    overflow: hidden;
+    clear: left;
+}
+.outline .outline-outter > li > a {
+    font-size: 24px;
+    text-transform: uppercase;
+}
+.outline .outline-inner > li {
+    margin: 0 16px 0 0;
+    float: left;
+}
+
+/* main */
+.main {
+    margin: 0;
+}
+
+
 /* header */
 .header {
-    padding: 144px 32px;
+    padding: 160px 64px 32px;
     overflow: hidden;
 }
 .header h1 {
@@ -36,36 +75,66 @@ img {
     font-size: 64px;
     text-align: center;
 }
-.header h1 span {
-    padding: 10px;
+.header h1 {
+    font-size: 100px;
+    font-weight: bold;
+}
+.header h1 a {
+    padding: 20px 0;
+    width: 400px;
+    display: inline-block;
+    box-sizing: border-box;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
     color: #FFF;
     background-color: #495057;
-    border-radius: 5px;
+}
+.header-info {
+    margin: 0 auto;
+    padding: 10px;
+    width: 400px;
+    line-height: 40px;
+    font-size: 32px;
+    border: 3px solid #495057;
+    box-sizing: border-box;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 
 
-/* outline */
-.outline {
-    overflow: hidden;
-    margin: 32px auto 0;
-    padding: 0;
-    max-width: 256px;
+
+/* menu */
+.menu {
     list-style: none;
-}
-.outline li {
-    width: 100%;
+    margin: 0 0 96px;
+    padding: 0;
     text-align: center;
-    text-transform: uppercase;
+}
+.menu li {
+    display: inline;
+    margin: 0 16px;
+    line-height: 32px;
     font-size: 24px;
 }
 
 
 /* module */
 .module {
-    padding: 0 32px;
+    padding: 0 64px;
+}
+.module:after {
+    content: '. . .';
+    display: block;
+    padding-bottom: 40px;
+    font-size: 64px;
+    color: #adb5bd;
+    text-align: center;
 }
 .module > * {
     margin: 32px 0;
+}
+.module > *:last-child {
+    margin-bottom: 0 !important;
 }
 .module > div,
 .module > p,
@@ -78,12 +147,12 @@ img {
 
 /* module h2 */
 .module h2 {
-    margin: 0 -32px;
-    padding: 32px;
+    margin: 0 -64px;
+    padding: 32px 64px;
     font-size: 32px;
     font-weight: normal;
     text-transform: uppercase;
-    background: #dee2e6;
+    background: #e9ecef;
 }
 
 /* module h3 */
@@ -129,13 +198,13 @@ img {
     margin: 32px 0;
 }
 .code > pre {
-    margin: 0 -32px 0;
-    padding: 16px 32px;
+    margin: 0 -64px 0;
+    padding: 16px 64px;
     font-size: 16px;
     line-height: 30px;
     overflow-x: scroll;
-    background: #f7f7f9;
-    border: 1px solid #dee2e6;
+    background: #f1f3f5;
+    border: 1px solid #e9ecef;
     border-left: none;
     border-right: none;
     box-sizing: border-box;
@@ -159,7 +228,7 @@ img {
 }
 .module table tbody tr:nth-child(odd) td,
 .module table tbody tr:nth-child(odd) th {
-    background-color: #f9f9f9;
+    background-color: #f8f9fa;
 }
 .module table td,
 .module table th {
@@ -167,6 +236,55 @@ img {
     padding: 4px;
     font-size: 16px;
     font-weight: normal;
-    border: 1px solid #dddddd;
+    border: 1px solid #dee2e6;
     box-sizing: border-box;
 }
+
+
+
+/* page-index */
+.header {
+}
+
+/* page-tutorial, page-api
+.page-api .main,
+.page-tutorial .main {
+    margin-top: 60px;
+    border-top: 2px solid #495057;
+}
+.page-api .header,
+.page-tutorial .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 60px;
+    padding: 0;
+}
+.page-api .header h1,
+.page-tutorial .header h1 {
+    float: left;
+    height: 60px;
+    line-height: 60px;
+    font-size: 48px;
+}
+.page-api .header h1 span,
+.page-tutorial .header h1 span {
+    width: auto;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 0;
+}
+.page-api .header-info,
+.page-tutorial .header-info {
+    display: none;
+}
+.page-api .menu,
+.page-tutorial .menu {
+    position: fixed;
+    top: 10px;
+    left: 200px;
+    height: 50px;
+    line-height: 50px;
+}
+ */

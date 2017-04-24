@@ -5,11 +5,13 @@ import off from './event/off';
 
 /**
  * run main function, until page is real rendered.
- * @param {Window=} win optional window object.
  * @param {Function} main main function.
+ * @param {Object} options options.
+ * @param {Window=} options.context optional window object.
  */
-var run = function (win, main) {
-    win = win || window;
+var run = function (main, options) {
+    // `inDapIF` work with `util/fif` module
+    win = (options && options.context) || (window.inDapIF ? window.parent : window);
     if (isPreviewLoad(win)) {
         return;
     }
