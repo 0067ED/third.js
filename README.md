@@ -3,7 +3,7 @@
 ## TODO
 
 - [x] Update the API of `util/mqp` and `request/jsonp`.
-- [ ] Update the API of `cookie`.
+- [x] Update the API of `cookie`.
 - [x] Add `message` module.
 - [x] Add `request/submit` method.
 - [ ] Finish all test case.
