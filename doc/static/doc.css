@@ -11,14 +11,16 @@ code {
     font-family: Consolas, Monaco, monospace;
 }
 a {
-    padding: 4px;
+    padding: 4px 2px 3px;
     text-decoration: none;
     color: #343a40;
+    border-radius: 2px;
+    border-bottom: 1px solid #adb5bd;
 }
 a:hover {
-    border-radius: 2px;
     color: #FFF;
     background-color: #495057;
+    border-bottom-color: #495057;
 }
 img {
     max-width: 100%;
@@ -50,8 +52,10 @@ img {
     clear: left;
 }
 .outline .outline-outter > li > a {
+    padding: 0;
     font-size: 24px;
     text-transform: uppercase;
+    border-bottom: none;
 }
 .outline .outline-inner > li {
     margin: 0 16px 0 0;
@@ -84,8 +88,16 @@ img {
     width: 400px;
     display: inline-block;
     box-sizing: border-box;
+    border: none;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    color: #FFF;
+    background-color: #495057;
+}
+.header h1 a:hover {
+    border-radius: 2px;
     color: #FFF;
     background-color: #495057;
 }

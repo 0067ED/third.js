@@ -92,7 +92,7 @@ function transApiDoc(pathname) {
 
                 html += `<li>
                     <a href="#${$h.attr('id')}">
-                        ${$h.attr('id')}
+                        ${$h.text()}
                     </a>
                     <ul class="outline-inner">${innerHtml}</ul>
                 </li>`;
