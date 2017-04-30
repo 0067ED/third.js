@@ -132,7 +132,7 @@ img {
 
 /* module */
 .module {
-    padding: 0 64px;
+    /* padding: 0 64px; */
 }
 .module:after {
     content: '. . .';
@@ -143,11 +143,13 @@ img {
     text-align: center;
 }
 .module > * {
-    margin: 32px 0;
+    margin: 32px auto;
+    max-width: 700px;
 }
 .module > *:last-child {
     margin-bottom: 0 !important;
 }
+/*
 .module > div,
 .module > p,
 .module > blockquote,
@@ -156,21 +158,28 @@ img {
 .code > blockquote {
     max-width: 700px;
 }
+*/
+.module > h2,
+.module > h3 {
+    max-width: auto;
+}
 
 /* module h2 */
 .module h2 {
-    margin: 0 -64px;
-    padding: 32px 64px;
-    font-size: 32px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+    font-size: 48px;
     font-weight: normal;
     text-transform: uppercase;
-    background: #e9ecef;
+    text-align: center;
 }
 
 /* module h3 */
 .module h3 {
     position: relative;
-    margin: 64px 0 32px;
+    margin-top: 64px;
+    margin-bottom: 32px;
     line-height: 32px;
     font-size: 24px;
 }
@@ -191,7 +200,6 @@ img {
 
 /* blockquote */
 .module blockquote {
-    margin-left: -18px;
     padding-left: 16px;
     color: #868e96;
     border-left: 2px solid currentColor;
@@ -207,11 +215,14 @@ img {
     box-sizing: border-box;
 }
 .code > * {
-    margin: 32px 0;
+    margin: 32px auto;
+    max-width: 700px;
 }
 .code > pre {
-    margin: 0 -64px 0;
+    margin: 0 auto;
     padding: 16px 64px;
+    max-width: 100%;
+    width: 100%;
     font-size: 16px;
     line-height: 30px;
     overflow-x: scroll;
@@ -222,6 +233,9 @@ img {
     box-sizing: border-box;
 }
 .code > pre code {
+    margin: auto;
+    max-width: 700px;
+    display: block;
     font-size: 16px;
 }
 
@@ -230,6 +244,7 @@ img {
     padding: 0;
     display: table;
     max-width: 100%;
+    min-width: 700px;
     font-size: 16px;
     border-collapse: collapse;
     border-spacing: 0;
