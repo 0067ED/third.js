@@ -1,0 +1,4361 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Third.js document</title>
+        <link rel="stylesheet" href="../static/tomorrow.css">
+        <link rel="stylesheet" href="../static/doc.css">
+    </head>
+    <body class="page-api">
+    <div class="main">
+        <div class="header">
+            <h1><a href="index.html">Third.js</a></h1>
+            <div class="header-info">专注于第三方Javascript SDK开发的前端工具库</div>
+        </div>
+        <ul class="menu">
+            <li><a href="tutorial.html">入门教程</a></li>
+            <li><a href="api.html">API文档</a></li>
+            <li><a href="https://github.com/0067ED/third.js" target="_blank">GITHUB</a></li>
+        </ul>
+                <div class="module">
+                <h2>OUTLINE</h2>
+                <div class="outline">
+                    <ul class="outline-outter">
+                        <li>
+                    <a href="#browser">
+                        browser 模块
+                    </a>
+                    <ul class="outline-inner"><li><a href="#browserandroid">browser/android</a></li><li><a href="#browserie">browser/ie</a></li><li><a href="#browserischrome">browser/isChrome</a></li></ul>
+                </li><li>
+                    <a href="#cookie">
+                        cookie 模块
+                    </a>
+                    <ul class="outline-inner"><li><a href="#cookieset">cookie/set</a></li><li><a href="#cookieget">cookie/get</a></li><li><a href="#cookieremove">cookie/remove</a></li><li><a href="#cookiesetraw">cookie/setRaw</a></li><li><a href="#cookiegetraw">cookie/getRaw</a></li><li><a href="#cookiesetrootraw">cookie/setRootRaw</a></li></ul>
+                </li><li>
+                    <a href="#detect">
+                        detect 模块
+                    </a>
+                    <ul class="outline-inner"><li><a href="#detectadblock">detect/adBlock</a></li><li><a href="#detectcookie">detect/cookie</a></li><li><a href="#detectcors">detect/cors</a></li><li><a href="#detectflash">detect/flash</a></li><li><a href="#detectinframe">detect/inFrame</a></li><li><a href="#detectisprerender">detect/isPrerender</a></li><li><a href="#detectispreviewload">detect/isPreviewLoad</a></li><li><a href="#detectlocalstorage">detect/localStorage</a></li><li><a href="#detectsessionstorage">detect/sessionStorage</a></li><li><a href="#detectpostmessage">detect/postMessage</a></li><li><a href="#detectsendbeacon">detect/sendBeacon</a></li><li><a href="#detecttouchevents">detect/touchEvents</a></li></ul>
+                </li><li>
+                    <a href="#dom">
+                        dom 模块
+                    </a>
+                    <ul class="outline-inner"><li><a href="#domattachintodom">dom/attachIntoDOM</a></li><li><a href="#domgetpageheight">dom/getPageHeight</a></li><li><a href="#domgetpagewidth">dom/getPageWidth</a></li><li><a href="#domgetscrollleft">dom/getScrollLeft</a></li><li><a href="#domgetscrolltop">dom/getScrollTop</a></li><li><a href="#domgetviewheight">dom/getViewHeight</a></li><li><a href="#domgetviewwidth">dom/getViewWidth</a></li><li><a href="#domgettext">dom/getText</a></li></ul>
+                </li><li>
+                    <a href="#event">
+                        event 模块
+                    </a>
+                    <ul class="outline-inner"><li><a href="#eventdomready">event/domReady</a></li><li><a href="#eventon">event/on</a></li><li><a href="#eventoff">event/off</a></li><li><a href="#eventpreventdefault">event/preventDefault</a></li><li><a href="#eventstoppropagation">event/stopPropagation</a></li><li><a href="#eventgettarget">event/getTarget</a></li><li><a href="#eventgetkeycode">event/getKeyCode</a></li><li><a href="#eventgetpagex">event/getPageX</a></li><li><a href="#eventgetpagey">event/getPageY</a></li></ul>
+                </li><li>
+                    <a href="#iframe">
+                        iframe模块
+                    </a>
+                    <ul class="outline-inner"><li><a href="#iframecreateanonymous">iframe/createAnonymous</a></li><li><a href="#iframeready">iframe/ready</a></li><li><a href="#iframewrite">iframe/write</a></li><li><a href="#iframecreatebyhtml">iframe/createByHTML</a></li><li><a href="#iframecreatebysrc">iframe/createBySrc</a></li></ul>
+                </li><li>
+                    <a href="#json">
+                        json 模块
+                    </a>
+                    <ul class="outline-inner"><li><a href="#jsonparse">json/parse</a></li></ul>
+                </li><li>
+                    <a href="#lang">
+                        lang 模块
+                    </a>
+                    <ul class="outline-inner"><li><a href="#langcapitalize">lang/capitalize</a></li><li><a href="#langescapehtml">lang/escapeHTML</a></li><li><a href="#langescapereg">lang/escapeReg</a></li><li><a href="#langtype">lang/type</a></li><li><a href="#langisarray">lang/isArray</a></li><li><a href="#langisobject">lang/isObject</a></li><li><a href="#langiswindow">lang/isWindow</a></li><li><a href="#langisnative">lang/isNative</a></li><li><a href="#langrandom">lang/random</a></li><li><a href="#langrandomid">lang/randomId</a></li><li><a href="#languuid">lang/uuid</a></li><li><a href="#langtoarray">lang/toArray</a></li></ul>
+                </li><li>
+                    <a href="#main">
+                        main模块
+                    </a>
+                    <ul class="outline-inner"><li><a href="#run">run</a></li></ul>
+                </li><li>
+                    <a href="#message">
+                        message 模块
+                    </a>
+                    <ul class="outline-inner"><li><a href="#messagelisten">message/listen</a></li><li><a href="#messageunlisten">message/unlisten</a></li><li><a href="#messagesend">message/send</a></li></ul>
+                </li><li>
+                    <a href="#request">
+                        request 模块
+                    </a>
+                    <ul class="outline-inner"><li><a href="#requestping">request/ping</a></li><li><a href="#requestunloadping">request/unloadPing</a></li><li><a href="#requestjsonp">request/jsonp</a></li><li><a href="#requestsubmit">request/submit</a></li></ul>
+                </li><li>
+                    <a href="#sandbox">
+                        sandbox模块
+                    </a>
+                    <ul class="outline-inner"><li><a href="#sandboxcreate">sandbox/create</a></li><li><a href="#sandboxglobal">sandbox/global</a></li><li><a href="#sandboxeval">sandbox/eval</a></li><li><a href="#sandboxload">sandbox/load</a></li></ul>
+                </li><li>
+                    <a href="#url">
+                        url 模块
+                    </a>
+                    <ul class="outline-inner"><li><a href="#urlparse">url/parse</a></li><li><a href="#urlgetquery">url/getQuery</a></li><li><a href="#urlgetquerys">url/getQuerys</a></li><li><a href="#urlgetfirstquery">url/getFirstQuery</a></li><li><a href="#urlhasquery">url/hasQuery</a></li><li><a href="#urlsetquery">url/setQuery</a></li><li><a href="#urldeletequery">url/deleteQuery</a></li><li><a href="#urltoquery">url/toQuery</a></li></ul>
+                </li><li>
+                    <a href="#util">
+                        util模块
+                    </a>
+                    <ul class="outline-inner"><li><a href="#utilfif">util/fif</a></li><li><a href="#utilmqp">util/mqp</a></li><li><a href="#utilinherits">util/inherits</a></li><li><a href="#utillog">util/log</a></li></ul>
+                </li>
+                    </ul>
+                </div>
+                </div><div class="module"><h2 id="browser">browser 模块</h2>
+<p>此模块的函数主要用于浏览器UA的判断。目前只提供了少量浏览器的UA判断，后续会增加。</p>
+<blockquote>
+<p>NOTE: 除非遇到不可抗力，否则尽量不要使用UA判断，转而使用特征判断（详见<code>detect</code>模块）</p>
+</blockquote>
+<h3 id="browserandroid"><code>browser/android</code></h3>
+<div class="code">
+<p>字符串类型，表示当前安卓的版本号</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> android = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/browser/android'</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'安卓版本：'</span> + (android || <span class="hljs-string">'非安卓浏览器'</span>));
+</code></pre>
+</div>
+<h3 id="browserie"><code>browser/ie</code></h3>
+<div class="code">
+<p>字符串类型，表示当前IE浏览器的版本号</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> android = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/browser/ie'</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'IE浏览器的版本号：'</span> + (ie || <span class="hljs-string">'非IE浏览器'</span>));
+</code></pre>
+</div>
+<h3 id="browserischrome"><code>browser/isChrome</code></h3>
+<div class="code">
+<p>布尔值类型，表示是否是chrome浏览器</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> isChrome = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/browser/isChrome'</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'是否是chrome浏览器：'</span> + (isChrome || <span class="hljs-string">'非chrome浏览器'</span>));
+</code></pre>
+</div>
+</div><div class="module"><h2 id="cookie">cookie 模块</h2>
+<p>此模块内的函数都是cookie操作相关的函数。</p>
+<h3 id="cookieset"><code>cookie/set</code></h3>
+<div class="code">
+<p>此函数用于设置指定名字的cookie值。</p>
+<blockquote>
+<p>NOTE: 此函数需要与<code>cookie/get</code>配套使用。因为为了区分设置在不同域名、不同路径下的同名cookie，<code>set</code>函数在设置cookie时加入了一些额外标志位。如果直接通过<code>document.cookie</code>获取的值就会包含这些额外标志位。</p>
+</blockquote>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> set = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/cookie/set'</span>);
+set(<span class="hljs-string">'key'</span>, <span class="hljs-string">'value'</span>);
+</code></pre>
+</div>
+<h4 id="">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>cookie的名字</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string|number</td>
+<td>cookie的值</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options</td>
+<td>Object=</td>
+<td>可选配置</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options.context</td>
+<td>Window=</td>
+<td>指定需要设置cookie的window对象</td>
+<td>默认为当前JS执行环境的window对象</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options.expires</td>
+<td>number=</td>
+<td>指定cookie多长时间后过期（微秒）</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options.domain</td>
+<td>string=</td>
+<td>指定设置cookie的域名</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options.path</td>
+<td>string=</td>
+<td>指定设置cookie的路径</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-2">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>设置成功与否</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cookieget"><code>cookie/get</code></h3>
+<div class="code">
+<p>此函数用于获取指定名字的cookie值。</p>
+<blockquote>
+<p>NOTE: 此函数需要与<code>cookie/set</code>配套使用。因为为了区分设置在不同域名、不同路径下的同名cookie，<code>set</code>函数在设置cookie时加入了一些额外标志位，<code>get</code>函数则会自动删掉这些标志位。如果用<code>get</code>函数去获取普通的cookie（非<code>set</code>函数设置）则容易出现bug。</p>
+</blockquote>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> set = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/cookie/set'</span>);
+<span class="hljs-keyword">var</span> get = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/cookie/get'</span>);
+set(<span class="hljs-string">'key'</span>, <span class="hljs-string">'value'</span>);
+<span class="hljs-built_in">console</span>.log(get(<span class="hljs-string">'key'</span>) === <span class="hljs-string">'value'</span>);        <span class="hljs-comment">// true</span>
+</code></pre>
+</div>
+<h4 id="-3">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>cookie的名字</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options</td>
+<td>Object=</td>
+<td>可选配置</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options.context</td>
+<td>Window=</td>
+<td>指定需要设置cookie的window对象</td>
+<td>默认为当前JS执行环境的window对象</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options.domain</td>
+<td>string=</td>
+<td>指定设置cookie的域名</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options.path</td>
+<td>string=</td>
+<td>指定设置cookie的路径</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-4">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>对应名字的cookie值</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cookieremove"><code>cookie/remove</code></h3>
+<div class="code">
+<p>此函数用于删除指定名字的。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> set = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/cookie/set'</span>);
+<span class="hljs-keyword">var</span> get = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/cookie/get'</span>);
+<span class="hljs-keyword">var</span> remove = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/cookie/remove'</span>);
+set(<span class="hljs-string">'key'</span>, <span class="hljs-string">'value'</span>);
+remove(<span class="hljs-string">'key'</span>);
+<span class="hljs-built_in">console</span>.log(get(<span class="hljs-string">'key'</span>) === <span class="hljs-string">'value'</span>);        <span class="hljs-comment">// false</span>
+</code></pre>
+</div>
+<h4 id="-5">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>cookie的名字</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options</td>
+<td>Object=</td>
+<td>可选配置</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options.context</td>
+<td>Window=</td>
+<td>指定需要设置cookie的window对象</td>
+<td>默认为当前JS执行环境的window对象</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options.domain</td>
+<td>string=</td>
+<td>指定设置cookie的域名</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options.path</td>
+<td>string=</td>
+<td>指定设置cookie的路径</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-6">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>删除成功与否</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cookiesetraw"><code>cookie/setRaw</code></h3>
+<div class="code">
+<p>此函数用于设置指定名字的cookie值，这里设置的是原始值。</p>
+<blockquote>
+<p>NOTE: 此函数与<code>cookie/set</code>不同点在于，<code>setRaw</code>设置的是原始值，不会修改或添加任何标志位。</p>
+</blockquote>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> setRaw = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/cookie/setRaw'</span>);
+setRaw(<span class="hljs-string">'key'</span>, <span class="hljs-string">'value'</span>);
+</code></pre>
+</div>
+<h4 id="-7">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>cookie的名字</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string|number</td>
+<td>cookie的值</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options</td>
+<td>Object=</td>
+<td>可选配置</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options.context</td>
+<td>Window=</td>
+<td>指定需要设置cookie的window对象</td>
+<td>默认为当前JS执行环境的window对象</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options.expires</td>
+<td>number=</td>
+<td>指定cookie多长时间后过期（微秒）</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options.domain</td>
+<td>string=</td>
+<td>指定设置cookie的域名</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options.path</td>
+<td>string=</td>
+<td>指定设置cookie的路径</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-8">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>设置成功与否</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cookiegetraw"><code>cookie/getRaw</code></h3>
+<div class="code">
+<p>此函数用于获取指定名字的cookie原始值。</p>
+<blockquote>
+<p>NOTE: 此函数与<code>cookie/get</code>不同点在于：<code>getRaw</code>获取的是原始值，不会判断cookie值来自哪个域名或路径。所以<code>getRaw</code>得到的返回值是数组类型的。</p>
+</blockquote>
+<pre><code class="language-javascript"><span class="hljs-comment">// 当前页面的路径是 /doc/</span>
+<span class="hljs-keyword">var</span> setRaw = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/cookie/setRaw'</span>);
+<span class="hljs-keyword">var</span> getRaw = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/cookie/getRaw'</span>);
+setRaw(<span class="hljs-string">'key'</span>, <span class="hljs-string">'value'</span>, {
+    <span class="hljs-attr">path</span>: <span class="hljs-string">'/doc/test2'</span>
+});
+setRaw(<span class="hljs-string">'key'</span>, <span class="hljs-string">'value2'</span>, {
+    <span class="hljs-attr">path</span>: <span class="hljs-string">'/doc/test1'</span>
+});
+<span class="hljs-built_in">console</span>.log(getRaw(<span class="hljs-string">'key'</span>)[<span class="hljs-number">0</span>] === <span class="hljs-string">'value'</span>);        <span class="hljs-comment">// true</span>
+<span class="hljs-built_in">console</span>.log(getRaw(<span class="hljs-string">'key'</span>)[<span class="hljs-number">1</span>] === <span class="hljs-string">'value2'</span>);       <span class="hljs-comment">// true</span>
+</code></pre>
+</div>
+<h4 id="-9">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>cookie的名字</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options</td>
+<td>Object=</td>
+<td>可选配置</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options.context</td>
+<td>Window=</td>
+<td>指定需要设置cookie的window对象</td>
+<td>默认为当前JS执行环境的window对象</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-10">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Array.<string></td>
+<td>对应名字的cookie值，可能是多个</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cookiesetrootraw"><code>cookie/setRootRaw</code></h3>
+<div class="code">
+<p>此函数用于设置指定名字的cookie值，并且自动设置到当前页面的根域名+根路径（<code>/</code>）下。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> setRootRaw = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/cookie/setRootRaw'</span>);
+setRootRaw(<span class="hljs-string">'key'</span>, <span class="hljs-string">'value'</span>);
+</code></pre>
+</div>
+<h4 id="-11">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>cookie的名字</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string|number</td>
+<td>cookie的值</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options</td>
+<td>Object=</td>
+<td>可选配置</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options.context</td>
+<td>Window=</td>
+<td>指定需要设置cookie的window对象</td>
+<td>默认为当前JS执行环境的window对象</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options.expires</td>
+<td>number=</td>
+<td>指定cookie多长时间后过期（微秒）</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options.extraBlackList</td>
+<td>Array.<string>=</td>
+<td>指定设置cookie的域名</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-12">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>如果设置成功则返回根域名，否则返回空字符串</td>
+</tr>
+</tbody>
+</table>
+</div><div class="module"><h2 id="detect">detect 模块</h2>
+<p>此模块是特征检测模块。</p>
+<h3 id="detectadblock"><code>detect/adBlock</code></h3>
+<div class="code">
+<p>此函数用于判断当前浏览器是否使用adBlock插件来屏蔽广告。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> adBlock = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/detect/adBlock'</span>);
+<span class="hljs-built_in">console</span>.log(adBlock());
+</code></pre>
+</div>
+<h4 id="">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>当前浏览器是否使用adBlock插件来屏蔽广告</td>
+</tr>
+</tbody>
+</table>
+<h3 id="detectcookie"><code>detect/cookie</code></h3>
+<div class="code">
+<p>此函数用于判断浏览器是否支持cookie。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> cookie = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/detect/cookie'</span>);
+<span class="hljs-built_in">console</span>.log(cookie());
+</code></pre>
+</div>
+<h4 id="-2">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>当前浏览器是否支持cookie</td>
+</tr>
+</tbody>
+</table>
+<h3 id="detectcors"><code>detect/cors</code></h3>
+<div class="code">
+<p>此函数用于判断浏览器是否支持跨域的请求。如果支持就会返回'xhr'或'xdr'，否则返回空字符串。</p>
+<ol>
+<li><code>xhr</code>表示浏览器支持<code>XMLHttpRequest</code>对象的跨域</li>
+<li><code>xdr</code>只会出现在IE9和IE8中，它们可以通过<code>XDomainRequest</code>对象来实现跨域请求</li>
+</ol>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> cors = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/detect/cors'</span>);
+<span class="hljs-built_in">console</span>.log(cors());
+</code></pre>
+</div>
+<h4 id="-3">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>当前浏览器是否支持跨域的请求，如果支持就会返回'xhr'或'xdr'，否则返回空字符串</td>
+</tr>
+</tbody>
+</table>
+<h3 id="detectflash"><code>detect/flash</code></h3>
+<div class="code">
+<p>此函数用于检测当前浏览器的flash插件的版本号。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> flash = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/detect/flash'</span>);
+<span class="hljs-built_in">console</span>.log(flash());       <span class="hljs-comment">// '25.0.0'</span>
+</code></pre>
+</div>
+<h4 id="-4">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>当前浏览器的flash插件的版本号</td>
+</tr>
+</tbody>
+</table>
+<h3 id="detectinframe"><code>detect/inFrame</code></h3>
+<div class="code">
+<p>此函数用于判断当前JS的运行环境是否是在<code>frame</code>或<code>iframe</code>标签中。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> inFrame = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/detect/inFrame'</span>);
+<span class="hljs-built_in">console</span>.log(inFrame());       <span class="hljs-comment">// '25.0.0'</span>
+</code></pre>
+</div>
+<h4 id="-5">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>当前JS的运行环境是否是在<code>frame</code>或<code>iframe</code>标签中</td>
+</tr>
+</tbody>
+</table>
+<h3 id="detectisprerender"><code>detect/isPrerender</code></h3>
+<div class="code">
+<p>此函数用于判断当前JS的运行环境是否是在预渲染过程中。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> isPrerender = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/detect/isPrerender'</span>);
+<span class="hljs-built_in">console</span>.log(isPrerender());                             <span class="hljs-comment">// true</span>
+<span class="hljs-built_in">console</span>.log(isPrerender(iframe.contentWindow));         <span class="hljs-comment">// false</span>
+</code></pre>
+</div>
+<h4 id="-6">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>context</td>
+<td>Window</td>
+<td>JS的运行环境</td>
+<td>当前的<code>window</code>对象</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-7">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>当前JS的运行环境是否是在预渲染过程中</td>
+</tr>
+</tbody>
+</table>
+<h3 id="detectispreviewload"><code>detect/isPreviewLoad</code></h3>
+<div class="code">
+<p>此函数用于判断当前JS的运行环境是否是在预览界面的渲染流程中。Safari浏览器有个Top site功能，它会展示最长访问的几个页面的截图。示例如下：</p>
+<p><img src="https://cloud.githubusercontent.com/assets/249872/18608514/e796690e-7d1d-11e6-9206-7fd3aa2c0ee8.png" alt=""></p>
+<p>Safari会去真正的加载解析这几个站点页面，然后截图并保存。而当用户点开这些站点时则会再次重新加载解析这些页面。<code>isPreviewLoad</code>函数则是用来判断当前的JS运行环境是否是在这个预览界面的截图流程中。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> isPreviewLoad = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/detect/isPreviewLoad'</span>);
+<span class="hljs-built_in">console</span>.log(isPrerender());                             <span class="hljs-comment">// true</span>
+<span class="hljs-built_in">console</span>.log(isPrerender(iframe.contentWindow));         <span class="hljs-comment">// false</span>
+</code></pre>
+</div>
+<h4 id="-8">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>context</td>
+<td>Window</td>
+<td>JS的运行环境</td>
+<td>当前的<code>window</code>对象</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-9">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>当前JS的运行环境是否是在预览界面的渲染流程中</td>
+</tr>
+</tbody>
+</table>
+<h3 id="detectlocalstorage"><code>detect/localStorage</code></h3>
+<div class="code">
+<p>此函数用于判断当前浏览器是否支持<code>localStorage</code></p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> localStorage = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/detect/localStorage'</span>);
+<span class="hljs-built_in">console</span>.log(localStorage());                             <span class="hljs-comment">// true</span>
+</code></pre>
+</div>
+<h4 id="-10">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>当前浏览器是否支持<code>localStorage</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="detectsessionstorage"><code>detect/sessionStorage</code></h3>
+<div class="code">
+<p>此函数用于判断当前浏览器是否支持<code>sessionStorage</code></p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> sessionStorage = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/detect/sessionStorage'</span>);
+<span class="hljs-built_in">console</span>.log(sessionStorage());                             <span class="hljs-comment">// true</span>
+</code></pre>
+</div>
+<h4 id="-11">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>当前浏览器是否支持<code>sessionStorage</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="detectpostmessage"><code>detect/postMessage</code></h3>
+<div class="code">
+<p>此函数用于判断当前浏览器是否支持<code>postMessage</code></p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> postMessage = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/detect/postMessage'</span>);
+<span class="hljs-built_in">console</span>.log(postMessage());                             <span class="hljs-comment">// true</span>
+</code></pre>
+</div>
+<h4 id="-12">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>当前浏览器是否支持<code>postMessage</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="detectsendbeacon"><code>detect/sendBeacon</code></h3>
+<div class="code">
+<p>此函数用于判断当前浏览器是否支持<code>sendBeacon</code></p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> sendBeacon = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/detect/sendBeacon'</span>);
+<span class="hljs-built_in">console</span>.log(sendBeacon());                             <span class="hljs-comment">// true</span>
+</code></pre>
+</div>
+<h4 id="-13">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>当前浏览器是否支持<code>sendBeacon</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="detecttouchevents"><code>detect/touchEvents</code></h3>
+<div class="code">
+<p>此函数用于判断当前浏览器是否支持<code>touch</code>事件</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> touchEvents = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/detect/touchEvents'</span>);
+<span class="hljs-built_in">console</span>.log(touchEvents());                             <span class="hljs-comment">// true</span>
+</code></pre>
+</div>
+<h4 id="-14">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>当前浏览器是否支持<code>touch</code>事件</td>
+</tr>
+</tbody>
+</table>
+</div><div class="module"><h2 id="dom">dom 模块</h2>
+<p>此模块内的函数都是DOM操作相关的函数。</p>
+<h3 id="domattachintodom"><code>dom/attachIntoDOM</code></h3>
+<div class="code">
+<p>此函数用于把指定的DOM节点插入到DOM树中，但你不能指定它插入的位置。</p>
+<blockquote>
+<p>NOTE: 此函数适用于将指定节点插入到DOM树中，但是不关心其位置的情况。它可以最大程度的确保DOM节点被安全的插入到DOM树中。这在第三方脚本的场景特别适用，因为开发者其实不确定DOM树的结构，甚至不能确定页面中是否有<code>header</code>和<code>body</code>标签。</p>
+<p>更多信息可以参考<a href="http://www.stevesouders.com/blog/2010/05/11/appendchild-vs-insertbefore/">这篇文章</a>。</p>
+</blockquote>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> attachIntoDOM = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/dom/attachIntoDOM'</span>);
+<span class="hljs-built_in">console</span>.log(attachIntoDOM(<span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>)));
+</code></pre>
+</div>
+<h4 id="">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>element</td>
+<td>Element</td>
+<td>被插入的DOM节点</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>context</td>
+<td>window</td>
+<td>指定插入的目标节点树的window对象</td>
+<td>当前JS运行环境的window对象</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h3 id="domgetpageheight"><code>dom/getPageHeight</code></h3>
+<div class="code">
+<p>此函数用于获取页面的高度。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> getPageHeight = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/dom/getPageHeight'</span>);
+<span class="hljs-built_in">console</span>.log(getPageHeight());
+</code></pre>
+</div>
+<h4 id="-2">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>context</td>
+<td>window</td>
+<td>指定目标页面的window对象，可以是某个iframe内的window对象</td>
+<td>当前JS运行环境的window对象</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-3">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>number</td>
+<td>页面高度</td>
+</tr>
+</tbody>
+</table>
+<h3 id="domgetpagewidth"><code>dom/getPageWidth</code></h3>
+<div class="code">
+<p>此函数用于获取页面的宽度。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> getPageWidth = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/dom/getPageWidth'</span>);
+<span class="hljs-built_in">console</span>.log(getPageWidth());
+</code></pre>
+</div>
+<h4 id="-4">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>context</td>
+<td>window</td>
+<td>指定目标页面的window对象，可以是某个iframe内的window对象</td>
+<td>当前JS运行环境的window对象</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-5">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>number</td>
+<td>页面宽度</td>
+</tr>
+</tbody>
+</table>
+<h3 id="domgetscrollleft"><code>dom/getScrollLeft</code></h3>
+<div class="code">
+<p>此函数用于获取页面可视区域左上角点的<code>left</code>值（相对于页面左上角点）。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> getScrollLeft = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/dom/getScrollLeft'</span>);
+<span class="hljs-built_in">console</span>.log(getScrollLeft());
+</code></pre>
+</div>
+<h4 id="-6">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>context</td>
+<td>window</td>
+<td>指定目标页面的window对象，可以是某个iframe内的window对象</td>
+<td>当前JS运行环境的window对象</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-7">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>number</td>
+<td>页面可视区域左上角点的<code>left</code>值</td>
+</tr>
+</tbody>
+</table>
+<h3 id="domgetscrolltop"><code>dom/getScrollTop</code></h3>
+<div class="code">
+<p>此函数用于获取页面可视区域左上角点的<code>top</code>值（相对于页面左上角点）。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> getScrollTop = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/dom/getScrollTop'</span>);
+<span class="hljs-built_in">console</span>.log(getScrollTop());
+</code></pre>
+</div>
+<h4 id="-8">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>context</td>
+<td>window</td>
+<td>指定目标页面的window对象，可以是某个iframe内的window对象</td>
+<td>当前JS运行环境的window对象</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-9">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>number</td>
+<td>页面可视区域左上角点的<code>top</code>值</td>
+</tr>
+</tbody>
+</table>
+<h3 id="domgetviewheight"><code>dom/getViewHeight</code></h3>
+<div class="code">
+<p>此函数用于获取页面可视区域的高度。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> getViewHeight = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/dom/getViewHeight'</span>);
+<span class="hljs-built_in">console</span>.log(getViewHeight());
+</code></pre>
+</div>
+<h4 id="-10">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>context</td>
+<td>window</td>
+<td>指定目标页面的window对象，可以是某个iframe内的window对象</td>
+<td>当前JS运行环境的window对象</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-11">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>number</td>
+<td>页面可视区域的高度</td>
+</tr>
+</tbody>
+</table>
+<h3 id="domgetviewwidth"><code>dom/getViewWidth</code></h3>
+<div class="code">
+<p>此函数用于获取页面可视区域的宽度。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> getViewWidth = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/dom/getViewWidth'</span>);
+<span class="hljs-built_in">console</span>.log(getViewWidth());
+</code></pre>
+</div>
+<h4 id="-12">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>context</td>
+<td>window</td>
+<td>指定目标页面的window对象，可以是某个iframe内的window对象</td>
+<td>当前JS运行环境的window对象</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-13">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>number</td>
+<td>页面可视区域的宽度</td>
+</tr>
+</tbody>
+</table>
+<h3 id="domgettext"><code>dom/getText</code></h3>
+<div class="code">
+<p>此函数用于获取指定节点内的文字，相当于<code>node.textContent</code>但做了兼容处理。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> getText = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/dom/getText'</span>);
+<span class="hljs-built_in">console</span>.log(getText(<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'text'</span>)));
+</code></pre>
+</div>
+<h4 id="-14">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>element</td>
+<td>Element</td>
+<td>指定节点</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-15">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>指定节点内的文字</td>
+</tr>
+</tbody>
+</table>
+</div><div class="module"><h2 id="event">event 模块</h2>
+<p>此模块内的函数都是DOM事件操作相关的函数。</p>
+<h3 id="eventdomready"><code>event/domReady</code></h3>
+<div class="code">
+<p>此函数用于绑定<code>document ready</code>事件。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> domReady = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/event/domReady'</span>);
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">readyCallback</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// TODO</span>
+}
+domReady(readyCallback, <span class="hljs-built_in">window</span>);
+domReady(readyCallback, <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'iframe'</span>).contentWindow);
+</code></pre>
+</div>
+<h4 id="">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Function</td>
+<td>callback</td>
+<td>回调函数</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>context</td>
+<td>window</td>
+<td>指定的window对象</td>
+<td>当前JS运行环境的window对象</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h3 id="eventon"><code>event/on</code></h3>
+<div class="code">
+<p>此函数用于绑定DOM事件。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> on = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/event/on'</span>);
+on(<span class="hljs-built_in">document</span>.body, <span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>{});
+on(<span class="hljs-built_in">window</span>, <span class="hljs-string">'load'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>{});
+</code></pre>
+</div>
+<h4 id="-2">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>element</td>
+<td>Element|Window</td>
+<td>绑定事件的节点或window对象</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>event</td>
+<td>string</td>
+<td>事件名</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>function(Event)</td>
+<td>callback</td>
+<td>回调函数</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-3">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Element|Window</td>
+<td>被绑定的节点或window对象</td>
+</tr>
+</tbody>
+</table>
+<h3 id="eventoff"><code>event/off</code></h3>
+<div class="code">
+<p>此函数用于取消DOM事件的绑定。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> off = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/event/off'</span>);
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params">e</span>) </span>{
+    <span class="hljs-comment">// TODO</span>
+}
+off(<span class="hljs-built_in">document</span>.body, <span class="hljs-string">'click'</span>, callback);
+off(<span class="hljs-built_in">window</span>, <span class="hljs-string">'load'</span>);
+</code></pre>
+</div>
+<h4 id="-4">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>element</td>
+<td>Element|Window</td>
+<td>需要被解绑的节点或window对象</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>event</td>
+<td>string</td>
+<td>事件名</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>function(Event)=</td>
+<td>callback</td>
+<td>回调函数</td>
+<td>取消所有绑定的回调函数</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-5">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Element|Window</td>
+<td>解绑的节点或window对象</td>
+</tr>
+</tbody>
+</table>
+<h3 id="eventpreventdefault"><code>event/preventDefault</code></h3>
+<div class="code">
+<p>此函数用于阻止浏览器事件的默认行为，它兼容旧版本的IE（&gt;=6）。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> on = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/event/on'</span>);
+<span class="hljs-keyword">var</span> preventDefault = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/event/preventDefault'</span>);
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params">e</span>) </span>{
+    preventDefault(e);
+}
+on(<span class="hljs-built_in">document</span>.body, <span class="hljs-string">'click'</span>, callback);
+</code></pre>
+</div>
+<h4 id="-6">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>event</td>
+<td>Event</td>
+<td>事件对象</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h3 id="eventstoppropagation"><code>event/stopPropagation</code></h3>
+<div class="code">
+<p>此函数用于阻止浏览器事件的继续传播，它兼容旧版本的IE（&gt;=6）。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> on = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/event/on'</span>);
+<span class="hljs-keyword">var</span> stopPropagation = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/event/stopPropagation'</span>);
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params">e</span>) </span>{
+    stopPropagation(e);
+}
+on(<span class="hljs-built_in">document</span>.body, <span class="hljs-string">'click'</span>, callback);
+</code></pre>
+</div>
+<h4 id="-7">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>event</td>
+<td>Event</td>
+<td>事件对象</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h3 id="eventgettarget"><code>event/getTarget</code></h3>
+<div class="code">
+<p>此函数用于获取事件对象的目标节点，即<code>target</code>值（此方法对旧版本的IE做了fallback处理）。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> on = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/event/on'</span>);
+<span class="hljs-keyword">var</span> getTarget = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/event/getTarget'</span>);
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params">e</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(getTarget(e));          <span class="hljs-comment">// body</span>
+}
+on(<span class="hljs-built_in">document</span>.body, <span class="hljs-string">'click'</span>, callback);
+</code></pre>
+</div>
+<h4 id="-8">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>event</td>
+<td>Event</td>
+<td>事件对象</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-9">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Element</td>
+<td>事件对象的目标节点，即<code>target</code>值</td>
+</tr>
+</tbody>
+</table>
+<h3 id="eventgetkeycode"><code>event/getKeyCode</code></h3>
+<div class="code">
+<p>此函数用于获取键盘事件的按键值。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> on = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/event/on'</span>);
+<span class="hljs-keyword">var</span> getKeyCode = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/event/getKeyCode'</span>);
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params">e</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(getKeyCode(e));          <span class="hljs-comment">// 20</span>
+}
+on(<span class="hljs-built_in">document</span>.body, <span class="hljs-string">'keyup'</span>, callback);
+</code></pre>
+</div>
+<h4 id="-10">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>event</td>
+<td>Event</td>
+<td>事件对象</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-11">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>number</td>
+<td>键盘事件的按键值</td>
+</tr>
+</tbody>
+</table>
+<h3 id="eventgetpagex"><code>event/getPageX</code></h3>
+<div class="code">
+<p>此函数用于获取鼠标事件的点击位置距离页面左上角的水平距离。如果只想获取距离可视区域左上角的距离，则直接用<code>event.clientX</code>。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> on = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/event/on'</span>);
+<span class="hljs-keyword">var</span> getPageX = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/event/getPageX'</span>);
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params">e</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(getPageX(e));          <span class="hljs-comment">// 20</span>
+    <span class="hljs-built_in">console</span>.log(e.clientX);            <span class="hljs-comment">// 20</span>
+}
+on(<span class="hljs-built_in">document</span>.body, <span class="hljs-string">'click'</span>, callback);
+</code></pre>
+</div>
+<h4 id="-12">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>event</td>
+<td>Event</td>
+<td>事件对象</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-13">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>number</td>
+<td>鼠标事件的点击位置距离页面左上角的水平距离</td>
+</tr>
+</tbody>
+</table>
+<h3 id="eventgetpagey"><code>event/getPageY</code></h3>
+<div class="code">
+<p>此函数用于获取鼠标事件的点击位置距离页面左上角的垂直距离。如果只想获取距离可视区域左上角的距离，则直接用<code>event.clientX</code>。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> on = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/event/on'</span>);
+<span class="hljs-keyword">var</span> getPageY = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/event/getPageY'</span>);
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params">e</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(getPageY(e));          <span class="hljs-comment">// 200</span>
+    <span class="hljs-built_in">console</span>.log(e.clientY);            <span class="hljs-comment">// 20</span>
+}
+on(<span class="hljs-built_in">document</span>.body, <span class="hljs-string">'click'</span>, callback);
+</code></pre>
+</div>
+<h4 id="-14">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>event</td>
+<td>Event</td>
+<td>事件对象</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-15">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>number</td>
+<td>鼠标事件的点击位置距离页面左上角的垂直距离</td>
+</tr>
+</tbody>
+</table>
+</div><div class="module"><h2 id="iframe">iframe模块</h2>
+<p>此模块内的函数都是<code>iframe</code>标签相关的函数。在第三方JS SDK的开发中<code>iframe</code>标签有非常强大的作用。它可以被用来展示不可信的第三方内容（同源策略）；可以被用来创建一个沙盒，避免SDK代码与页面原有代码冲突；甚至可以被用来加载JS文件（不会block load事件）。所以我们单独抽出了一个iframe模块来存放相关方法。</p>
+<h3 id="iframecreateanonymous"><code>iframe/createAnonymous</code></h3>
+<div class="code">
+<p>创建一个隐藏的<code>iframe</code>标签，它对普通用户来说是不可见的，并且宽高为0。</p>
+<blockquote>
+<p>NOTE: 新创建的<code>iframe</code>节点并没有被插入到页面中去，而且在IE下直接获取其<code>contentWindow</code>可能会出错。此方法一般需要和<code>dom/attachIntoDOM</code>和<code>iframe/ready</code>或者<code>iframe/write</code>函数一起使用。</p>
+</blockquote>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> createAnonymous = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/iframe/createAnonymous'</span>);
+<span class="hljs-keyword">var</span> write = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/iframe/write'</span>);
+<span class="hljs-keyword">var</span> attachIntoDOM = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/dom/attachIntoDOM'</span>);
+<span class="hljs-keyword">var</span> iframe = createAnonymous();
+attachIntoDOM(iframe);
+write(iframe, <span class="hljs-string">'&lt;div&gt;IMPORTANT MESSAGE!&lt;/div&gt;'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{});
+</code></pre>
+</div>
+<h4 id="">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Element</td>
+<td>新创建的<code>iframe</code>DOM节点</td>
+</tr>
+</tbody>
+</table>
+<h3 id="iframeready"><code>iframe/ready</code></h3>
+<div class="code">
+<p>此函数用于获取iframe（非跨域，必须已经在dom树中）节点内部的window和document对象。</p>
+<blockquote>
+<p>NOTE: 在IE浏览器下，如果当前页面修改过<code>document.domain</code>，那么即使是同域名的iframe节点，直接通过<code>contentWindow</code>获取其window对象，也会报跨域的错误。为了解决这个问题，需要同时再设置iframe节点内的<code>document.domain</code>为相同值。故这个方法并不是同步的，而是异步的。</p>
+</blockquote>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> createAnonymous = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/iframe/createAnonymous'</span>);
+<span class="hljs-keyword">var</span> ready = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/iframe/ready'</span>);
+<span class="hljs-keyword">var</span> attachIntoDOM = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/dom/attachIntoDOM'</span>);
+<span class="hljs-keyword">var</span> iframe = createAnonymous();
+attachIntoDOM(iframe);
+ready(iframe, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">win, doc</span>) </span>{
+    <span class="hljs-comment">// TODO</span>
+});
+</code></pre>
+</div>
+<h4 id="-2">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>element</td>
+<td>Element</td>
+<td>iframe节点，必须已经在dom树中</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>function(Window, Document, string)</td>
+<td>成功获取window和document对象后的回调函数。第三个参数为修改后的<code>document.origin</code>值，如果没有修改则为空字符串</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h3 id="iframewrite"><code>iframe/write</code></h3>
+<div class="code">
+<p>此函数用于修改iframe（非跨域，必须已经在dom树中）节点内部的HTML。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> createAnonymous = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/iframe/createAnonymous'</span>);
+<span class="hljs-keyword">var</span> write = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/iframe/write'</span>);
+<span class="hljs-keyword">var</span> attachIntoDOM = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/dom/attachIntoDOM'</span>);
+<span class="hljs-keyword">var</span> iframe = createAnonymous();
+attachIntoDOM(iframe);
+write(iframe, <span class="hljs-string">'&lt;div&gt;IMPORTANT MESSAGE!&lt;/div&gt;'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">win, doc</span>) </span>{
+    <span class="hljs-comment">// TODO</span>
+});
+</code></pre>
+</div>
+<h4 id="-3">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>element</td>
+<td>Element</td>
+<td>iframe节点，必须已经在dom树中</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>html</td>
+<td>string</td>
+<td>HTML字符串</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>function(Window, Document)=</td>
+<td>创建并加载完成之后的回调函数</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h3 id="iframecreatebyhtml"><code>iframe/createByHTML</code></h3>
+<div class="code">
+<p>此函数用于根据指定的HTML字符串创建一个隐藏的iframe（非跨域）节点，iframe节点会被自动插入到DOM树中（位置不确定）。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> createByHTML = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/iframe/createByHTML'</span>);
+<span class="hljs-keyword">var</span> iframe = createByHTML(<span class="hljs-string">'&lt;div&gt;IMPORTANT MESSAGE!&lt;/div&gt;'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">win, doc</span>) </span>{
+    <span class="hljs-comment">// TODO</span>
+});
+</code></pre>
+</div>
+<h4 id="-4">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>html</td>
+<td>string</td>
+<td>HTML字符串</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>function(Window, Document)=</td>
+<td>创建并加载完成之后的回调函数</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>context</td>
+<td>Window=</td>
+<td>在指定的window对象中创建iframe节点</td>
+<td>默认为当前JS的运行环境</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-5">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Element</td>
+<td>新创建的<code>iframe</code>DOM节点</td>
+</tr>
+</tbody>
+</table>
+<h3 id="iframecreatebysrc"><code>iframe/createBySrc</code></h3>
+<div class="code">
+<p>此函数用于根据指定的页面地址创建一个隐藏的iframe（可能会跨域）节点，iframe节点会被自动插入到DOM树中（位置不确定）。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> createBySrc = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/iframe/createBySrc'</span>);
+<span class="hljs-keyword">var</span> iframe = createBySrc(<span class="hljs-string">'http://example.com/iframe.html'</span>);
+</code></pre>
+</div>
+<h4 id="-6">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>html</td>
+<td>string</td>
+<td>HTML字符串</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>context</td>
+<td>Window=</td>
+<td>在指定的window对象中创建iframe节点</td>
+<td>默认为当前JS的运行环境</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-7">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Element</td>
+<td>新创建的<code>iframe</code>DOM节点</td>
+</tr>
+</tbody>
+</table>
+</div><div class="module"><h2 id="json">json 模块</h2>
+<p>此模块的函数都是JSON相关的操作，是对原生对象<code>window.JSON</code>的polyfill。</p>
+<h3 id="jsonparse"><code>json/parse</code></h3>
+<div class="code">
+<p>此函数用于把字符串解析成JSON对象。如果浏览器支持原生的<code>window.JSON</code>，则会优先使用原生的方法。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> parse = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/json/parse'</span>);
+<span class="hljs-built_in">console</span>.log(parse(<span class="hljs-string">'{"a": 1}'</span>).a);       <span class="hljs-comment">// 1</span>
+</code></pre>
+</div>
+<h4 id="">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input</td>
+<td>string</td>
+<td>输入的字符串</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-2">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Object|Array</td>
+<td>解析之后的JSON对象</td>
+</tr>
+</tbody>
+</table>
+</div><div class="module"><h2 id="lang">lang 模块</h2>
+<p>此模块的函数都是对Javascript语言及其基本函数库的补充性功能。</p>
+<h3 id="langcapitalize"><code>lang/capitalize</code></h3>
+<div class="code">
+<p>此函数用于修改字符串，使其除了第一个字母以外其他全部小写，第一个字母大写。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> capitalize = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/lang/capitalize'</span>);
+<span class="hljs-built_in">console</span>.log(capitalize(<span class="hljs-string">'aPPle'</span>));       <span class="hljs-comment">// 'Apple'</span>
+</code></pre>
+</div>
+<h4 id="">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input</td>
+<td>string</td>
+<td>输入字符串</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-2">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>首字母大写的字符串</td>
+</tr>
+</tbody>
+</table>
+<h3 id="langescapehtml"><code>lang/escapeHTML</code></h3>
+<div class="code">
+<p>此函数用于将输入字符串中的部分字符进行转义。一般用于对不可信的字符串做转移，然后在输出到DOM中，避免XSS问题。被转义的字符如下：</p>
+<pre><code>&amp; =&gt; '&amp;amp;
+&lt; =&gt; '&amp;lt;
+&gt; =&gt; '&amp;gt;
+&quot; =&gt; '&amp;quot;
+' =&gt; '&amp;#39;
+</code></pre>
+<p>使用例子如下：</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> escapeHTML = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/lang/escapeHTML'</span>);
+<span class="hljs-built_in">document</span>.body.innerHTML = escapeHTML(<span class="hljs-string">'user&lt;span&gt;name&lt;/span&gt;'</span>);
+</code></pre>
+</div>
+<h4 id="-3">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input</td>
+<td>string</td>
+<td>输入字符串</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-4">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>转义后的字符串</td>
+</tr>
+</tbody>
+</table>
+<h3 id="langescapereg"><code>lang/escapeReg</code></h3>
+<div class="code">
+<p>此函数用于将输入字符串中的部分字符进行转义。一般用于对不确定的字符串做转移，然后作为正则表达式的一部分使用。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> escapeReg = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/lang/escapeReg'</span>);
+<span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">'^\\s*'</span> + escapeReg(<span class="hljs-string">'[a]'</span>) + <span class="hljs-string">'=\\s*(.*?)\\s*$'</span>, <span class="hljs-string">'g'</span>)
+</code></pre>
+</div>
+<h4 id="-5">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input</td>
+<td>string</td>
+<td>输入字符串</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-6">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>转义后的字符串</td>
+</tr>
+</tbody>
+</table>
+<h3 id="langtype"><code>lang/type</code></h3>
+<div class="code">
+<p>此函数用于判断输入的参数是否是字符串</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> type = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/lang/type'</span>);
+<span class="hljs-built_in">console</span>.log(type(<span class="hljs-literal">true</span>));                    <span class="hljs-comment">// boolean</span>
+<span class="hljs-built_in">console</span>.log(type(<span class="hljs-number">1</span>));                       <span class="hljs-comment">// number</span>
+<span class="hljs-built_in">console</span>.log(type(<span class="hljs-string">'string'</span>));                <span class="hljs-comment">// string</span>
+<span class="hljs-built_in">console</span>.log(type(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{}));          <span class="hljs-comment">// function</span>
+<span class="hljs-built_in">console</span>.log(type([]));                      <span class="hljs-comment">// array</span>
+<span class="hljs-built_in">console</span>.log(type(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>()));              <span class="hljs-comment">// date</span>
+<span class="hljs-built_in">console</span>.log(type(<span class="hljs-regexp">/a/</span>));                     <span class="hljs-comment">// regexp</span>
+<span class="hljs-built_in">console</span>.log(type({}));                      <span class="hljs-comment">// object</span>
+<span class="hljs-built_in">console</span>.log(type(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>()));             <span class="hljs-comment">// error</span>
+</code></pre>
+</div>
+<h4 id="-7">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input</td>
+<td>*</td>
+<td>输入参数</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-8">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>输出参数是否是字符串</td>
+</tr>
+</tbody>
+</table>
+<h3 id="langisarray"><code>lang/isArray</code></h3>
+<div class="code">
+<p>此函数用于判断输入的参数是否是字符串</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> isArray = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/lang/isArray'</span>);
+<span class="hljs-built_in">console</span>.log(isArray([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]));            <span class="hljs-comment">// true</span>
+<span class="hljs-built_in">console</span>.log(isArray(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>()));          <span class="hljs-comment">// true</span>
+<span class="hljs-built_in">console</span>.log(isArray(<span class="hljs-string">'1, 2, 3'</span>));            <span class="hljs-comment">// false</span>
+</code></pre>
+</div>
+<h4 id="-9">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input</td>
+<td>*</td>
+<td>输入参数</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-10">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>输出参数是否是字符串</td>
+</tr>
+</tbody>
+</table>
+<h3 id="langisobject"><code>lang/isObject</code></h3>
+<div class="code">
+<p>此函数用于判断输入的参数是否是Object类型的对象。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> isObject = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/lang/isObject'</span>);
+<span class="hljs-built_in">console</span>.log(isObject({}));                      <span class="hljs-comment">// true</span>
+<span class="hljs-built_in">console</span>.log(isObject(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>()));            <span class="hljs-comment">// true</span>
+<span class="hljs-built_in">console</span>.log(isObject(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>()));             <span class="hljs-comment">// false</span>
+<span class="hljs-built_in">console</span>.log(isObject(<span class="hljs-built_in">window</span>));                  <span class="hljs-comment">// false</span>
+</code></pre>
+</div>
+<h4 id="-11">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input</td>
+<td>*</td>
+<td>输入参数</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-12">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>输出参数是否是Object类型的对象</td>
+</tr>
+</tbody>
+</table>
+<h3 id="langiswindow"><code>lang/isWindow</code></h3>
+<div class="code">
+<p>此函数用于判断输入的参数是否是<code>window</code>对象。</p>
+<blockquote>
+<p>NOTE: 注意此函数只能用于判断已经挂载到页面上的<code>window</code>对象。如果是新创建的<code>iframe</code>标签，但尚未append到页面中，则此<code>iframe</code>标签内的<code>window</code>对象是不能通过此判断的。</p>
+</blockquote>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> isWindow = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/lang/isWindow'</span>);
+<span class="hljs-built_in">console</span>.log(isWindow(<span class="hljs-built_in">window</span>));                  <span class="hljs-comment">// true</span>
+<span class="hljs-built_in">console</span>.log(isWindow({}));                      <span class="hljs-comment">// false</span>
+</code></pre>
+</div>
+<h4 id="-13">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input</td>
+<td>*</td>
+<td>输入参数</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-14">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>输出参数是否是<code>window</code>对象</td>
+</tr>
+</tbody>
+</table>
+<h3 id="langisnative"><code>lang/isNative</code></h3>
+<div class="code">
+<p>此函数用于判断输入的函数是否是浏览器原生的函数，而非由用户赋值的</p>
+<blockquote>
+<p>NOTE: 此函数只能用于判断函数，不能用于判断是否是浏览器原生的对象，即<code>host object</code>。例如：<code>window.JSON</code>对象。</p>
+</blockquote>
+<blockquote>
+<p>在IE&lt;9之前的浏览器中，很多作为函数其实都是<code>host object</code>。对这些函数调用<code>isNative</code>方法就会出现浏览器的兼容性问题。例如：<code>window.setTimeout</code>。</p>
+</blockquote>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> isNative = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/lang/isNative'</span>);
+<span class="hljs-built_in">console</span>.log(isNative(<span class="hljs-built_in">window</span>.encodeURIComponent));       <span class="hljs-comment">// true</span>
+<span class="hljs-built_in">window</span>.encodeURIComponent = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{};
+<span class="hljs-built_in">console</span>.log(isNative(<span class="hljs-built_in">window</span>.encodeURIComponent));       <span class="hljs-comment">// false</span>
+<span class="hljs-built_in">console</span>.log(isNative(<span class="hljs-built_in">JSON</span>));                            <span class="hljs-comment">// false</span>
+<span class="hljs-built_in">console</span>.log(isNative(<span class="hljs-built_in">JSON</span>.stringify));                  <span class="hljs-comment">// true</span>
+</code></pre>
+</div>
+<h4 id="-15">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input</td>
+<td>*</td>
+<td>输入参数</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-16">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>是否是浏览器原生的函数</td>
+</tr>
+</tbody>
+</table>
+<h3 id="langrandom"><code>lang/random</code></h3>
+<div class="code">
+<p>此函数用于生成一个随机数。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> random = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/lang/random'</span>);
+<span class="hljs-built_in">console</span>.log(random());
+</code></pre>
+</div>
+<h4 id="-17">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>number</td>
+<td>随机数</td>
+</tr>
+</tbody>
+</table>
+<h3 id="langrandomid"><code>lang/randomId</code></h3>
+<div class="code">
+<p>此函数用于生成一个随机的字符串。这个id是<code>random</code>函数随机生成的数字转换成36进制后的字符串。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> randomId = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/lang/randomId'</span>);
+<span class="hljs-built_in">console</span>.log(randomId());
+</code></pre>
+</div>
+<h4 id="-18">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>随机的字符串</td>
+</tr>
+</tbody>
+</table>
+<h3 id="languuid"><code>lang/uuid</code></h3>
+<div class="code">
+<p>此函数用于生成一个随机的ID。ID由四组随机字符串通过连接符串起来的</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> uuid = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/lang/uuid'</span>);
+<span class="hljs-built_in">console</span>.log(uuid());
+<span class="hljs-built_in">console</span>.log(uuid(<span class="hljs-string">'_'</span>));
+</code></pre>
+</div>
+<h4 id="-19">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>join</td>
+<td>string</td>
+<td>连接符</td>
+<td>'.'</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-20">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>随机的ID</td>
+</tr>
+</tbody>
+</table>
+<h3 id="langtoarray"><code>lang/toArray</code></h3>
+<div class="code">
+<p>此函数用于将近似数组的对象转换成真正的数组，一般用于处理函数参数、<code>NodeList</code>等等。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> toArray = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/lang/toArray'</span>);
+<span class="hljs-built_in">console</span>.log(toArray(<span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'p'</span>)));
+<span class="hljs-built_in">console</span>.log(toArray(<span class="hljs-built_in">arguments</span>));
+</code></pre>
+</div>
+<h4 id="-21">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input</td>
+<td>Object</td>
+<td>近似数组的对象</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>start</td>
+<td>number</td>
+<td>新数组由旧对象的那一项（包含）开始获取，从0开始，支持负数</td>
+<td>0</td>
+<td>-</td>
+<td>是</td>
+</tr>
+<tr>
+<td>end</td>
+<td>number</td>
+<td>新数组由旧对象的那一项（不包含）结束获取</td>
+<td>到结尾，即<code>input.length</code>值</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-22">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Array</td>
+<td>生成后的数组</td>
+</tr>
+</tbody>
+</table>
+</div><div class="module"><h2 id="main">main模块</h2>
+<p>此模块内的函数都是入口函数，使用Third.js一般从此模块开始。</p>
+<h3 id="run"><code>run</code></h3>
+<div class="code">
+<p>此函数是Third.js的入口级函数。它处理了如下三种因素：</p>
+<ol>
+<li>页面处于<code>previewLoad</code>的情况下不会执行回调函数</li>
+<li>页面处于<code>prerender</code>的情况下是暂时不会执行回调函数，等页面可见时再执行</li>
+<li>获取window对象的策略自动兼容了JS文件被<code>util/fif</code>函数加载时候的情况，使其可以拿到正确的window对象</li>
+</ol>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> run = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/run'</span>);
+run(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">win</span>) </span>{
+    <span class="hljs-comment">// TODO</span>
+});
+</code></pre>
+</div>
+<h4 id="">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>main</td>
+<td>function(Window)</td>
+<td>回调函数</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options</td>
+<td>Object=</td>
+<td>可选配置</td>
+<td>-</td>
+<td>-</td>
+<td>是</td>
+</tr>
+<tr>
+<td>options.context</td>
+<td>Window=</td>
+<td>指定<code>window</code>对象，而非使用默认的策略</td>
+<td>'z'</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+</div><div class="module"><h2 id="message">message 模块</h2>
+<p>此模块的函数主要用于跨域的父子<code>iframe</code>通讯。在支持<code>postMessage</code>方法的浏览器中使用<code>postMessage</code> API。在不支持的旧浏览器（IE6，7）中使用<code>window.navigator</code>共享的方法来实现类似功能。</p>
+<p>一般消息接收方由两个参数决定：对应<code>iframe</code>的<code>window</code>对象，以及标识此<code>window</code>对象的唯一标识名。<code>window</code>对象用于<code>postMessage</code>的调用，唯一标识名用于在IE6、7下在共享<code>window.navigator</code>对象上区分不同的<code>window</code>对象的回调函数。</p>
+<blockquote>
+<p>NOTE：注意为了实现降级支持旧浏览器，此模块的函数不支持标签之间的通讯</p>
+</blockquote>
+<h3 id="messagelisten"><code>message/listen</code></h3>
+<div class="code">
+<p>此函数用于监听消息。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> listen = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/message/listen'</span>);
+listen(<span class="hljs-string">'parent'</span>, <span class="hljs-built_in">window</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> data.origin);        <span class="hljs-comment">// string</span>
+    <span class="hljs-built_in">console</span>.log(data.origin);               <span class="hljs-comment">// source of message's origin</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> data.message);       <span class="hljs-comment">// string</span>
+    <span class="hljs-built_in">console</span>.log(data.message);              <span class="hljs-comment">// message body</span>
+});
+</code></pre>
+</div>
+<h4 id="">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>channel</td>
+<td>string</td>
+<td><code>window</code>对象的唯一标识名</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>context</td>
+<td>window|Element</td>
+<td><code>iframe</code>的dom对象，或者<code>window</code>对象</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>function(Object)</td>
+<td>收到消息之后的回调函数，参数值为<code>Object</code>类型。包含<code>message</code>和<code>origin</code>两个参数，它们都是字符串类型</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h3 id="messageunlisten"><code>message/unlisten</code></h3>
+<div class="code">
+<p>此函数用于取消消息监听。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> unlisten = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/message/unlisten'</span>);
+unlisten(<span class="hljs-string">'parent'</span>, <span class="hljs-built_in">window</span>);
+</code></pre>
+</div>
+<h4 id="-2">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>channel</td>
+<td>string</td>
+<td><code>window</code>对象的唯一标识名</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>context</td>
+<td>window|Element</td>
+<td><code>iframe</code>的dom对象，或者<code>window</code>对象</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>function(Object)=</td>
+<td>收到消息之后的回调函数，参数值为<code>Object</code>类型。包含<code>message</code>和<code>origin</code>两个参数，它们都是字符串类型</td>
+<td>-</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h3 id="messagesend"><code>message/send</code></h3>
+<div class="code">
+<p>此函数用于发送消息。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> send = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/message/send'</span>);
+send(<span class="hljs-string">'parent'</span>, <span class="hljs-built_in">window</span>.parent, <span class="hljs-string">'message'</span>);
+</code></pre>
+</div>
+<h4 id="-3">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>channel</td>
+<td>string</td>
+<td><code>window</code>对象的唯一标识名</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>context</td>
+<td>window|Element</td>
+<td><code>iframe</code>的dom对象，或者<code>window</code>对象</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>function(Object)=</td>
+<td>收到消息之后的回调函数，参数值为<code>Object</code>类型。包含<code>message</code>和<code>origin</code>两个参数，它们都是字符串类型</td>
+<td>-</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+</div><div class="module"><h2 id="request">request 模块</h2>
+<p>此模块的函数主要用于跨域的前后端数据请求。目前提供了三种请求协议：<code>ping</code>、<code>jsonp</code>和<code>submit</code>。他们的优缺点，及适用情况如下：</p>
+<table>
+<thead>
+<tr>
+<th>协议</th>
+<th>优点</th>
+<th>缺点</th>
+<th>适用情况</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ping</code></td>
+<td>很轻量，在页面关闭时也能发送数据</td>
+<td>不能接收返回数据，不太适合发送大数据量</td>
+<td>适合用于不关心返回数据的小数据量提交场景，例如鼠标点击监测数据的提交（类似Google Analytics）</td>
+</tr>
+<tr>
+<td><code>jsonp</code></td>
+<td>能接收返回数据</td>
+<td>不太适合发送大数据量</td>
+<td>适用于小数据量提交但有需要返回数据的场景，例如初始化配置的拉取</td>
+</tr>
+<tr>
+<td><code>submit</code></td>
+<td>能接收返回数据，支持发送大数据量，包括图片上传</td>
+<td>操作很重，相对来说消耗更多资源</td>
+<td>适用于大数据量提交的场景，例如文件上传的情况</td>
+</tr>
+</tbody>
+</table>
+<h3 id="requestping"><code>request/ping</code></h3>
+<div class="code">
+<p>向指定服务器地址发送ping请求，传输数据。如果你需要发送的数据量较轻，并且不在乎发送的返回结果，那么使用这个方法发送数据。ping请求会采用三种数据传输方法之一来发送数据：</p>
+<ol>
+<li>图片方式的请求（创建一个<code>Image</code>实例，指定接口地址为<code>Image</code>实例的<code>src</code>值）</li>
+<li>调用<code>navigator.sendBeacon</code>方法发送跨域请求</li>
+<li>调用<code>XMLHttpRequest</code>对象发送跨域请求</li>
+</ol>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> ping = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/request/ping'</span>);
+ping(<span class="hljs-string">'/api/ping'</span>, {
+    <span class="hljs-attr">id</span>: <span class="hljs-string">'0067ED'</span>,
+    <span class="hljs-attr">data</span>: [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]
+});
+</code></pre>
+</div>
+<h4 id="">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>请求地址</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>params</td>
+<td>Object|string|Array.<Object></td>
+<td>请求参数</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options</td>
+<td>Object</td>
+<td>可选配置</td>
+<td>-</td>
+<td>-</td>
+<td>是</td>
+</tr>
+<tr>
+<td>options.randomKey</td>
+<td>string</td>
+<td>当使用<code>Image</code>实例来发送数据时，为避免缓存会自动添加一个随机串字段。<code>randomKey</code>是随机串的字段名</td>
+<td>'z'</td>
+<td>-</td>
+<td>是</td>
+</tr>
+<tr>
+<td>options.transport</td>
+<td>string</td>
+<td>强制使用一种数据传输方法，默认会自动选择最优的一种</td>
+<td>'auto'</td>
+<td>'img', 'xhr', 'beacon'</td>
+<td>是</td>
+</tr>
+<tr>
+<td>options.callback</td>
+<td>function(Error=)</td>
+<td>发送的回调函数，如果失败会传一个<code>Error</code>实例作为输入</td>
+<td>-</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-2">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>是否已发送（为true时不能代表发送成功，只能说明已尝试发送</td>
+</tr>
+</tbody>
+</table>
+<h3 id="requestunloadping"><code>request/unloadPing</code></h3>
+<div class="code">
+<p><code>unloadPing</code>与<code>ping</code>方法的不同之处在于：<code>unloadPing</code>是处理在页面关闭时候发送请求的方法，它是<code>ping</code>方法的特殊变种。普通的ping请求在页面关闭时很容易发送失败，而它使用了特别的手段，确保请求可以更高概率的发送成功。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> unloadPing = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/request/unloadPing'</span>);
+unloadPing(<span class="hljs-string">'/api/ping'</span>, {
+    <span class="hljs-attr">id</span>: <span class="hljs-string">'0067ED'</span>,
+    <span class="hljs-attr">data</span>: [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]
+});
+</code></pre>
+</div>
+<h4 id="-3">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>请求地址</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>params</td>
+<td>Object|string|Array.<Object></td>
+<td>请求参数</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options</td>
+<td>Object</td>
+<td>可选配置</td>
+<td>-</td>
+<td>-</td>
+<td>是</td>
+</tr>
+<tr>
+<td>options.randomKey</td>
+<td>string</td>
+<td>当使用<code>Image</code>实例来发送数据时，为避免缓存会自动添加一个随机串字段。<code>randomKey</code>是随机串的字段名</td>
+<td>'z'</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h3 id="requestjsonp"><code>request/jsonp</code></h3>
+<div class="code">
+<p>向指定服务器地址发起JSONP请求。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> jsonp = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/request/jsonp'</span>);
+jsonp(<span class="hljs-string">'/api/ping'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">error, data</span>) </span>{
+    <span class="hljs-keyword">if</span> (error) {
+        <span class="hljs-comment">// something going wrong.</span>
+        <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-built_in">console</span>.log(data);
+});
+</code></pre>
+</div>
+<h4 id="-4">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>请求地址</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>function(Error=, *)</td>
+<td>回调函数。如果请求出错，第一个参数为<code>Error</code>实例，否则为<code>null</code>。第二个参数为JSONP回调的返回数据</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options</td>
+<td>Object</td>
+<td>可选配置</td>
+<td>-</td>
+<td>-</td>
+<td>是</td>
+</tr>
+<tr>
+<td>options.timeout</td>
+<td>number</td>
+<td>超时时间（以毫秒为单位）</td>
+<td>10000</td>
+<td>-</td>
+<td>是</td>
+</tr>
+<tr>
+<td>options.charset</td>
+<td>string</td>
+<td>script标签的编码格式</td>
+<td>'utf-8'</td>
+<td>-</td>
+<td>是</td>
+</tr>
+<tr>
+<td>options.query</td>
+<td>string</td>
+<td>指定回调函数名字的字段名</td>
+<td>'callback'</td>
+<td>-</td>
+<td>是</td>
+</tr>
+<tr>
+<td>options.parent</td>
+<td>Node</td>
+<td>script标签的父节点，如果你希望script标签插入到指定的节点下面，则可以使用这个参数</td>
+<td>自动选择当前页面下的位置</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h3 id="requestsubmit"><code>request/submit</code></h3>
+<div class="code">
+<p>向指定服务器地址发起跨域请求。如果你需要发送大量的数据，甚至发送图片，并且非常关心返回的数据，那么需要使用这个函数。submit请求一般会采用两种数据传输方法之一：</p>
+<ol>
+<li>调用<code>XMLHttpRequest</code>对象发送跨域请求</li>
+<li>使用<code>iframe</code>加<code>form</code>表单来发起跨域请求</li>
+</ol>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> submit = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/request/submit'</span>);
+<span class="hljs-keyword">var</span> data = {
+    <span class="hljs-attr">id</span>: <span class="hljs-string">'0067ED'</span>,
+    <span class="hljs-attr">data</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
+};
+submit(<span class="hljs-string">'/api/submit'</span>, data, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">error, data</span>) </span>{
+    <span class="hljs-keyword">if</span> (error) {
+        <span class="hljs-comment">// something going wrong.</span>
+        <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-built_in">console</span>.log(data);
+});
+</code></pre>
+</div>
+<h4 id="-5">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>请求地址</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>params</td>
+<td>Object|string|Array.<Object></td>
+<td>请求参数</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>function(Error=, *)</td>
+<td>回调函数。如果请求出错，第一个参数为<code>Error</code>实例，否则为<code>null</code>。第二个参数为JSONP回调的返回数据</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options</td>
+<td>Object</td>
+<td>可选配置</td>
+<td>-</td>
+<td>-</td>
+<td>是</td>
+</tr>
+<tr>
+<td>options.dataType</td>
+<td>string</td>
+<td>返回数据的类型</td>
+<td>'json'</td>
+<td>'json', 'text'</td>
+<td>是</td>
+</tr>
+<tr>
+<td>options.charset</td>
+<td>string</td>
+<td>采用<code>iframe</code>加<code>form</code>表单来发起跨域请求时，使用此参数来设置编码格式</td>
+<td>'utf-8'</td>
+<td>-</td>
+<td>是</td>
+</tr>
+<tr>
+<td>options.context</td>
+<td>window</td>
+<td>采用<code>iframe</code>加<code>form</code>表单来发起跨域请求时，使用此参数来设置<code>iframe</code>标签所在的位置</td>
+<td>JS所在的上下文环境中的window对象</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<div class="code">
+<h4 id="-6">文件上传及表单提交</h4>
+<p>当需要上传文件时，传递给<code>submit</code>函数的参数需要变成<code>form</code>表单的node节点。</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"submitForm"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span> <span class="hljs-attr">enctype</span>=<span class="hljs-string">"multipart/form-data"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"username"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"zmmbreeze"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">input</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1234567"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">input</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"head"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">input</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+<span class="hljs-keyword">var</span> submit = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/request/submit'</span>);
+<span class="hljs-keyword">var</span> submitForm = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'submitForm'</span>);
+<span class="hljs-keyword">var</span> data = {
+    <span class="hljs-attr">id</span>: <span class="hljs-string">'0067ED'</span>,
+    <span class="hljs-attr">data</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
+};
+submit(submitForm, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">error, data</span>) </span>{
+    <span class="hljs-keyword">if</span> (error) {
+        <span class="hljs-comment">// something going wrong.</span>
+        <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-built_in">console</span>.log(data);
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+</div>
+<h4 id="-7">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>form</td>
+<td>Element</td>
+<td>表单的DOM节点</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>function(Error=, *)</td>
+<td>回调函数。如果请求出错，第一个参数为<code>Error</code>实例，否则为<code>null</code>。第二个参数为JSONP回调的返回数据</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options</td>
+<td>Object</td>
+<td>可选配置</td>
+<td>-</td>
+<td>-</td>
+<td>是</td>
+</tr>
+<tr>
+<td>options.dataType</td>
+<td>string</td>
+<td>返回数据的类型</td>
+<td>'json'</td>
+<td>'json', 'text'</td>
+<td>是</td>
+</tr>
+<tr>
+<td>options.charset</td>
+<td>string</td>
+<td>采用<code>iframe</code>加<code>form</code>表单来发起跨域请求时，使用此参数来设置编码格式</td>
+<td>'utf-8'</td>
+<td>-</td>
+<td>是</td>
+</tr>
+<tr>
+<td>options.context</td>
+<td>window</td>
+<td>采用<code>iframe</code>加<code>form</code>表单来发起跨域请求时，使用此参数来设置<code>iframe</code>标签所在的位置</td>
+<td>JS所在的上下文环境中的window对象</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+</div><div class="module"><h2 id="sandbox">sandbox模块</h2>
+<p>此模块内的函数都是沙盒相关的工具类函数，它们基本都使用了iframe模块下的函数。</p>
+<h3 id="sandboxcreate"><code>sandbox/create</code></h3>
+<div class="code">
+<p>此函数用于创建沙盒，沙盒的本质是一个空的、隐藏的、非跨域iframe节点。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> create = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/sandbox/create'</span>);
+<span class="hljs-built_in">window</span>.encodeURIComponent = <span class="hljs-string">'test'</span>;
+create(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">win</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(win.encodeURIComponent !== <span class="hljs-string">'test'</span>); <span class="hljs-comment">// true</span>
+});
+</code></pre>
+</div>
+<h4 id="">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback</td>
+<td>function(Window)</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>context</td>
+<td>Window=</td>
+<td>在指定的window对象中创建iframe节点</td>
+<td>默认为当前JS的运行环境</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-2">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Element</td>
+<td>新创建的<code>iframe</code>DOM节点</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sandboxglobal"><code>sandbox/global</code></h3>
+<div class="code">
+<p>此函数用于创建一个全局的沙盒，并且可以通过它获取此沙盒。尚未创建全局沙盒之前，函数默认返回的是JS当前执行环境的window对象。当函数传入一个回调函数时，会开始创建次全局沙盒实例。由于创建沙盒是异步的，故必须通过回调函数异步的获取沙盒实例。沙盒创建完成之后执行<code>global()</code>便可以同步的获取沙盒实例。</p>
+<blockquote>
+<p>NOTE: Third工具库内基本所有涉及到native API调用的函数，都会使用<code>global()</code>函数来获取或调用native的API函数。这是为了避免浏览器的提供的native API被网页开发者重写。</p>
+</blockquote>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> global = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/sandbox/global'</span>);
+<span class="hljs-built_in">window</span>.encodeURIComponent = <span class="hljs-string">'test'</span>;
+<span class="hljs-comment">// 未创建时</span>
+<span class="hljs-built_in">console</span>.log(global() === <span class="hljs-built_in">window</span>);   <span class="hljs-comment">// true</span>
+<span class="hljs-comment">// 开始创建</span>
+global(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">win</span>) </span>{
+    <span class="hljs-comment">// 创建完成</span>
+    <span class="hljs-built_in">console</span>.log(global() === win);                  <span class="hljs-comment">// true</span>
+    <span class="hljs-built_in">console</span>.log(win.encodeURIComponent !== <span class="hljs-string">'test'</span>); <span class="hljs-comment">// true</span>
+});
+</code></pre>
+</div>
+<h4 id="-3">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback</td>
+<td>function(Window)=</td>
+<td>全局沙盒创建成功之后的回调函数，参数为沙盒实例</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>context</td>
+<td>Window=</td>
+<td>在指定的window对象中创建沙盒相关的iframe节点</td>
+<td>默认为当前JS的运行环境</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-4">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Window</td>
+<td>当输入不包含回调函数时，会返回全局的沙盒实例，或者context</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sandboxeval"><code>sandbox/eval</code></h3>
+<div class="code">
+<p>此函数用于创建沙盒，并在沙盒内部执行指定的JS。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> <span class="hljs-built_in">eval</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/sandbox/eval'</span>);
+<span class="hljs-built_in">eval</span>(<span class="hljs-string">'window.test = 1;'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">win</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(win.test);      <span class="hljs-comment">// 1</span>
+});
+</code></pre>
+</div>
+<h4 id="-5">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>js</td>
+<td>string|Function</td>
+<td>JS字符串，或者是JS函数（不会保留JS的执行上下文）</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>function(Window, Document)</td>
+<td>执行完JS之后的回调函数</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>string=</td>
+<td>指定JS文件的编码</td>
+<td>'utf-8'</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-6">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Element</td>
+<td>新创建的<code>iframe</code>DOM节点</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sandboxload"><code>sandbox/load</code></h3>
+<div class="code">
+<p>此函数用于创建沙盒，并在沙盒内部加载并执行指定的远程JS文件（单个或多个）。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> load = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/sandbox/load'</span>);
+load(<span class="hljs-string">'http://example.com/script.js'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">win, doc</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(win.test);      <span class="hljs-comment">// 1</span>
+});
+load(
+    [
+        <span class="hljs-string">'http://example.com/script2.js'</span>,
+        <span class="hljs-string">'http://example.com/script1.js'</span>
+    ],
+    <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">win, doc</span>) </span>{
+        <span class="hljs-built_in">console</span>.log(win.test);      <span class="hljs-comment">// 1</span>
+    },
+    <span class="hljs-string">'GBK'</span>
+);
+</code></pre>
+</div>
+<h4 id="-7">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>js</td>
+<td>string|Function</td>
+<td>JS字符串，或者是JS函数（不会保留JS的执行上下文）</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>function(Window, Document)</td>
+<td>执行完JS之后的回调函数</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>string=</td>
+<td>指定JS文件的编码</td>
+<td>'utf-8'</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-8">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Element</td>
+<td>新创建的<code>iframe</code>DOM节点</td>
+</tr>
+</tbody>
+</table>
+</div><div class="module"><h2 id="url">url 模块</h2>
+<p>此模块的函数主要用于URL的解析和生成。</p>
+<h3 id="urlparse"><code>url/parse</code></h3>
+<div class="code">
+<p>此函数用于解析URL地址。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> parse = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/url/parse'</span>);
+<span class="hljs-keyword">var</span> url = parse(<span class="hljs-string">'http://example.com:8000/books/12?type=music#hash'</span>);
+<span class="hljs-built_in">console</span>.log(url.protocol);      <span class="hljs-comment">// 'http:'</span>
+<span class="hljs-built_in">console</span>.log(url.origin);        <span class="hljs-comment">// 'http://example.com:8000'</span>
+<span class="hljs-built_in">console</span>.log(url.host);          <span class="hljs-comment">// 'example.com:8000'</span>
+<span class="hljs-built_in">console</span>.log(url.hostname);      <span class="hljs-comment">// 'example.com'</span>
+<span class="hljs-built_in">console</span>.log(url.port);          <span class="hljs-comment">// '8000'</span>
+<span class="hljs-built_in">console</span>.log(url.pathname);      <span class="hljs-comment">// '/books/12'</span>
+<span class="hljs-built_in">console</span>.log(url.search);        <span class="hljs-comment">// '?type=music'</span>
+<span class="hljs-built_in">console</span>.log(url.href);          <span class="hljs-comment">// 'http://example.com:8000/books/12?type=music#hash'</span>
+<span class="hljs-built_in">console</span>.log(url.hash);          <span class="hljs-comment">// '#hash'</span>
+
+<span class="hljs-keyword">var</span> url2 = parse(<span class="hljs-string">'http://example.com/'</span>);
+<span class="hljs-built_in">console</span>.log(url2.origin);       <span class="hljs-comment">// 'http://example.com'</span>
+<span class="hljs-built_in">console</span>.log(url2.host);         <span class="hljs-comment">// example.com</span>
+<span class="hljs-built_in">console</span>.log(url2.hostname);     <span class="hljs-comment">// example.com</span>
+</code></pre>
+</div>
+<h4 id="">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>URL地址，可以是相对地址（相对于<code>relativedUrl</code>）也可以是绝对地址。</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>relativedUrl</td>
+<td>string=</td>
+<td>URL的相对地址</td>
+<td>默认是当前浏览器地址</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-2">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Object</td>
+<td>parsedUrl</td>
+<td>解析之后的URL地址</td>
+</tr>
+<tr>
+<td>string</td>
+<td>parsedUrl.href</td>
+<td>全部地址</td>
+</tr>
+<tr>
+<td>string</td>
+<td>parsedUrl.hash</td>
+<td>hash参数</td>
+</tr>
+<tr>
+<td>string</td>
+<td>parsedUrl.protocol</td>
+<td>协议</td>
+</tr>
+<tr>
+<td>string</td>
+<td>parsedUrl.search</td>
+<td>参数</td>
+</tr>
+<tr>
+<td>string</td>
+<td>parsedUrl.pathname</td>
+<td>路径</td>
+</tr>
+<tr>
+<td>string</td>
+<td>parsedUrl.port</td>
+<td>端口号</td>
+</tr>
+<tr>
+<td>string</td>
+<td>parsedUrl.hostname</td>
+<td>域名</td>
+</tr>
+<tr>
+<td>string</td>
+<td>parsedUrl.host</td>
+<td><code>域名 + 端口</code>，如果端口号是对应协议的默认端口号则没有</td>
+</tr>
+<tr>
+<td>string</td>
+<td>parsedUrl.origin</td>
+<td><code>协议 + '//' + 域名 + 端口</code>，如果端口号是对应协议的默认端口号则没有</td>
+</tr>
+</tbody>
+</table>
+<h3 id="urlgetquery"><code>url/getQuery</code></h3>
+<div class="code">
+<p>此函数用于获取指定URL上指定参数名的搜索参数值。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> getQuery = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/url/getQuery'</span>);
+<span class="hljs-keyword">var</span> types = getQuery(<span class="hljs-string">'?type=1&amp;type=2#type=3'</span>, <span class="hljs-string">'type'</span>);
+<span class="hljs-built_in">console</span>.log(types);             <span class="hljs-comment">// ['1', '2']</span>
+
+<span class="hljs-keyword">var</span> team = getQuery(<span class="hljs-string">'?team=%230067ED#type=3'</span>, <span class="hljs-string">'team'</span>);
+<span class="hljs-built_in">console</span>.log(team);              <span class="hljs-comment">// '#0067ED'</span>
+
+<span class="hljs-keyword">var</span> noname = getQuery(<span class="hljs-string">'?team=%230067ED#type=3'</span>, <span class="hljs-string">'noname'</span>);
+<span class="hljs-built_in">console</span>.log(noname);            <span class="hljs-comment">// ''</span>
+</code></pre>
+</div>
+<h4 id="-3">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>包含搜索参数的URL地址</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>参数名</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-4">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string|Arrayy.<string></td>
+<td>搜索参数值，如果有多个则以数组形式返回，如果不存在则返回空字符串</td>
+</tr>
+</tbody>
+</table>
+<h3 id="urlgetquerys"><code>url/getQuerys</code></h3>
+<div class="code">
+<p>此函数用于获取指定URL上的所有搜索参数值。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> getQuerys = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/url/getQuerys'</span>);
+<span class="hljs-keyword">var</span> querys = getQuerys(<span class="hljs-string">'?team=%230067ED&amp;type=1&amp;type=2#type=3'</span>);
+<span class="hljs-built_in">console</span>.log(querys.team);             <span class="hljs-comment">// '#0067ED'</span>
+<span class="hljs-built_in">console</span>.log(querys.type);             <span class="hljs-comment">// ['1', '2']</span>
+</code></pre>
+</div>
+<h4 id="-5">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>包含搜索参数的URL地址</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-6">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Object.&lt;string, string</td>
+<td>Array.<string>&gt;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="urlgetfirstquery"><code>url/getFirstQuery</code></h3>
+<div class="code">
+<p>此函数用于获取指定URL上的所有搜索参数值。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> getFirstQuery = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/url/getFirstQuery'</span>);
+<span class="hljs-keyword">var</span> firstType = getFirstQuery(<span class="hljs-string">'?team=%230067ED&amp;type=1&amp;type=2#type=3'</span>, <span class="hljs-string">'type'</span>);
+<span class="hljs-built_in">console</span>.log(firstType);             <span class="hljs-comment">// '1'</span>
+</code></pre>
+</div>
+<h4 id="-7">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>包含搜索参数的URL地址</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>参数名</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-8">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>第一个找到的指定参数名的搜索参数值，如果不存在则返回空字符串</td>
+</tr>
+</tbody>
+</table>
+<h3 id="urlhasquery"><code>url/hasQuery</code></h3>
+<div class="code">
+<p>此函数用于判断指定URL上是否包含了指定参数名的参数。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> hasQuery = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/url/hasQuery'</span>);
+<span class="hljs-built_in">console</span>.log(hasQuery(<span class="hljs-string">'?team=%230067ED&amp;type=1&amp;type=2'</span>, <span class="hljs-string">'type'</span>));      <span class="hljs-comment">// true</span>
+<span class="hljs-built_in">console</span>.log(hasQuery(<span class="hljs-string">'?team=&amp;type=1&amp;type=2#type=3'</span>, <span class="hljs-string">'team'</span>));        <span class="hljs-comment">// true</span>
+<span class="hljs-built_in">console</span>.log(hasQuery(<span class="hljs-string">'?type=1&amp;type=2#type=3'</span>, <span class="hljs-string">'team'</span>));              <span class="hljs-comment">// false</span>
+</code></pre>
+</div>
+<h4 id="-9">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>包含搜索参数的URL地址</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>参数名</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-10">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>第一个找到的指定参数名的搜索参数值</td>
+</tr>
+</tbody>
+</table>
+<h3 id="urlsetquery"><code>url/setQuery</code></h3>
+<div class="code">
+<p>此函数用于更新指定URL上的指定参数名的参数值。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> setQuery = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/url/setQuery'</span>);
+<span class="hljs-keyword">var</span> updatedUrl = setQuery(<span class="hljs-string">'?team=%230067ED&amp;type=1&amp;type=2'</span>, <span class="hljs-string">'type'</span>, <span class="hljs-number">3</span>);
+<span class="hljs-built_in">console</span>.log(updatedUrl);        <span class="hljs-comment">// '?team=%230067ED&amp;type=3'</span>
+updatedUrl = setQuery(<span class="hljs-string">'?team=%230067ED&amp;type=1&amp;type=2'</span>, <span class="hljs-string">'type'</span>, [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>]);
+<span class="hljs-built_in">console</span>.log(updatedUrl);        <span class="hljs-comment">// '?team=%230067ED&amp;type=3&amp;type=4'</span>
+updatedUrl = setQuery(<span class="hljs-string">'?team=%230067ED&amp;type=1&amp;type=2'</span>, <span class="hljs-string">'type'</span>, <span class="hljs-string">''</span>);
+<span class="hljs-built_in">console</span>.log(updatedUrl);        <span class="hljs-comment">// '?team=%230067ED&amp;type='</span>
+</code></pre>
+</div>
+<h4 id="-11">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>URL地址</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>参数名</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string|Arrayy.<string></td>
+<td>搜索参数值，如果有多个则以数组提供</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-12">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>更新后的URL地址</td>
+</tr>
+</tbody>
+</table>
+<h3 id="urldeletequery"><code>url/deleteQuery</code></h3>
+<div class="code">
+<p>此函数用于删除指定URL上的指定参数名的参数。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> deleteQuery = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/url/deleteQuery'</span>);
+<span class="hljs-keyword">var</span> updatedUrl = deleteQuery(<span class="hljs-string">'?team=%230067ED&amp;type=1&amp;type=2'</span>, <span class="hljs-string">'type'</span>);
+<span class="hljs-built_in">console</span>.log(updatedUrl);        <span class="hljs-comment">// '?team=%230067ED&amp;type=3'</span>
+updatedUrl = deleteQuery(<span class="hljs-string">'?type=1&amp;type=2'</span>, <span class="hljs-string">'type'</span>);
+<span class="hljs-built_in">console</span>.log(updatedUrl);        <span class="hljs-comment">// ''</span>
+</code></pre>
+</div>
+<h4 id="-13">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>URL地址</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>参数名</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-14">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>更新后的URL地址</td>
+</tr>
+</tbody>
+</table>
+<h3 id="urltoquery"><code>url/toQuery</code></h3>
+<div class="code">
+<p>此函数用于将<code>Object</code>或<code>Array</code>形式参数对象序列化成字符串形式的参数，一般在数据传输时调用。</p>
+<blockquote>
+<p>NOTE：如果<code>toQuery</code>方法的输入参数是<code>Array</code>形式，则其值必须是<code>{key:'参数名', value:'参数值'}</code>形式的对象。使用<code>Array</code>的优势在于可以控制序列化后的参数顺序</p>
+</blockquote>
+<blockquote>
+<p>NOTE：如果某个参数的值是数组，则会在生成的字符串形式中给参数名加上<code>[]</code>后缀。此行为与<code>jQuery.param</code>方法的行为保持一致.</p>
+</blockquote>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> toQuery = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/url/toQuery'</span>);
+<span class="hljs-built_in">console</span>.log(toQuery({
+    <span class="hljs-attr">team</span>: <span class="hljs-string">'#0067ED'</span>,
+    <span class="hljs-attr">members</span>: [<span class="hljs-string">'michael'</span>, <span class="hljs-string">'john'</span>, <span class="hljs-string">'jerry'</span>]
+}));
+<span class="hljs-comment">// team=%230067ED&amp;members%5B%5D=michael&amp;members%5B%5D=john&amp;members%5B%5D=jerry</span>
+<span class="hljs-built_in">console</span>.log(toQuery([
+    {
+        <span class="hljs-attr">key</span>: <span class="hljs-string">'members'</span>,
+        <span class="hljs-attr">value</span>: [<span class="hljs-string">'michael'</span>, <span class="hljs-string">'john'</span>, <span class="hljs-string">'jerry'</span>]
+    },
+    {
+        <span class="hljs-attr">key</span>: <span class="hljs-string">'team'</span>,
+        <span class="hljs-attr">value</span>: <span class="hljs-string">'#0067ED'</span>
+    }
+]));
+<span class="hljs-comment">// members%5B%5D=michael&amp;members%5B%5D=john&amp;members%5B%5D=jerry&amp;team=%230067ED</span>
+</code></pre>
+</div>
+<h4 id="-15">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>params</td>
+<td>Object|Array.<Object></td>
+<td><code>Object</code>或<code>Array</code>形式的参数对象</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-16">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>序列化之后的参数字符串</td>
+</tr>
+</tbody>
+</table>
+</div><div class="module"><h2 id="util">util模块</h2>
+<p>此模块内的函数都是工具类型的函数。</p>
+<h3 id="utilfif"><code>util/fif</code></h3>
+<div class="code">
+<p>此函数实现了<strong>Friendly iframe</strong>（简称fif）方式的加载JS文件的方法。Friendly iframe是<a href="https://www.iab.com/">IAB</a>（The Interactive Advertising Bureau）推荐的加载广告的方法。它一般有如下的特点：</p>
+<ol>
+<li>创建一个iframe，它的和父页面是同域的，不会收到同源策略影响</li>
+<li>iframe内部有一个或多个script节点，它们会加载远程的JS文件</li>
+<li>iframe内部的JS环境中有一个全局变量<code>inDapIF</code>，它的值为<code>true</code></li>
+<li>被加载的远程JS文件需要从全局变量<code>inDapIF</code>此来判断当前加载它的方法是否是Friendly iframe（它们可能还需要兼容普通加载的方式）</li>
+</ol>
+<blockquote>
+<p>NOTE: 使用Friendly iframe方式加载JS文件有一个巨大的优势，就是不会block页面的load事件。</p>
+</blockquote>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> fif = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/util/fif'</span>);
+fif(<span class="hljs-string">'script.js'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">context, doc</span>) </span>{
+    <span class="hljs-comment">// TODO script loaded</span>
+});
+fif([<span class="hljs-string">'script1.js'</span>, <span class="hljs-string">'script2.js'</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">context, doc</span>) </span>{
+    <span class="hljs-comment">// TODO script loaded</span>
+});
+</code></pre>
+</div>
+<h4 id="">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td>string|Array.<string></td>
+<td>单个或多个JS文件地址</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>function(Window, Document)</td>
+<td>回调函数，输入参数是iframe内的window和document对象</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options</td>
+<td>Object=</td>
+<td>可选配置</td>
+<td>-</td>
+<td>-</td>
+<td>是</td>
+</tr>
+<tr>
+<td>options.fifMark</td>
+<td>string=</td>
+<td>替换<code>inDapIF</code>的变量名</td>
+<td>'inDapIF'</td>
+<td>-</td>
+<td>是</td>
+</tr>
+<tr>
+<td>options.context</td>
+<td>Window=</td>
+<td>在指定的window对象中创建friendly iframe节点</td>
+<td>默认为当前JS的运行环境</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-2">返回值</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Element</td>
+<td>新创建的<code>iframe</code>DOM节点</td>
+</tr>
+</tbody>
+</table>
+<h3 id="utilmqp"><code>util/mqp</code></h3>
+<div class="code">
+<p>此函数实现了<a href="http://www.lognormal.com/blog/2012/12/12/the-script-loader-pattern/"><strong>The Method Queue Pattern</strong></a>。</p>
+<blockquote>
+<p>NOTE: 使用此范式的一个优点是即使SDK尚未被加载，也可以先调用SDK之后会提供的接口。作为命令的形式存到队列里面，等SDK真正加载完成之后再去执行。</p>
+</blockquote>
+<p>假设我们按照如下形式提供SDK的接口：</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> mqp = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/util/mqp'</span>);
+(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">var</span> ExportApi = {
+        ready(callback) {
+            <span class="hljs-comment">// TODO 在loaded之后执行 callback</span>
+        },
+        send(message) {
+            <span class="hljs-built_in">console</span>.log(message);
+        }
+    };
+    mqp(<span class="hljs-string">'__mq'</span>, ExportApi);
+})();
+</code></pre>
+<p>在外部调用时就可以采用如下的代码形式，可以看到push进数组的命令自身也是数组类型。它的第一项对应了<code>ExportApi</code>（即代理API）的函数名。</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+    __mq = __mq || [];
+    __mq.push([<span class="hljs-string">'send'</span>, <span class="hljs-string">'message'</span>]);
+    __mq.push(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// TODO loaded</span>
+    });
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"exportApi.js"</span> <span class="hljs-attr">async</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+</div>
+<h4 id="-3">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>targetName</td>
+<td>string</td>
+<td>接口名</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>proxy</td>
+<td>Object</td>
+<td>被代理的API接口</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>options</td>
+<td>Object=</td>
+<td>可选配置</td>
+<td>-</td>
+<td>-</td>
+<td>是</td>
+</tr>
+<tr>
+<td>options.ready</td>
+<td>string=</td>
+<td>替换<code>ready</code>的属性名</td>
+<td>'ready'</td>
+<td>-</td>
+<td>是</td>
+</tr>
+<tr>
+<td>options.context</td>
+<td>Window=</td>
+<td>在指定的window对象中注入接口</td>
+<td>-</td>
+<td>-</td>
+<td>是</td>
+</tr>
+<tr>
+<td>options.callback</td>
+<td>function(Object, string, Object)</td>
+<td>调用代理API的处理函数</td>
+<td>以数组第一项作为方法名去查找代理API对象并调用执行</td>
+<td>-</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<div class="code">
+<p>如果通过函数名来调用代理API的方式不能满足你的需求，则可以自定义<code>options.callback</code>这个回调函数。样例如下：</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> mqp = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/util/mqp'</span>);
+(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">var</span> ExportApi = {
+        ready(callback) {},
+        send(data) {
+            <span class="hljs-built_in">console</span>.log(message);
+        },
+        event(data) {
+            <span class="hljs-built_in">console</span>.log(message);
+        }
+    };
+    <span class="hljs-comment">// 白名单</span>
+    <span class="hljs-keyword">var</span> WHITE_LIST = <span class="hljs-string">'send,event'</span>.split(<span class="hljs-string">','</span>);
+    mqp(<span class="hljs-string">'__mq'</span>, ExportApi, {
+        <span class="hljs-attr">callback</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">proxy, method, params</span>) </span>{
+            <span class="hljs-keyword">if</span> (!~WHITE_LIST.indexOf(method)) {
+                <span class="hljs-keyword">return</span>;
+            }
+            proxy[method].apply(proxy, params);
+        }
+    });
+})();
+</code></pre>
+<p>可以看到我们通过自定义<code>options.callback</code>函数，实现了一个白名单列表，只有白名单内的方法名才能被执行。</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+    __mq = __mq || [];
+    __mq.push([<span class="hljs-string">'send'</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>]);
+    __mq.push([<span class="hljs-string">'event'</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>]);     <span class="hljs-comment">// 此行不会起作用，`ExportApi.event`方法不会被调用</span>
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"exportApi.js"</span> <span class="hljs-attr">async</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+</div>
+<h3 id="utilinherits"><code>util/inherits</code></h3>
+<div class="code">
+<p>此函数实现了简易的类继承功能。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> inherits = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/util/inherits'</span>);
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Father</span>(<span class="hljs-params">firstName</span>) </span>{
+    <span class="hljs-keyword">this</span>.firstName = firstName;
+    <span class="hljs-keyword">this</span>.lastName = <span class="hljs-string">'zhou'</span>;
+}
+Father.prototype.myName = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.firstName + <span class="hljs-keyword">this</span>.lastName;
+};
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Son</span>(<span class="hljs-params">firstName</span>) </span>{
+    Son.superClass.constructor.call(<span class="hljs-keyword">this</span>, firstName);
+}
+
+inherits(Son, Father);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">new</span> Son(<span class="hljs-string">'mm'</span>).myName());   <span class="hljs-comment">// mmzhou</span>
+</code></pre>
+</div>
+<h4 id="-4">函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>subClass</td>
+<td>Function</td>
+<td>子类的构造函数</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>superClass</td>
+<td>Function</td>
+<td>富类的构造函数</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h3 id="utillog"><code>util/log</code></h3>
+<div class="code">
+<p>此函数对<code>console.log</code>做了简单的封装，确保在浏览器不支持<code>console.log</code>API的时候不会报错。同时也支持<code>console.group</code>和<code>console.groupEnd</code>方法。</p>
+<blockquote>
+<p>NOTE: 此函数不应该在实际的生产环境中使用，建议仅用于一些特殊情况下的debug。</p>
+</blockquote>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> log = <span class="hljs-built_in">require</span>(<span class="hljs-string">'third/util/log'</span>);
+log.group(<span class="hljs-string">'THIRD'</span>);
+log(<span class="hljs-string">'message'</span>);
+log.groupEnd();
+</code></pre>
+</div>
+<h4 id="log"><code>log</code>函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>需要打印的字符串</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h4 id="loggroup"><code>log.group</code>函数的参数</h4>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>可选值</th>
+<th>是否可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>groupName</td>
+<td>string</td>
+<td>日志组的名字</td>
+<td>-</td>
+<td>-</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+    </body>
+    </html>

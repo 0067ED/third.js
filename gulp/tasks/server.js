@@ -15,6 +15,7 @@ const startConnect = () => {
     // 模拟假数据
     app.use(config.url.cgi, cgiFactory());
     app.use(config.url.app, serveStatic(config.path.dest));
+    app.use(config.url.app, serveStatic(config.path.doc));
     app.use('/ping', third('ping', (data, req, res) => {
         console.log(`[PING]${req.url}`);
         console.log('|   ' + JSON.stringify(data));

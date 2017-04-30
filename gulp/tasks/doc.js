@@ -31,8 +31,8 @@ const HEADER_HTML = `<!DOCTYPE html>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Third.js document</title>
-        <link rel="stylesheet" href="/doc/static/tomorrow.css">
-        <link rel="stylesheet" href="/doc/static/doc.css">
+        <link rel="stylesheet" href="../static/tomorrow.css">
+        <link rel="stylesheet" href="../static/doc.css">
     </head>
     <body class="page-{pageClass}">
     <div class="main">
@@ -115,7 +115,7 @@ function transApiDoc(pathname) {
             }));
             callback();
         }))
-        .pipe(gulp.dest(`${config.path.dest}/doc`));
+        .pipe(gulp.dest(config.path.doc));
 }
 
 
@@ -148,7 +148,7 @@ function transDoc(pathname) {
             }
             callback();
         }))
-        .pipe(gulp.dest(`${config.path.dest}/doc/${pathname}`));
+        .pipe(gulp.dest(`${config.path.doc}/${pathname}`));
 }
 
 
@@ -157,11 +157,4 @@ gulp.task('doc', function () {
         transApiDoc(`${language}/api`);
         transDoc(language);
     });
-    const staticFiles = [
-        config.path.doc + '/**/*',
-        '!' + config.path.doc + '/**/*.md'
-    ];
-    gulp.src(staticFiles)
-        .pipe(copy())
-        .pipe(gulp.dest(`${config.path.dest}/doc`));
 });
