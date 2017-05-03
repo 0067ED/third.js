@@ -6,6 +6,7 @@ body {
     margin-bottom: 100px;
     font: 16px/2 arial,sans-serif;
     color: #495057;
+    background-color: #f8f9fa;
 }
 code {
     font-family: Consolas, Monaco, monospace;
@@ -34,9 +35,25 @@ img {
     top: 0;
     left: 0;
     margin: 0;
-    padding: 0;
-    width: 300px;
+    padding: 10px;
+    width: 160px;
+    height: 100%;
     overflow: auto;
+    box-sizing: border-box;
+    color: #FFF;
+    text-align: right;
+    background-color: #495057;
+}
+.outline h2 {
+    font-size: 32px;
+}
+.outline a {
+    color: #FFF;
+    text-decoration: none;
+    border: none;
+}
+.outline a:hover {
+    border-bottom: 1px solid #FFF;
 }
 .outline ul {
     list-style: none;
@@ -47,21 +64,18 @@ img {
     margin: 0;
     padding: 0;
 }
-.outline li {
-}
 .outline .outline-outter > li {
-    margin-bottom: 16px;
+    margin-bottom: 32px;
     overflow: hidden;
     clear: left;
 }
 .outline .outline-outter > li > a {
     padding: 0;
-    font-size: 24px;
     text-transform: uppercase;
     border-bottom: none;
 }
 .outline .outline-inner > li {
-    margin: 0 16px 0 0;
+    margin: 0 8px 0 0;
 }
 
 /* main */
@@ -161,10 +175,6 @@ img {
     max-width: 700px;
 }
 */
-.module > h2,
-.module > h3 {
-    max-width: auto;
-}
 
 /* module h2 */
 .module h2 {
@@ -246,7 +256,6 @@ img {
     padding: 0;
     display: table;
     max-width: 100%;
-    min-width: 700px;
     font-size: 16px;
     border-collapse: collapse;
     border-spacing: 0;
@@ -275,6 +284,11 @@ img {
 .header {
 }
 
+
+.page-api .main {
+    margin-left: 160px;
+    min-width: 700px;
+}
 /* page-tutorial, page-api
 .page-api .main,
 .page-tutorial .main {
@@ -312,7 +326,7 @@ img {
 .page-tutorial .menu {
     position: fixed;
     top: 10px;
-    left: 200px;
+    left: 160px;
     height: 50px;
     line-height: 50px;
 }

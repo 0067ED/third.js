@@ -262,7 +262,7 @@ console.log(toQuery([
 
 | 参数名 | 类型 | 描述 | 默认值 | 可选值 | 是否可选 |
 | ----- | ---- | ---- | ----- | ------ | ------- |
-| params | Object\|Array.<Object> | `Object`或`Array`形式的参数对象 | - | - | 否 |
+| params | Object\|Array.\<Object\> | `Object`或`Array`形式的参数对象 | - | - | 否 |
 
 #### 返回值
 

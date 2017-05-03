@@ -87,7 +87,12 @@ function transApiDoc(pathname) {
                 let innerHtml = '';
                 $h.nextAll('h3').each((i, h3) => {
                     const $h3 = $(h3);
-                    innerHtml += `<li><a href="#${$h3.attr('id')}">${$h3.text()}</a></li>`;
+                    let h3Text = $h3.text();
+                    h3Text = h3Text.split('/');
+                    if (h3Text.length > 1) {
+                        h3Text.shift();
+                    }
+                    innerHtml += `<li><a href="#${$h3.attr('id')}">${h3Text.join('/')}</a></li>`;
                 });
 
                 html += `<li>
@@ -98,16 +103,18 @@ function transApiDoc(pathname) {
                 </li>`;
             });
 
-            files.unshift(new Buffer(`${HEADER_HTML.replace('{pageClass}', 'api')}
-                <div class="module">
-                <h2>OUTLINE</h2>
-                <div class="outline">
-                    <ul class="outline-outter">
-                        ${html}
-                    </ul>
-                </div>
-                </div>`));
-            files.push(new Buffer(FOOTER_HTML));
+            files.unshift(new Buffer(HEADER_HTML.replace('{pageClass}', 'api')));
+            files.push(new Buffer(`
+                    </div>
+                    <div class="outline">
+                        <h2>APIs</h2>
+                        <ul class="outline-outter">
+                            ${html}
+                        </ul>
+                    </div>
+                </body>
+                </html>
+            `));
             this.push(new Vinyl({
                 base: config.path.doc,
                 path: `${config.path.doc}/${pathname}.html`,

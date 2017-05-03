@@ -32,7 +32,7 @@ ping('/api/ping', {
 | 参数名 | 类型 | 描述 | 默认值 | 可选值 | 是否可选 |
 | ----- | ---- | ---- | ----- | ------ | ------- |
 | url | string | 请求地址 | - | - | 否 |
-| params | Object\|string\|Array.<Object> | 请求参数 | - | - | 否 |
+| params | Object\|string\|Array.\<Object\> | 请求参数 | - | - | 否 |
 | options | Object | 可选配置 | - | - | 是 |
 | options.randomKey | string | 当使用`Image`实例来发送数据时，为避免缓存会自动添加一个随机串字段。`randomKey`是随机串的字段名 | 'z' | - | 是 |
 | options.transport | string | 强制使用一种数据传输方法，默认会自动选择最优的一种 | 'auto' | 'img', 'xhr', 'beacon' | 是 |
@@ -66,7 +66,7 @@ unloadPing('/api/ping', {
 | 参数名 | 类型 | 描述 | 默认值 | 可选值 | 是否可选 |
 | ----- | ---- | ---- | ----- | ------ | ------- |
 | url | string | 请求地址 | - | - | 否 |
-| params | Object\|string\|Array.<Object> | 请求参数 | - | - | 否 |
+| params | Object\|string\|Array.\<Object\> | 请求参数 | - | - | 否 |
 | options | Object | 可选配置 | - | - | 是 |
 | options.randomKey | string | 当使用`Image`实例来发送数据时，为避免缓存会自动添加一个随机串字段。`randomKey`是随机串的字段名 | 'z' | - | 是 |
 
@@ -135,7 +135,7 @@ submit('/api/submit', data, function (error, data) {
 | 参数名 | 类型 | 描述 | 默认值 | 可选值 | 是否可选 |
 | ----- | ---- | ---- | ----- | ------ | ------- |
 | url | string | 请求地址 | - | - | 否 |
-| params | Object\|string\|Array.<Object> | 请求参数 | - | - | 否 |
+| params | Object\|string\|Array.\<Object\> | 请求参数 | - | - | 否 |
 | callback | function(Error=, *) | 回调函数。如果请求出错，第一个参数为`Error`实例，否则为`null`。第二个参数为JSONP回调的返回数据 | - | - | 否 |
 | options | Object | 可选配置 | - | - | 是 |
 | options.dataType | string | 返回数据的类型 | 'json' | 'json', 'text' | 是 |
