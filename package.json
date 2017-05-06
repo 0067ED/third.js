@@ -1,8 +1,7 @@
 {
   "name": "third.js",
   "version": "1.0.0",
-  "description": "Made third-party javascript development easier.",
-  "main": "src/index.js",
+  "description": "A dedicated javascript toolbox made third-party javascript development easier.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
