@@ -35,6 +35,7 @@ const HEADER_HTML = `<!DOCTYPE html>
         <link rel="stylesheet" href="../static/doc.css">
     </head>
     <body class="page-{pageClass}">
+    {beforeHTML}
     <div class="main">
         <div class="header">
             <h1><a href="index.html">Third.js</a></h1>
@@ -47,6 +48,7 @@ const HEADER_HTML = `<!DOCTYPE html>
         </ul>`;
 const FOOTER_HTML = `
     </div>
+    <script src="../static/doc.js"></script>
     </body>
     </html>`;
 
@@ -103,15 +105,18 @@ function transApiDoc(pathname) {
                 </li>`;
             });
 
-            files.unshift(new Buffer(HEADER_HTML.replace('{pageClass}', 'api')));
+            files.unshift(new Buffer(HEADER_HTML
+                .replace('{pageClass}', 'api')
+                .replace('{beforeHTML}', `<div id="toggle"><span></span></div>`)
+            ));
             files.push(new Buffer(`
                     </div>
                     <div class="outline">
-                        <h2>APIs</h2>
                         <ul class="outline-outter">
                             ${html}
                         </ul>
                     </div>
+                    <script src="../static/doc.js"></script>
                 </body>
                 </html>
             `));
