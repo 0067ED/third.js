@@ -4,7 +4,17 @@ A dedicated javascript toolbox made third-party javascript development easier.
 
 ## HOW
 
-TODO
+```
+npm install third.js
+```
+
+```javascript
+import run from 'third.js/run';
+import getQuery from 'third.js/url/getQuery';
+run(function () {
+    console.log(getQuery(location.href, 'query'));
+});
+```
 
 ## LINKS
 
